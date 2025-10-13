@@ -9,9 +9,12 @@ import { deleteAudioBlob } from '@/lib/blob';
  */
 export async function GET(
 	request: NextRequest,
-	{ params }: { params: { id: string } }
+	{ params }: { params: Promise<{ id: string }> }
 ) {
 	try {
+		// Await params (Next.js 15 requirement)
+		const { id } = await params;
+
 		// Authenticate user
 		const token = extractBearerToken(request.headers.get('authorization'));
 		if (!token) {
@@ -30,7 +33,7 @@ export async function GET(
 		}
 
 		// Get clip
-		const clip = await getAudioClipById(params.id, user.id);
+		const clip = await getAudioClipById(id, user.id);
 		if (!clip) {
 			return NextResponse.json(
 				{ error: 'Clip not found' },
@@ -55,9 +58,12 @@ export async function GET(
  */
 export async function DELETE(
 	request: NextRequest,
-	{ params }: { params: { id: string } }
+	{ params }: { params: Promise<{ id: string }> }
 ) {
 	try {
+		// Await params (Next.js 15 requirement)
+		const { id } = await params;
+
 		// Authenticate user
 		const token = extractBearerToken(request.headers.get('authorization'));
 		if (!token) {
@@ -76,7 +82,7 @@ export async function DELETE(
 		}
 
 		// Get clip to get blob URL
-		const clip = await getAudioClipById(params.id, user.id);
+		const clip = await getAudioClipById(id, user.id);
 		if (!clip) {
 			return NextResponse.json(
 				{ error: 'Clip not found' },
@@ -88,7 +94,7 @@ export async function DELETE(
 		await deleteAudioBlob(clip.blob_url);
 
 		// Delete from database
-		const deleted = await deleteAudioClip(params.id, user.id);
+		const deleted = await deleteAudioClip(id, user.id);
 		if (!deleted) {
 			return NextResponse.json(
 				{ error: 'Failed to delete clip' },
