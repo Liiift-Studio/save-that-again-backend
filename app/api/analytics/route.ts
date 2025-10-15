@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
 		}
 
 		const token = authHeader.substring(7);
-		const user = getUserFromToken(token);
+		const user = await getUserFromToken(token);
 		if (!user) {
 			return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
 		}
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
 		}
 
 		const token = authHeader.substring(7);
-		const user = getUserFromToken(token);
+		const user = await getUserFromToken(token);
 		if (!user) {
 			return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
 		}
