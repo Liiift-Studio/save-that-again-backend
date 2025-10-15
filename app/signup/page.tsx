@@ -17,13 +17,6 @@ export default function SignupPage() {
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
 		setError('');
-
-		// Validation
-		if (password.length < 6) {
-			setError('Password must be at least 6 characters');
-			return;
-		}
-
 		setIsLoading(true);
 
 		try {
@@ -52,22 +45,20 @@ export default function SignupPage() {
 	};
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 flex items-center justify-center p-4">
-			<div className="max-w-md w-full bg-white rounded-2xl shadow-2xl p-8">
+		<div className="min-h-screen flex items-center justify-center p-4">
+			<div className="max-w-md w-full dark-card p-8">
 				<div className="text-center mb-8">
-					<h1 className="text-3xl font-bold text-gray-900 mb-2">
-						Save That Again
-					</h1>
-					<p className="text-gray-600">Create your account</p>
+					<h1 className="text-3xl font-bold mb-2">Save That Again</h1>
+					<p className="text-gray-400">Create your account</p>
 				</div>
 
 				<form onSubmit={handleSubmit} className="space-y-6">
 					<div>
 						<label
 							htmlFor="name"
-							className="block text-sm font-medium text-gray-700 mb-2"
+							className="block text-sm font-medium mb-2"
 						>
-							Full Name
+							Name
 						</label>
 						<input
 							id="name"
@@ -75,8 +66,8 @@ export default function SignupPage() {
 							value={name}
 							onChange={(e) => setName(e.target.value)}
 							required
-							className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-							placeholder="John Doe"
+							className="w-full px-4 py-3 rounded-lg"
+							placeholder="Your name"
 							disabled={isLoading}
 						/>
 					</div>
@@ -84,7 +75,7 @@ export default function SignupPage() {
 					<div>
 						<label
 							htmlFor="email"
-							className="block text-sm font-medium text-gray-700 mb-2"
+							className="block text-sm font-medium mb-2"
 						>
 							Email Address
 						</label>
@@ -94,7 +85,7 @@ export default function SignupPage() {
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
 							required
-							className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+							className="w-full px-4 py-3 rounded-lg"
 							placeholder="you@example.com"
 							disabled={isLoading}
 						/>
@@ -103,7 +94,7 @@ export default function SignupPage() {
 					<div>
 						<label
 							htmlFor="password"
-							className="block text-sm font-medium text-gray-700 mb-2"
+							className="block text-sm font-medium mb-2"
 						>
 							Password
 						</label>
@@ -113,17 +104,18 @@ export default function SignupPage() {
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 							required
-							className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+							minLength={6}
+							className="w-full px-4 py-3 rounded-lg"
 							placeholder="••••••••"
 							disabled={isLoading}
 						/>
-						<p className="text-xs text-gray-500 mt-1">
-							At least 6 characters
+						<p className="mt-1 text-xs text-gray-500">
+							Minimum 6 characters
 						</p>
 					</div>
 
 					{error && (
-						<div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+						<div className="border border-red-500 bg-red-950 text-red-300 px-4 py-3 rounded-lg text-sm">
 							{error}
 						</div>
 					)}
@@ -131,19 +123,16 @@ export default function SignupPage() {
 					<button
 						type="submit"
 						disabled={isLoading}
-						className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+						className={`w-full btn-primary font-semibold py-3 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed ${!isLoading ? 'pulse-button' : ''}`}
 					>
 						{isLoading ? 'Creating account...' : 'Sign Up'}
 					</button>
 				</form>
 
 				<div className="mt-6 text-center">
-					<p className="text-gray-600">
+					<p className="text-gray-400">
 						Already have an account?{' '}
-						<Link
-							href="/login"
-							className="text-blue-600 hover:text-blue-700 font-semibold"
-						>
+						<Link href="/login" className="text-[#2196f3] hover:text-[#1976d2] font-semibold">
 							Login
 						</Link>
 					</p>

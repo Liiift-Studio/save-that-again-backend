@@ -135,32 +135,30 @@ export default function ClipsPage() {
 
 	if (isLoading) {
 		return (
-			<div className="min-h-screen bg-gray-50 flex items-center justify-center">
+			<div className="min-h-screen flex items-center justify-center">
 				<div className="text-center">
-					<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-					<p className="text-gray-600">Loading clips...</p>
+					<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#2196f3] mx-auto mb-4"></div>
+					<p className="text-gray-400">Loading clips...</p>
 				</div>
 			</div>
 		);
 	}
 
 	return (
-		<div className="min-h-screen bg-gray-50">
+		<div className="min-h-screen">
 			{/* Header */}
-			<header className="bg-white shadow-sm">
+			<header className="dark-card mb-8">
 				<div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
 					<div className="flex justify-between items-center">
 						<div>
-							<h1 className="text-2xl font-bold text-gray-900">
-								Save That Again
-							</h1>
+							<h1 className="text-2xl font-bold">Save That Again</h1>
 							{user && (
-								<p className="text-sm text-gray-600">Welcome, {user.name}</p>
+								<p className="text-sm text-gray-400">Welcome, {user.name}</p>
 							)}
 						</div>
 						<button
 							onClick={handleLogout}
-							className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition"
+							className="btn-secondary px-4 py-2 text-sm font-medium rounded-lg"
 						>
 							Logout
 						</button>
@@ -171,25 +169,23 @@ export default function ClipsPage() {
 			{/* Main Content */}
 			<main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
 				{error && (
-					<div className="mb-6 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+					<div className="mb-6 border border-red-500 bg-red-950 text-red-300 px-4 py-3 rounded-lg">
 						{error}
 					</div>
 				)}
 
 				<div className="mb-6">
-					<h2 className="text-xl font-semibold text-gray-900 mb-2">
-						Your Audio Clips
-					</h2>
-					<p className="text-gray-600">
+					<h2 className="text-xl font-semibold mb-2">Your Audio Clips</h2>
+					<p className="text-gray-400">
 						{clips.length} clip{clips.length !== 1 ? 's' : ''} saved from your
 						watch
 					</p>
 				</div>
 
 				{clips.length === 0 ? (
-					<div className="bg-white rounded-lg shadow-sm p-12 text-center">
+					<div className="dark-card p-12 text-center">
 						<svg
-							className="mx-auto h-12 w-12 text-gray-400 mb-4"
+							className="mx-auto h-12 w-12 text-gray-600 mb-4"
 							fill="none"
 							viewBox="0 0 24 24"
 							stroke="currentColor"
@@ -201,23 +197,18 @@ export default function ClipsPage() {
 								d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
 							/>
 						</svg>
-						<h3 className="text-lg font-medium text-gray-900 mb-2">
-							No clips yet
-						</h3>
-						<p className="text-gray-600">
+						<h3 className="text-lg font-medium mb-2">No clips yet</h3>
+						<p className="text-gray-400">
 							Save moments from your Pixel Watch to see them here
 						</p>
 					</div>
 				) : (
 					<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 						{clips.map((clip) => (
-							<div
-								key={clip.id}
-								className="bg-white rounded-lg shadow-sm hover:shadow-md transition p-6"
-							>
+							<div key={clip.id} className="dark-card p-6">
 								<div className="flex items-start justify-between mb-4">
 									<div className="flex-1">
-										<p className="text-sm font-medium text-gray-900 mb-1">
+										<p className="text-sm font-medium mb-1">
 											{formatTimestamp(clip.timestamp)}
 										</p>
 										<p className="text-xs text-gray-500">
@@ -225,7 +216,7 @@ export default function ClipsPage() {
 										</p>
 									</div>
 									<svg
-										className="h-5 w-5 text-green-500"
+										className="h-5 w-5 text-[#2196f3]"
 										fill="currentColor"
 										viewBox="0 0 20 20"
 									>
@@ -250,21 +241,21 @@ export default function ClipsPage() {
 								<div className="flex gap-2 mb-4">
 									<button
 										onClick={() => handleDownload(clip)}
-										className="flex-1 px-3 py-2 text-sm font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-lg transition"
+										className="flex-1 px-3 py-2 text-sm font-medium bg-[#1a1a1a] border border-[#404040] hover:border-[#2196f3] rounded-lg transition"
 										title="Download"
 									>
 										Download
 									</button>
 									<button
 										onClick={() => handleShare(clip)}
-										className="flex-1 px-3 py-2 text-sm font-medium text-green-700 bg-green-50 hover:bg-green-100 rounded-lg transition"
+										className="flex-1 px-3 py-2 text-sm font-medium bg-[#1a1a1a] border border-[#404040] hover:border-[#2196f3] rounded-lg transition"
 										title="Share"
 									>
 										Share
 									</button>
 									<button
 										onClick={() => handleDelete(clip.id)}
-										className="flex-1 px-3 py-2 text-sm font-medium text-red-700 bg-red-50 hover:bg-red-100 rounded-lg transition"
+										className="flex-1 px-3 py-2 text-sm font-medium bg-[#1a1a1a] border border-red-500 hover:bg-red-950 text-red-400 rounded-lg transition"
 										title="Delete"
 									>
 										Delete
@@ -276,7 +267,7 @@ export default function ClipsPage() {
 										{clip.tags.map((tag, index) => (
 											<span
 												key={index}
-												className="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded"
+												className="px-2 py-1 text-xs font-medium bg-[#1a1a1a] border border-[#2196f3] text-[#2196f3] rounded"
 											>
 												{tag}
 											</span>
