@@ -1,32 +1,43 @@
-# Save That Again - Backend API v.0.0.2
+# Save That Again - Backend API v.1.0.0
 
-Next.js backend API for Save That Again audio recording app. Provides authentication, audio clip storage, and management via RESTful API.
+Production-ready Next.js backend API for Save That Again audio recording app. Provides authentication, audio clip storage, web interface, analytics, and monitoring infrastructure.
 
 ## Tech Stack
 
 - **Framework**: Next.js 15 with App Router
-- **Database**: Vercel Postgres
+- **Database**: Vercel Postgres (Neon)
 - **File Storage**: Vercel Blob
 - **Authentication**: JWT with bcrypt
 - **Language**: TypeScript
+- **Monitoring**: Error tracking & health checks
+- **Backups**: Automatic PITR (Point-in-time recovery)
 
 ## Project Structure
 
 ```
 save-that-again-backend/
 ├── app/
-│   └── api/
-│       ├── auth/
-│       │   ├── register/route.ts    # POST /api/auth/register
-│       │   └── login/route.ts       # POST /api/auth/login
-│       └── clips/
-│           ├── route.ts             # GET/POST /api/clips
-│           └── [id]/route.ts        # GET/DELETE /api/clips/[id]
+│   ├── api/
+│   │   ├── auth/
+│   │   │   ├── register/route.ts    # POST /api/auth/register
+│   │   │   └── login/route.ts       # POST /api/auth/login
+│   │   ├── clips/
+│   │   │   ├── route.ts             # GET/POST /api/clips
+│   │   │   └── [id]/route.ts        # GET/DELETE /api/clips/[id]
+│   │   ├── analytics/route.ts       # GET/POST /api/analytics
+│   │   └── health/route.ts          # GET /api/health
+│   ├── login/page.tsx               # Web: Login page
+│   ├── signup/page.tsx              # Web: Signup page
+│   ├── clips/page.tsx               # Web: Clips viewer
+│   └── page.tsx                     # Web: Home with auto-redirect
 ├── lib/
 │   ├── auth.ts                      # Authentication utilities
 │   ├── db.ts                        # Database functions
-│   └── blob.ts                      # Blob storage utilities
+│   ├── blob.ts                      # Blob storage utilities
+│   ├── error-tracking.ts            # Error monitoring
+│   └── database-backup.ts           # Backup utilities
 ├── schema.sql                       # Database schema
+├── MONITORING.md                    # Monitoring & backup guide
 └── .env.example                     # Environment variables template
 ```
 
@@ -102,6 +113,78 @@ Authorization: Bearer <token>
 
 Response: { "success": true }
 ```
+
+### Analytics
+
+#### Get User Statistics
+```
+GET /api/analytics
+Authorization: Bearer <token>
+
+Response: {
+  "user": { "id": "...", "name": "...", "email": "..." },
+  "stats": {
+    "totalClips": 10,
+    "totalDurationMs": 300000,
+    "firstClipDate": "2025-10-14",
+    "lastClipDate": "2025-10-15"
+  }
+}
+```
+
+#### Track Event
+```
+POST /api/analytics
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "event": "clip_played",
+  "metadata": { "clipId": "...", "duration": 5000 }
+}
+
+Response: { "success": true }
+```
+
+### Health & Monitoring
+
+#### System Health Check
+```
+GET /api/health
+
+Response: {
+  "status": "healthy",
+  "timestamp": "2025-10-15T10:00:00.000Z",
+  "checks": {
+    "database": { "accessible": true, "status": "Connected" },
+    "backups": { "enabled": true, "provider": "Neon" },
+    "integrity": { "healthy": true, "issues": [] }
+  },
+  "performance": { "responseTimeMs": 45 }
+}
+```
+
+## Web Interface
+
+The backend includes a full web interface for managing clips:
+
+### Pages
+
+- **`/`** - Home page with auto-redirect (login → clips)
+- **`/login`** - User login page
+- **`/signup`** - User registration page
+- **`/clips`** - Clips viewer with playback, download, share, delete
+
+### Features
+
+- ✅ User authentication (login/signup)
+- ✅ View all uploaded clips
+- ✅ Audio playback in browser
+- ✅ Download clips (.m4a format)
+- ✅ Share clips (Web Share API + clipboard fallback)
+- ✅ Delete clips with confirmation
+- ✅ Responsive design
+- ✅ Analytics integration
 
 ## Local Development
 
@@ -263,14 +346,25 @@ See `schema.sql` for complete schema. Key tables:
 - **users**: User accounts with email/password
 - **audio_clips**: Audio clip metadata with blob URLs
 
-## Security Features
+## Infrastructure Features
 
+### Security
 - ✅ Password hashing with bcrypt
 - ✅ JWT-based authentication
 - ✅ User-specific data isolation
 - ✅ Authorization checks on all endpoints
 - ✅ HTTPS only (Vercel default)
 - ✅ Environment variable protection
+
+### Monitoring & Backups
+- ✅ Error tracking infrastructure (Sentry-ready)
+- ✅ Health check endpoint for uptime monitoring
+- ✅ Database integrity checks
+- ✅ Automatic backups (Neon PITR)
+- ✅ Performance tracking
+- ✅ Structured logging
+
+See [MONITORING.md](MONITORING.md) for complete monitoring and backup documentation.
 
 ## Flutter Integration
 
@@ -309,10 +403,57 @@ Authorization: Bearer <token>
 - Monitor Vercel Analytics for performance
 - Check Vercel Logs for errors
 
-## Support
+## Monitoring Setup
 
-For issues or questions:
-- Check Vercel documentation: https://vercel.com/docs
-- Review Next.js docs: https://nextjs.org/docs
-- Check Vercel Postgres docs: https://vercel.com/docs/storage/vercel-postgres
-- Check Vercel Blob docs: https://vercel.com/docs/storage/vercel-blob
+### Enable Neon Backups (Recommended)
+1. Visit https://console.neon.tech
+2. Select your project
+3. Navigate to Settings → Backups
+4. Enable automatic backups
+5. Set retention period (7-30 days)
+
+### Configure Error Tracking (Optional)
+```bash
+npm install @sentry/nextjs
+npx @sentry/wizard@latest -i nextjs
+# Add SENTRY_DSN to environment variables
+```
+
+### Set Up Uptime Monitoring (Optional)
+1. Visit https://uptimerobot.com
+2. Add monitor: `/api/health`
+3. Set interval: 5 minutes
+4. Configure alerts
+
+See [MONITORING.md](MONITORING.md) for detailed instructions.
+
+## Production Checklist
+
+### Initial Setup
+- [x] Deploy to Vercel
+- [x] Configure Postgres database
+- [x] Configure Blob storage
+- [x] Set JWT_SECRET
+- [x] Run database migrations
+- [ ] Enable Neon backups ⚠️
+- [ ] Set up error tracking ⚠️
+- [ ] Configure uptime monitoring ⚠️
+
+### Maintenance
+- Daily: Automatic backups (Neon)
+- Weekly: Review analytics & logs
+- Monthly: Test disaster recovery
+
+## Support & Resources
+
+### Documentation
+- [MONITORING.md](MONITORING.md) - Complete monitoring guide
+- Vercel: https://vercel.com/docs
+- Next.js: https://nextjs.org/docs
+- Neon: https://neon.tech/docs
+- Vercel Postgres: https://vercel.com/docs/storage/vercel-postgres
+- Vercel Blob: https://vercel.com/docs/storage/vercel-blob
+
+### Status Pages
+- Vercel Status: https://www.vercel-status.com
+- Neon Status: https://neonstatus.com
