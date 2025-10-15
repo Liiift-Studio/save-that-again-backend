@@ -68,6 +68,59 @@ export default function ClipsPage() {
 		router.push('/login');
 	};
 
+	const handleDelete = async (clipId: string) => {
+		if (!confirm('Delete this clip? This cannot be undone.')) {
+			return;
+		}
+
+		const token = localStorage.getItem('auth_token');
+		try {
+			const response = await fetch(`/api/clips/${clipId}`, {
+				method: 'DELETE',
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+
+			if (response.ok) {
+				setClips(clips.filter((c) => c.id !== clipId));
+			} else {
+				alert('Failed to delete clip');
+			}
+		} catch (err) {
+			alert('Network error');
+		}
+	};
+
+	const handleDownload = (clip: Clip) => {
+		const link = document.createElement('a');
+		link.href = clip.blob_url;
+		link.download = `clip-${clip.timestamp}.m4a`;
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	};
+
+	const handleShare = async (clip: Clip) => {
+		const shareData = {
+			title: 'Audio Clip',
+			text: `Audio clip from ${formatTimestamp(clip.timestamp)}`,
+			url: clip.blob_url,
+		};
+
+		if (navigator.share) {
+			try {
+				await navigator.share(shareData);
+			} catch (err) {
+				// User cancelled or error
+			}
+		} else {
+			// Fallback: copy to clipboard
+			navigator.clipboard.writeText(clip.blob_url);
+			alert('Link copied to clipboard!');
+		}
+	};
+
 	const formatDuration = (ms: number) => {
 		const seconds = Math.floor(ms / 1000);
 		const minutes = Math.floor(seconds / 60);
@@ -192,6 +245,31 @@ export default function ClipsPage() {
 								>
 									Your browser does not support audio playback.
 								</audio>
+
+								{/* Action buttons */}
+								<div className="flex gap-2 mb-4">
+									<button
+										onClick={() => handleDownload(clip)}
+										className="flex-1 px-3 py-2 text-sm font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-lg transition"
+										title="Download"
+									>
+										Download
+									</button>
+									<button
+										onClick={() => handleShare(clip)}
+										className="flex-1 px-3 py-2 text-sm font-medium text-green-700 bg-green-50 hover:bg-green-100 rounded-lg transition"
+										title="Share"
+									>
+										Share
+									</button>
+									<button
+										onClick={() => handleDelete(clip.id)}
+										className="flex-1 px-3 py-2 text-sm font-medium text-red-700 bg-red-50 hover:bg-red-100 rounded-lg transition"
+										title="Delete"
+									>
+										Delete
+									</button>
+								</div>
 
 								{clip.tags && clip.tags.length > 0 && (
 									<div className="flex flex-wrap gap-2">
