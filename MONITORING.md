@@ -77,7 +77,7 @@ psql -h YOUR_NEON_HOST -U YOUR_USER -d YOUR_DB < backup_20251015.sql
 ### Health Check Endpoint
 ```bash
 # Check system health
-curl https://your-backend.vercel.app/api/health
+curl https://savethatagain.com/api/health
 
 Response:
 {
@@ -116,7 +116,7 @@ Response:
 1. Go to https://uptimerobot.com
 2. Add monitor:
    - Type: HTTP(s)
-   - URL: `https://your-backend.vercel.app/api/health`
+   - URL: `https://savethatagain.com/api/health`
    - Interval: 5 minutes
 3. Configure alerts:
    - Email notifications
@@ -274,7 +274,7 @@ Automatically tracks:
 ### Health Check Fails
 ```bash
 # 1. Check database connectivity
-curl https://your-backend.vercel.app/api/health
+curl https://savethatagain.com/api/health
 
 # 2. View Vercel logs
 vercel logs
@@ -292,7 +292,7 @@ vercel env ls
 vercel logs --since=1h
 
 # 2. Check specific endpoint
-curl -v https://your-backend.vercel.app/api/clips
+curl -v https://savethatagain.com/api/clips
 
 # 3. Review Sentry dashboard
 # Visit sentry.io
@@ -301,7 +301,7 @@ curl -v https://your-backend.vercel.app/api/clips
 ### Slow Performance
 ```bash
 # 1. Check response time
-time curl https://your-backend.vercel.app/api/health
+time curl https://savethatagain.com/api/health
 
 # 2. Analyze database queries
 # View slow query log in Neon dashboard

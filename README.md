@@ -370,7 +370,7 @@ See [MONITORING.md](MONITORING.md) for complete monitoring and backup documentat
 
 Update Flutter app's `.env`:
 ```env
-BACKEND_URL=https://your-app.vercel.app
+BACKEND_URL=https://savethatagain.com
 ```
 
 Use the provided token in Authorization header:
