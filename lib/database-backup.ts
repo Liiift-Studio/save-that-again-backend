@@ -35,7 +35,7 @@ export async function createManualBackup(): Promise<BackupResult> {
 	try {
 		// Count records
 		const userCount = await sql`SELECT COUNT(*) as count FROM users`;
-		const clipCount = await sql`SELECT COUNT(*) as count FROM clips`;
+		const clipCount = await sql`SELECT COUNT(*) as count FROM audio_clips`;
 
 		const result: BackupResult = {
 			success: true,
@@ -71,7 +71,7 @@ export async function verifyDatabaseIntegrity(): Promise<{
 		// Check for orphaned clips (clips with non-existent users)
 		const orphanedClips = await sql`
 			SELECT COUNT(*) as count 
-			FROM clips c 
+			FROM audio_clips c 
 			LEFT JOIN users u ON c.user_id = u.id 
 			WHERE u.id IS NULL
 		`;
@@ -84,7 +84,7 @@ export async function verifyDatabaseIntegrity(): Promise<{
 		const usersWithoutClips = await sql`
 			SELECT COUNT(*) as count 
 			FROM users u 
-			LEFT JOIN clips c ON u.id = c.user_id 
+			LEFT JOIN audio_clips c ON u.id = c.user_id 
 			WHERE c.id IS NULL
 		`;
 
@@ -177,19 +177,23 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 -- Clips table
-CREATE TABLE IF NOT EXISTS clips (
+CREATE TABLE IF NOT EXISTS audio_clips (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   timestamp TIMESTAMP NOT NULL,
   duration INTEGER NOT NULL,
   blob_url TEXT NOT NULL,
-  tags TEXT[] DEFAULT '{}',
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  blob_pathname TEXT NOT NULL,
+  file_size INTEGER NOT NULL,
+  title TEXT NOT NULL,
+  tags JSONB DEFAULT '[]'::jsonb,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Indexes
-CREATE INDEX IF NOT EXISTS idx_clips_user_id ON clips(user_id);
-CREATE INDEX IF NOT EXISTS idx_clips_timestamp ON clips(timestamp);
+CREATE INDEX IF NOT EXISTS idx_clips_user_id ON audio_clips(user_id);
+CREATE INDEX IF NOT EXISTS idx_clips_timestamp ON audio_clips(timestamp);
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 `;
 
