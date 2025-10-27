@@ -2,8 +2,9 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import Waveform from '../components/Waveform';
 
 interface Clip {
 	id: string;
@@ -15,11 +16,21 @@ interface Clip {
 	created_at: string;
 }
 
+interface AudioState {
+	[key: string]: {
+		isPlaying: boolean;
+		currentTime: number;
+		duration: number;
+	};
+}
+
 export default function ClipsPage() {
 	const [clips, setClips] = useState<Clip[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState('');
 	const [user, setUser] = useState<any>(null);
+	const [audioStates, setAudioStates] = useState<AudioState>({});
+	const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({});
 	const router = useRouter();
 
 	useEffect(() => {
@@ -205,80 +216,173 @@ export default function ClipsPage() {
 				) : (
 					<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 						{clips.map((clip) => (
-							<div key={clip.id} className="dark-card p-6">
-								<div className="flex items-start justify-between mb-4">
-									<div className="flex-1">
-										<p className="text-sm font-medium mb-1">
-											{formatTimestamp(clip.timestamp)}
-										</p>
-										<p className="text-xs text-gray-500">
-											Duration: {formatDuration(clip.duration)}
-										</p>
-									</div>
-									<svg
-										className="h-5 w-5 text-[#2196f3]"
-										fill="currentColor"
-										viewBox="0 0 20 20"
-									>
-										<path
-											fillRule="evenodd"
-											d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-											clipRule="evenodd"
-										/>
-									</svg>
-								</div>
-
-								<audio
-									controls
-									className="w-full mb-4"
-									src={clip.blob_url}
-									preload="metadata"
-								>
-									Your browser does not support audio playback.
-								</audio>
-
-								{/* Action buttons */}
-								<div className="flex gap-2 mb-4">
-									<button
-										onClick={() => handleDownload(clip)}
-										className="flex-1 px-3 py-2 text-sm font-medium bg-[#1a1a1a] border border-[#404040] hover:border-[#2196f3] rounded-lg transition"
-										title="Download"
-									>
-										Download
-									</button>
-									<button
-										onClick={() => handleShare(clip)}
-										className="flex-1 px-3 py-2 text-sm font-medium bg-[#1a1a1a] border border-[#404040] hover:border-[#2196f3] rounded-lg transition"
-										title="Share"
-									>
-										Share
-									</button>
-									<button
-										onClick={() => handleDelete(clip.id)}
-										className="flex-1 px-3 py-2 text-sm font-medium bg-[#1a1a1a] border border-red-500 hover:bg-red-950 text-red-400 rounded-lg transition"
-										title="Delete"
-									>
-										Delete
-									</button>
-								</div>
-
-								{clip.tags && clip.tags.length > 0 && (
-									<div className="flex flex-wrap gap-2">
-										{clip.tags.map((tag, index) => (
-											<span
-												key={index}
-												className="px-2 py-1 text-xs font-medium bg-[#1a1a1a] border border-[#2196f3] text-[#2196f3] rounded"
-											>
-												{tag}
-											</span>
-										))}
-									</div>
-								)}
-							</div>
+							<ClipCard
+								key={clip.id}
+								clip={clip}
+								audioState={audioStates[clip.id]}
+								audioRef={(el) => {
+									if (el) audioRefs.current[clip.id] = el;
+								}}
+								onAudioUpdate={(state) => {
+									setAudioStates((prev) => ({
+										...prev,
+										[clip.id]: state,
+									}));
+								}}
+								onDelete={() => handleDelete(clip.id)}
+								onDownload={() => handleDownload(clip)}
+								onShare={() => handleShare(clip)}
+								formatTimestamp={formatTimestamp}
+								formatDuration={formatDuration}
+							/>
 						))}
 					</div>
 				)}
 			</main>
+		</div>
+	);
+}
+
+// Separate ClipCard component for better performance
+function ClipCard({
+	clip,
+	audioState,
+	audioRef,
+	onAudioUpdate,
+	onDelete,
+	onDownload,
+	onShare,
+	formatTimestamp,
+	formatDuration,
+}: {
+	clip: Clip;
+	audioState?: { isPlaying: boolean; currentTime: number; duration: number };
+	audioRef: (el: HTMLAudioElement | null) => void;
+	onAudioUpdate: (state: {
+		isPlaying: boolean;
+		currentTime: number;
+		duration: number;
+	}) => void;
+	onDelete: () => void;
+	onDownload: () => void;
+	onShare: () => void;
+	formatTimestamp: (timestamp: string) => string;
+	formatDuration: (ms: number) => string;
+}) {
+	return (
+		<div className="dark-card p-6">
+			<div className="flex items-start justify-between mb-4">
+				<div className="flex-1">
+					<p className="text-sm font-medium mb-1">
+						{formatTimestamp(clip.timestamp)}
+					</p>
+					<p className="text-xs text-gray-500">
+						Duration: {formatDuration(clip.duration)}
+					</p>
+				</div>
+				<svg
+					className="h-5 w-5 text-[#2196f3]"
+					fill="currentColor"
+					viewBox="0 0 20 20"
+				>
+					<path
+						fillRule="evenodd"
+						d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+						clipRule="evenodd"
+					/>
+				</svg>
+			</div>
+
+			{/* Waveform visualization */}
+			<div className="mb-4">
+				<Waveform
+					audioUrl={clip.blob_url}
+					isPlaying={audioState?.isPlaying || false}
+					currentTime={audioState?.currentTime || 0}
+					duration={audioState?.duration || clip.duration / 1000}
+				/>
+			</div>
+
+			{/* Hidden audio element for waveform sync */}
+			<audio
+				ref={audioRef}
+				src={clip.blob_url}
+				preload="metadata"
+				onLoadedMetadata={(e) => {
+					const audio = e.target as HTMLAudioElement;
+					onAudioUpdate({
+						isPlaying: false,
+						currentTime: 0,
+						duration: audio.duration,
+					});
+				}}
+				onTimeUpdate={(e) => {
+					const audio = e.target as HTMLAudioElement;
+					onAudioUpdate({
+						isPlaying: !audio.paused,
+						currentTime: audio.currentTime,
+						duration: audio.duration,
+					});
+				}}
+				onPlay={(e) => {
+					const audio = e.target as HTMLAudioElement;
+					onAudioUpdate({
+						isPlaying: true,
+						currentTime: audio.currentTime,
+						duration: audio.duration,
+					});
+				}}
+				onPause={(e) => {
+					const audio = e.target as HTMLAudioElement;
+					onAudioUpdate({
+						isPlaying: false,
+						currentTime: audio.currentTime,
+						duration: audio.duration,
+					});
+				}}
+				controls
+				className="w-full mb-4"
+			>
+				Your browser does not support audio playback.
+			</audio>
+
+			{/* Action buttons */}
+			<div className="flex gap-2 mb-4">
+				<button
+					onClick={onDownload}
+					className="flex-1 px-3 py-2 text-sm font-medium bg-[#1a1a1a] border border-[#404040] hover:border-[#2196f3] rounded-lg transition"
+					title="Download"
+				>
+					Download
+				</button>
+				<button
+					onClick={onShare}
+					className="flex-1 px-3 py-2 text-sm font-medium bg-[#1a1a1a] border border-[#404040] hover:border-[#2196f3] rounded-lg transition"
+					title="Share"
+				>
+					Share
+				</button>
+				<button
+					onClick={onDelete}
+					className="flex-1 px-3 py-2 text-sm font-medium bg-[#1a1a1a] border border-red-500 hover:bg-red-950 text-red-400 rounded-lg transition"
+					title="Delete"
+				>
+					Delete
+				</button>
+			</div>
+
+			{clip.tags && clip.tags.length > 0 && (
+				<div className="flex flex-wrap gap-2">
+					{clip.tags.map((tag, index) => (
+						<span
+							key={index}
+							className="px-2 py-1 text-xs font-medium bg-[#1a1a1a] border border-[#2196f3] text-[#2196f3] rounded"
+						>
+							{tag}
+						</span>
+					))}
+				</div>
+			)}
 		</div>
 	);
 }
