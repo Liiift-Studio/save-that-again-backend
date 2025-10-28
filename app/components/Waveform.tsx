@@ -10,6 +10,7 @@ interface WaveformProps {
 	height?: number;
 	barCount?: number;
 	color?: string;
+	onSeek?: (time: number) => void;
 }
 
 export default function Waveform({
@@ -20,6 +21,7 @@ export default function Waveform({
 	height = 32,
 	barCount = 40,
 	color = '#2196f3',
+	onSeek,
 }: WaveformProps) {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const [waveformData, setWaveformData] = useState<number[]>([]);
@@ -138,13 +140,26 @@ export default function Waveform({
 		);
 	}
 
+	const handleClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
+		if (!onSeek || !canvasRef.current) return;
+
+		const canvas = canvasRef.current;
+		const rect = canvas.getBoundingClientRect();
+		const x = e.clientX - rect.left;
+		const clickProgress = x / rect.width;
+		const newTime = clickProgress * duration;
+
+		onSeek(newTime);
+	};
+
 	return (
 		<canvas
 			ref={canvasRef}
 			width={400}
 			height={height}
-			className="w-full"
+			className={`w-full ${onSeek ? 'cursor-pointer' : ''}`}
 			style={{ height: `${height}px` }}
+			onClick={handleClick}
 		/>
 	);
 }
