@@ -207,11 +207,10 @@ export default function ClipsPage() {
 					</div>
 				)}
 
-				<div className="mb-6">
-					<h2 className="text-xl font-semibold mb-2">Your Audio Clips</h2>
-					<p className="text-gray-400">
-						{clips.length} clip{clips.length !== 1 ? 's' : ''} saved from your
-						watch
+				<div className="mb-8">
+					<h1 className="text-4xl md:text-5xl font-bold mb-2 uppercase tracking-wide">Your Audio Clips</h1>
+					<p className="text-gray-400 text-lg">
+						{clips.length} clip{clips.length !== 1 ? 's' : ''} saved from your watch
 					</p>
 				</div>
 
@@ -362,8 +361,7 @@ function ClipCard({
 						duration: audio.duration,
 					});
 				}}
-				controls
-				className="w-full mb-4"
+				className="hidden"
 			>
 				Your browser does not support audio playback.
 			</audio>
