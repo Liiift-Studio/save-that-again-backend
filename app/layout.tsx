@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   title: "Save That Again",
   description: "Retroactive audio recording for Wear OS - Save the last 5 minutes of audio with a single tap",
   icons: {
-    icon: '/logo.svg',
-    apple: '/logo.svg',
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
   },
 };
 

@@ -1,119 +1,490 @@
 'use client';
 
 import Image from "next/image";
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from "next/link";
+import { useEffect, useState } from 'react';
+import InteractiveBackground from './components/InteractiveBackground';
 
 export default function Home() {
-  const router = useRouter();
+	const [mounted, setMounted] = useState(false);
+	const [userDevice, setUserDevice] = useState<'ios' | 'android' | 'other'>('other');
 
-  useEffect(() => {
-    // Check if user is logged in
-    const token = localStorage.getItem('auth_token');
-    if (token) {
-      router.push('/clips');
-    } else {
-      router.push('/login');
-    }
-  }, [router]);
+	useEffect(() => {
+		setMounted(true);
+		
+		// Detect device
+		const userAgent = navigator.userAgent.toLowerCase();
+		if (/iphone|ipad|ipod/.test(userAgent)) {
+			setUserDevice('ios');
+		} else if (/android/.test(userAgent)) {
+			setUserDevice('android');
+		}
+	}, []);
 
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+	const emitCTAHover = (isHovering: boolean) => {
+		window.dispatchEvent(new CustomEvent('ctaHover', { detail: { isHovering } }));
+	};
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+	return (
+		<div className="min-h-screen bg-black text-white overflow-hidden">
+			{/* Interactive Particle Background */}
+			<InteractiveBackground />
+			
+			{/* Gradient Background */}
+			<div className="fixed inset-0 bg-gradient-radial from-blue-900/20 via-black to-black pointer-events-none z-0" />
+			<div className="fixed inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 pointer-events-none z-0" />
+			
+			{/* Navigation */}
+			<nav className="relative z-50 glass-nav">
+				<div className="max-w-7xl mx-auto px-6 py-4">
+					<div className="flex items-center justify-between">
+					<div className="flex items-center gap-3">
+						<Image
+							src="/logo-white.svg"
+							alt="Save That Again"
+							width={32}
+							height={32}
+							className="drop-shadow-glow"
+							priority
+						/>
+						<span className="font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent" style={{ fontFamily: 'Gamay, sans-serif', fontStretch: '200%', fontSize: '20px', lineHeight: '32px' }}>
+							Save That Again
+						</span>
+					</div>
+						<div className="flex items-center gap-4">
+							<Link 
+								href="/login"
+								className="glass-button text-sm px-4 py-2 rounded-full hover:scale-105 transition-transform"
+							>
+								Sign In
+							</Link>
+							<Link 
+								href="/signup"
+								className="glass-button-primary text-sm px-4 py-2 rounded-full hover:scale-105 transition-transform"
+								onMouseEnter={() => emitCTAHover(true)}
+								onMouseLeave={() => emitCTAHover(false)}
+							>
+								Get Started
+							</Link>
+						</div>
+					</div>
+				</div>
+			</nav>
+
+			{/* Hero Section */}
+			<section className="relative pt-32 pb-24 px-6 z-10">
+				<div className="max-w-5xl mx-auto text-center">
+					<div className={`transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+						<h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+							Never miss a
+							<span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+								moment again
+							</span>
+						</h1>
+						<p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+							Continuous audio buffering for your Pixel Watch. Capture the last 5 minutes with a single tap.
+						</p>
+						<div className="flex flex-col sm:flex-row gap-4 justify-center">
+							<Link 
+								href="/signup"
+								className="glass-button-primary text-lg px-8 py-4 rounded-full hover:scale-105 transition-all font-medium"
+								onMouseEnter={() => emitCTAHover(true)}
+								onMouseLeave={() => emitCTAHover(false)}
+							>
+								Start Recording Free
+							</Link>
+							<a 
+								href="#how-it-works"
+								className="glass-button text-lg px-8 py-4 rounded-full hover:scale-105 transition-all font-medium"
+							>
+								See How It Works
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Use Cases Section */}
+			<section className="relative py-24 px-6 z-10">
+				<div className="max-w-6xl mx-auto">
+					<h2 className="text-5xl font-bold text-center mb-4">
+						Real <span className="text-gradient">Moments</span>
+					</h2>
+					<p className="text-xl text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+						Life's most precious moments happen when you least expect them.
+					</p>
+					
+					<div className="grid md:grid-cols-3 gap-6">
+						<UseCaseCard
+							title="First Words"
+							description="Your child says 'mama' for the first time. You weren't ready to record, but now you'll have it forever."
+						/>
+						<UseCaseCard
+							title="Musical Moments"
+							description="A friend improvises an incredible melody. Capture the spontaneous creativity that can never be recreated."
+						/>
+						<UseCaseCard
+							title="Brilliant Ideas"
+							description="During a conversation, someone shares a game-changing insight. Never lose those lightbulb moments again."
+						/>
+						<UseCaseCard
+							title="Genuine Laughter"
+							description="That perfect joke or hilarious moment that had everyone in stitches. Relive the joy whenever you want."
+						/>
+						<UseCaseCard
+							title="Learning Moments"
+							description="An expert explains something complex perfectly. Save their explanation for future reference."
+						/>
+						<UseCaseCard
+							title="Heartfelt Confessions"
+							description="Words of love, appreciation, or encouragement that you want to treasure forever."
+						/>
+					</div>
+				</div>
+			</section>
+
+			{/* The Buffer Section */}
+			<section id="how-it-works" className="relative py-24 px-6 z-10">
+				<div className="max-w-6xl mx-auto">
+					<div className="glass-card p-12 rounded-3xl">
+						<div className="grid md:grid-cols-2 gap-12 items-center">
+							<div>
+								<h2 className="text-5xl font-bold mb-6">
+									The <span className="text-gradient">Buffer</span>
+								</h2>
+								<p className="text-xl text-gray-400 mb-8 leading-relaxed">
+									Your Pixel Watch continuously records a rolling 5-minute buffer. 
+									When something amazing happens, just tap to save it permanently.
+								</p>
+								<div className="space-y-4">
+									<FeatureItem text="Always recording in the background" />
+									<FeatureItem text="Instant save with one tap" />
+									<FeatureItem text="Privacy-first: only saved clips are uploaded" />
+									<FeatureItem text="Automatic cloud sync" />
+								</div>
+							</div>
+							<div className="relative h-96">
+								<div className="glass-card-feature absolute inset-0 rounded-2xl flex items-center justify-center">
+									<div className="text-center">
+										<div className="text-6xl mb-4">⏺️</div>
+										<div className="text-blue-400 text-lg font-mono">
+											Recording: 00:04:32
+										</div>
+										<div className="mt-8 w-64 h-2 bg-gray-800 rounded-full overflow-hidden mx-auto">
+											<div className="h-full w-3/4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Features Grid */}
+			<section className="relative py-24 px-6 z-10">
+				<div className="max-w-6xl mx-auto">
+					<h2 className="text-5xl font-bold text-center mb-4">
+						Powerful <span className="text-gradient">Features</span>
+					</h2>
+					<p className="text-xl text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+						Everything you need to capture and manage your audio moments.
+					</p>
+					
+					<div className="grid md:grid-cols-3 gap-6">
+						<FeatureCard
+							title="High Quality Audio"
+							description="AAC compression at 128kbps ensures crystal clear recordings at 44.1kHz."
+						/>
+						<FeatureCard
+							title="Battery Optimized"
+							description="Engineered for all-day recording on your Pixel Watch without draining the battery."
+						/>
+						<FeatureCard
+							title="Cloud Sync"
+							description="Automatic upload to secure cloud storage. Access your clips anywhere."
+						/>
+						<FeatureCard
+							title="Secure & Private"
+							description="JWT authentication and encrypted transmission. Your data stays yours."
+						/>
+						<FeatureCard
+							title="Wear OS Native"
+							description="Built specifically for Pixel Watch with a beautiful, intuitive interface."
+						/>
+						<FeatureCard
+							title="One-Tap Save"
+							description="No fumbling with controls. Just tap the save button when the moment strikes."
+						/>
+					</div>
+				</div>
+			</section>
+
+			{/* Pricing Section */}
+			<section className="relative py-24 px-6 z-10">
+				<div className="max-w-6xl mx-auto">
+					<h2 className="text-5xl font-bold text-center mb-4">
+						Simple <span className="text-gradient">Pricing</span>
+					</h2>
+					<p className="text-xl text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+						Start free. Upgrade when you're ready for more.
+					</p>
+					
+					<div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+						<PricingCard
+							name="Free"
+							price="$0"
+							period="forever"
+							features={[
+								"5-minute rolling buffer",
+								"Up to 10 saved clips",
+								"1GB cloud storage",
+								"Basic features"
+							]}
+							cta="Get Started Free"
+							ctaLink="/signup"
+							popular={false}
+							emitHover={emitCTAHover}
+						/>
+						<PricingCard
+							name="Pro"
+							price="$4.99"
+							period="per month"
+							features={[
+								"5-minute rolling buffer",
+								"Unlimited saved clips",
+								"50GB cloud storage",
+								"Advanced features",
+								"Priority support"
+							]}
+							cta="Start Free Trial"
+							ctaLink="/signup"
+							popular={true}
+							emitHover={emitCTAHover}
+						/>
+						<PricingCard
+							name="Premium"
+							price="$9.99"
+							period="per month"
+							features={[
+								"10-minute rolling buffer",
+								"Unlimited saved clips",
+								"Unlimited cloud storage",
+								"All features",
+								"Priority support",
+								"API access"
+							]}
+							cta="Start Free Trial"
+							ctaLink="/signup"
+							popular={false}
+							emitHover={emitCTAHover}
+						/>
+					</div>
+					<p className="text-center text-gray-500 mt-8">
+						All accounts start free. No credit card required.
+					</p>
+				</div>
+			</section>
+
+			{/* Mobile App Download Section */}
+			{userDevice !== 'other' && (
+				<section className="relative py-24 px-6 z-10">
+					<div className="max-w-4xl mx-auto">
+						<div className="glass-card-feature p-12 rounded-3xl text-center">
+							<h2 className="text-5xl font-bold mb-6">
+								Download for {userDevice === 'ios' ? 'iOS' : 'Android'}
+							</h2>
+							<p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+								Get Save That Again on your {userDevice === 'ios' ? 'iPhone and Apple Watch' : 'Android device and Wear OS watch'}.
+							</p>
+							<a
+								href={userDevice === 'ios' ? 'https://apps.apple.com' : 'https://play.google.com'}
+								className="glass-button-primary inline-block text-lg px-8 py-4 rounded-full hover:scale-105 transition-all font-medium"
+								onMouseEnter={() => emitCTAHover(true)}
+								onMouseLeave={() => emitCTAHover(false)}
+							>
+								Download Now
+							</a>
+						</div>
+					</div>
+				</section>
+			)}
+
+			{/* How It Works Timeline */}
+			<section className="relative py-24 px-6 z-10">
+				<div className="max-w-4xl mx-auto">
+					<h2 className="text-5xl font-bold text-center mb-16">
+						Simple <span className="text-gradient">Workflow</span>
+					</h2>
+					
+					<div className="space-y-8">
+						<TimelineStep
+							number="1"
+							title="Continuous Recording"
+							description="Your watch starts recording automatically, maintaining a rolling 5-minute buffer."
+						/>
+						<TimelineStep
+							number="2"
+							title="Tap to Save"
+							description="When something important happens, simply tap the save button on your watch."
+						/>
+						<TimelineStep
+							number="3"
+							title="Automatic Upload"
+							description="The last 5 minutes are instantly saved and uploaded to your secure cloud storage."
+						/>
+						<TimelineStep
+							number="4"
+							title="Access Anywhere"
+							description="View, manage, and download your saved clips from any device."
+						/>
+					</div>
+				</div>
+			</section>
+
+			{/* CTA Section */}
+			<section className="relative py-24 px-6 z-10">
+				<div className="max-w-4xl mx-auto">
+					<div className="glass-card-feature p-12 rounded-3xl text-center">
+						<h2 className="text-5xl font-bold mb-6">
+							Ready to capture every moment?
+						</h2>
+						<p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+							Start using Save That Again today and never miss an important moment again.
+						</p>
+						<Link 
+							href="/signup"
+							className="glass-button-primary inline-block text-lg px-8 py-4 rounded-full hover:scale-105 transition-all font-medium"
+							onMouseEnter={() => emitCTAHover(true)}
+							onMouseLeave={() => emitCTAHover(false)}
+						>
+							Get Started Free
+						</Link>
+					</div>
+				</div>
+			</section>
+
+			{/* Footer */}
+			<footer className="relative py-12 px-6 border-t border-gray-800/50 z-10">
+				<div className="max-w-6xl mx-auto">
+					<div className="flex flex-col md:flex-row justify-between items-center gap-6">
+						<div className="flex items-center gap-3">
+							<Image
+								src="/logo-white.svg"
+								alt="Save That Again"
+								width={24}
+								height={24}
+							/>
+							<span className="text-gray-400">© 2025 Save That Again</span>
+						</div>
+						<div className="flex gap-6 text-gray-400">
+							<Link href="/login" className="hover:text-blue-400 transition-colors">Sign In</Link>
+							<Link href="/signup" className="hover:text-blue-400 transition-colors">Sign Up</Link>
+							<Link href="/clips" className="hover:text-blue-400 transition-colors">My Clips</Link>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	);
+}
+
+function FeatureItem({ text }: { text: string }) {
+	return (
+		<div className="flex items-center gap-3">
+			<div className="w-2 h-2 rounded-full bg-blue-400" />
+			<span className="text-gray-300">{text}</span>
+		</div>
+	);
+}
+
+function FeatureCard({ title, description }: { title: string; description: string }) {
+	return (
+		<div className="glass-card p-6 rounded-2xl hover:scale-105 transition-all group">
+			<h3 className="text-2xl font-bold mb-3 text-gradient">{title}</h3>
+			<p className="text-gray-300 leading-relaxed">{description}</p>
+		</div>
+	);
+}
+
+function UseCaseCard({ title, description }: { title: string; description: string }) {
+	return (
+		<div className="glass-card p-6 rounded-2xl hover:scale-105 transition-all group">
+			<h3 className="text-2xl font-bold mb-3 text-gradient">{title}</h3>
+			<p className="text-gray-300 leading-relaxed">{description}</p>
+		</div>
+	);
+}
+
+function TimelineStep({ number, title, description }: { number: string; title: string; description: string }) {
+	return (
+		<div className="flex gap-6 items-start group">
+			<div className="flex-shrink-0">
+				<div className="glass-card-small w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">
+					{number}
+				</div>
+			</div>
+			<div className="pt-1">
+				<h3 className="text-2xl font-bold mb-2">{title}</h3>
+				<p className="text-gray-400 text-lg leading-relaxed">{description}</p>
+			</div>
+		</div>
+	);
+}
+
+function PricingCard({ 
+	name, 
+	price, 
+	period, 
+	features, 
+	cta, 
+	ctaLink, 
+	popular,
+	emitHover
+}: { 
+	name: string; 
+	price: string; 
+	period: string; 
+	features: string[]; 
+	cta: string; 
+	ctaLink: string; 
+	popular: boolean;
+	emitHover: (isHovering: boolean) => void;
+}) {
+	return (
+		<div className={`${popular ? 'glass-card-popular' : 'glass-card'} p-8 rounded-2xl relative ${popular ? 'ring-2 ring-blue-500' : ''}`}>
+			{popular && (
+				<div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+					<span className="glass-button-primary px-4 py-1 rounded-full text-sm font-bold">
+						Most Popular
+					</span>
+				</div>
+			)}
+			<h3 className="text-2xl font-bold mb-2">{name}</h3>
+			<div className="mb-6">
+				<span className="text-5xl font-bold">{price}</span>
+				<span className="text-gray-400 ml-2">/ {period}</span>
+			</div>
+			<ul className="space-y-3 mb-8">
+				{features.map((feature, index) => (
+					<li key={index} className="flex items-start gap-2">
+						<span className="text-blue-400 mt-1">✓</span>
+						<span className="text-gray-300">{feature}</span>
+					</li>
+				))}
+			</ul>
+			<Link
+				href={ctaLink}
+				className={`block w-full text-center px-6 py-3 rounded-full font-medium transition-all ${
+					popular 
+						? 'glass-button-primary hover:scale-105' 
+						: 'glass-button hover:scale-105'
+				}`}
+				onMouseEnter={() => emitHover(true)}
+				onMouseLeave={() => emitHover(false)}
+			>
+				{cta}
+			</Link>
+		</div>
+	);
 }

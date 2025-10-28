@@ -4,7 +4,10 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
 import Waveform from '../components/Waveform';
+import InteractiveBackground from '../components/InteractiveBackground';
 
 interface Clip {
 	id: string;
@@ -156,29 +159,48 @@ export default function ClipsPage() {
 	}
 
 	return (
-		<div className="min-h-screen">
-			{/* Header */}
-			<header className="dark-card mb-8">
-				<div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
-					<div className="flex justify-between items-center">
-						<div>
-							<h1 className="text-2xl font-bold">Save That Again</h1>
+		<div className="min-h-screen bg-black text-white overflow-hidden">
+			{/* Interactive Background */}
+			<InteractiveBackground />
+			
+			{/* Gradient Background */}
+			<div className="fixed inset-0 bg-gradient-radial from-blue-900/20 via-black to-black pointer-events-none z-0" />
+			<div className="fixed inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 pointer-events-none z-0" />
+			
+			{/* Navigation */}
+			<nav className="relative z-50 glass-nav">
+				<div className="max-w-7xl mx-auto px-6 py-4">
+					<div className="flex items-center justify-between">
+				<Link href="/" className="flex items-center gap-3">
+					<Image
+						src="/logo-white.svg"
+						alt="Save That Again"
+						width={32}
+						height={32}
+						className="drop-shadow-glow"
+						priority
+					/>
+					<span className="font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent" style={{ fontFamily: 'Gamay, sans-serif', fontStretch: '200%', fontSize: '20px', lineHeight: '32px' }}>
+						Save That Again
+					</span>
+				</Link>
+						<div className="flex items-center gap-4">
 							{user && (
-								<p className="text-sm text-gray-400">Welcome, {user.name}</p>
+								<span className="text-sm text-gray-400">Welcome, {user.name}</span>
 							)}
+							<button
+								onClick={handleLogout}
+								className="glass-button text-sm px-4 py-2 rounded-full hover:scale-105 transition-transform"
+							>
+								Logout
+							</button>
 						</div>
-						<button
-							onClick={handleLogout}
-							className="btn-secondary px-4 py-2 text-sm font-medium rounded-lg"
-						>
-							Logout
-						</button>
 					</div>
 				</div>
-			</header>
+			</nav>
 
 			{/* Main Content */}
-			<main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+			<main className="relative z-10 max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
 				{error && (
 					<div className="mb-6 border border-red-500 bg-red-950 text-red-300 px-4 py-3 rounded-lg">
 						{error}
@@ -194,7 +216,7 @@ export default function ClipsPage() {
 				</div>
 
 				{clips.length === 0 ? (
-					<div className="dark-card p-12 text-center">
+					<div className="glass-card p-12 rounded-2xl text-center">
 						<svg
 							className="mx-auto h-12 w-12 text-gray-600 mb-4"
 							fill="none"
@@ -270,7 +292,7 @@ function ClipCard({
 	formatDuration: (ms: number) => string;
 }) {
 	return (
-		<div className="dark-card p-6">
+		<div className="glass-card p-6 rounded-2xl hover:scale-105 transition-all">
 			<div className="flex items-start justify-between mb-4">
 				<div className="flex-1">
 					<p className="text-sm font-medium mb-1">
@@ -350,21 +372,21 @@ function ClipCard({
 			<div className="flex gap-2 mb-4">
 				<button
 					onClick={onDownload}
-					className="flex-1 px-3 py-2 text-sm font-medium bg-[#1a1a1a] border border-[#404040] hover:border-[#2196f3] rounded-lg transition"
+					className="flex-1 glass-button text-sm px-3 py-2 rounded-full hover:scale-105 transition-transform"
 					title="Download"
 				>
 					Download
 				</button>
 				<button
 					onClick={onShare}
-					className="flex-1 px-3 py-2 text-sm font-medium bg-[#1a1a1a] border border-[#404040] hover:border-[#2196f3] rounded-lg transition"
+					className="flex-1 glass-button text-sm px-3 py-2 rounded-full hover:scale-105 transition-transform"
 					title="Share"
 				>
 					Share
 				</button>
 				<button
 					onClick={onDelete}
-					className="flex-1 px-3 py-2 text-sm font-medium bg-[#1a1a1a] border border-red-500 hover:bg-red-950 text-red-400 rounded-lg transition"
+					className="flex-1 text-sm px-3 py-2 rounded-full border border-red-500 hover:bg-red-950 text-red-400 transition-all"
 					title="Delete"
 				>
 					Delete
@@ -376,7 +398,7 @@ function ClipCard({
 					{clip.tags.map((tag, index) => (
 						<span
 							key={index}
-							className="px-2 py-1 text-xs font-medium bg-[#1a1a1a] border border-[#2196f3] text-[#2196f3] rounded"
+							className="px-2 py-1 text-xs font-medium glass-card-small rounded-full text-blue-400"
 						>
 							{tag}
 						</span>

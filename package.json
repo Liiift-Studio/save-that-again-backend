@@ -16,7 +16,8 @@
     "next": "15.5.4",
     "next-auth": "^5.0.0-beta.29",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "simplex-noise": "^4.0.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

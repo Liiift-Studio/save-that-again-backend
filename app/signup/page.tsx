@@ -5,6 +5,8 @@
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
+import InteractiveBackground from '../components/InteractiveBackground';
 
 export default function SignupPage() {
 	const [email, setEmail] = useState('');
@@ -48,12 +50,50 @@ export default function SignupPage() {
 	};
 
 	return (
-		<div className="min-h-screen flex items-center justify-center p-4">
-			<div className="max-w-md w-full dark-card p-8">
-				<div className="text-center mb-8">
-					<h1 className="text-3xl font-bold mb-2">Save That Again</h1>
-					<p className="text-gray-400">Create your account</p>
+		<div className="min-h-screen bg-black text-white overflow-hidden">
+			{/* Interactive Background */}
+			<InteractiveBackground />
+			
+			{/* Gradient Background */}
+			<div className="fixed inset-0 bg-gradient-radial from-blue-900/20 via-black to-black pointer-events-none z-0" />
+			<div className="fixed inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 pointer-events-none z-0" />
+			
+			{/* Navigation */}
+			<nav className="relative z-50 glass-nav">
+				<div className="max-w-7xl mx-auto px-6 py-4">
+					<div className="flex items-center justify-between">
+					<Link href="/" className="flex items-center gap-3">
+						<Image
+							src="/logo-white.svg"
+							alt="Save That Again"
+							width={32}
+							height={32}
+							className="drop-shadow-glow"
+							priority
+						/>
+						<span className="font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent" style={{ fontFamily: 'Gamay, sans-serif', fontStretch: '200%', fontSize: '20px', lineHeight: '32px' }}>
+							Save That Again
+						</span>
+					</Link>
+						<div className="flex items-center gap-4">
+							<Link 
+								href="/login"
+								className="glass-button text-sm px-4 py-2 rounded-full hover:scale-105 transition-transform"
+							>
+								Sign In
+							</Link>
+						</div>
+					</div>
 				</div>
+			</nav>
+
+			{/* Main Content */}
+			<div className="relative z-10 flex items-center justify-center min-h-[calc(100vh-80px)] p-4">
+				<div className="max-w-md w-full glass-card p-8 rounded-2xl">
+					<div className="text-center mb-8">
+						<h1 className="text-3xl font-bold mb-2">Get Started</h1>
+						<p className="text-gray-400">Create your account</p>
+					</div>
 
 				<form onSubmit={handleSubmit} className="space-y-6">
 					<div>
@@ -132,13 +172,14 @@ export default function SignupPage() {
 					</button>
 				</form>
 
-				<div className="mt-6 text-center">
-					<p className="text-gray-400">
-						Already have an account?{' '}
-						<Link href="/login" className="text-[#2196f3] hover:text-[#1976d2] font-semibold">
-							Login
-						</Link>
-					</p>
+					<div className="mt-6 text-center">
+						<p className="text-gray-400">
+							Already have an account?{' '}
+							<Link href="/login" className="text-blue-400 hover:text-blue-300 font-semibold transition-colors">
+								Login
+							</Link>
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
