@@ -7,8 +7,11 @@ import { sql } from '@vercel/postgres';
 export interface User {
 	id: string;
 	email: string;
-	password_hash: string;
+	password_hash: string | null;
 	name: string | null;
+	google_id: string | null;
+	auth_provider: string;
+	profile_picture: string | null;
 	created_at: Date;
 }
 
@@ -29,13 +32,46 @@ export interface AudioClip {
 export async function createUser(email: string, passwordHash: string, name: string): Promise<User | null> {
 	try {
 		const result = await sql<User>`
-			INSERT INTO users (email, password_hash, name)
-			VALUES (${email}, ${passwordHash}, ${name})
+			INSERT INTO users (email, password_hash, name, auth_provider)
+			VALUES (${email}, ${passwordHash}, ${name}, 'email')
 			RETURNING *
 		`;
 		return result.rows[0] || null;
 	} catch (error) {
 		console.error('Error creating user:', error);
+		return null;
+	}
+}
+
+export async function createGoogleUser(
+	email: string,
+	googleId: string,
+	name: string | null,
+	profilePicture: string | null
+): Promise<User | null> {
+	try {
+		const result = await sql<User>`
+			INSERT INTO users (email, google_id, name, profile_picture, auth_provider)
+			VALUES (${email}, ${googleId}, ${name}, ${profilePicture}, 'google')
+			RETURNING *
+		`;
+		return result.rows[0] || null;
+	} catch (error) {
+		console.error('Error creating Google user:', error);
+		return null;
+	}
+}
+
+export async function getUserByGoogleId(googleId: string): Promise<User | null> {
+	try {
+		const result = await sql<User>`
+			SELECT * FROM users
+			WHERE google_id = ${googleId}
+			LIMIT 1
+		`;
+		return result.rows[0] || null;
+	} catch (error) {
+		console.error('Error getting user by Google ID:', error);
 		return null;
 	}
 }

@@ -5,8 +5,11 @@
 CREATE TABLE IF NOT EXISTS users (
 	id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 	email TEXT UNIQUE NOT NULL,
-	password_hash TEXT NOT NULL,
+	password_hash TEXT, -- Nullable for OAuth-only users
 	name TEXT,
+	google_id TEXT UNIQUE, -- Google OAuth ID
+	auth_provider TEXT DEFAULT 'email', -- 'email' or 'google'
+	profile_picture TEXT, -- Store Google profile picture URL
 	created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
