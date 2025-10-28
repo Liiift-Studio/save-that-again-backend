@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from 'react';
 import InteractiveBackground from './components/InteractiveBackground';
+import Footer from './components/Footer';
 
 export default function Home() {
 	const [mounted, setMounted] = useState(false);
@@ -364,27 +365,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* Footer */}
-			<footer className="relative py-12 px-6 border-t border-gray-800/50 z-10">
-				<div className="max-w-6xl mx-auto">
-					<div className="flex flex-col md:flex-row justify-between items-center gap-6">
-						<div className="flex items-center gap-3">
-							<Image
-								src="/logo-white.svg"
-								alt="Save That Again"
-								width={24}
-								height={24}
-							/>
-							<span className="text-gray-400">© 2025 Save That Again</span>
-						</div>
-						<div className="flex gap-6 text-gray-400">
-							<Link href="/login" className="hover:text-blue-400 transition-colors">Sign In</Link>
-							<Link href="/signup" className="hover:text-blue-400 transition-colors">Sign Up</Link>
-							<Link href="/clips" className="hover:text-blue-400 transition-colors">My Clips</Link>
-						</div>
-					</div>
-				</div>
-			</footer>
+			<Footer />
 		</div>
 	);
 }

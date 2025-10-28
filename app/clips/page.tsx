@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Waveform from '../components/Waveform';
 import InteractiveBackground from '../components/InteractiveBackground';
+import Footer from '../components/Footer';
 
 interface Clip {
 	id: string;
@@ -260,6 +261,8 @@ export default function ClipsPage() {
 					</div>
 				)}
 			</main>
+
+			<Footer />
 		</div>
 	);
 }
