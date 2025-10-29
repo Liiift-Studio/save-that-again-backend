@@ -18,6 +18,8 @@ interface Clip {
 	blob_url: string;
 	tags: string[];
 	created_at: string;
+	size?: number;
+	loudness?: number;
 }
 
 interface AudioState {
@@ -28,12 +30,15 @@ interface AudioState {
 	};
 }
 
+type SortOption = 'date' | 'duration' | 'size' | 'loudest';
+
 export default function ClipsPage() {
 	const [clips, setClips] = useState<Clip[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState('');
 	const [user, setUser] = useState<any>(null);
 	const [audioStates, setAudioStates] = useState<AudioState>({});
+	const [sortBy, setSortBy] = useState<SortOption>('date');
 	const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({});
 	const router = useRouter();
 
@@ -61,7 +66,42 @@ export default function ClipsPage() {
 
 			if (response.ok) {
 				const data = await response.json();
-				setClips(data.clips || []);
+				const fetchedClips = data.clips || [];
+				
+				// Calculate size and loudness for each clip
+				const clipsWithMetadata = await Promise.all(
+					fetchedClips.map(async (clip: Clip) => {
+						try {
+							// Fetch file size
+							const headResponse = await fetch(clip.blob_url, { method: 'HEAD' });
+							const size = parseInt(headResponse.headers.get('content-length') || '0');
+
+							// Calculate loudness
+							const audioResponse = await fetch(clip.blob_url);
+							const arrayBuffer = await audioResponse.arrayBuffer();
+							const audioContext = new AudioContext();
+							const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+							
+							// Calculate RMS (root mean square) for loudness
+							const channelData = audioBuffer.getChannelData(0);
+							let sum = 0;
+							for (let i = 0; i < channelData.length; i++) {
+								sum += channelData[i] * channelData[i];
+							}
+							const rms = Math.sqrt(sum / channelData.length);
+							const loudness = rms * 100; // Scale for easier comparison
+							
+							audioContext.close();
+							
+							return { ...clip, size, loudness };
+						} catch (err) {
+							console.error('Error calculating metadata for clip', clip.id, err);
+							return clip;
+						}
+					})
+				);
+				
+				setClips(clipsWithMetadata);
 			} else if (response.status === 401) {
 				// Token expired
 				localStorage.removeItem('auth_token');
@@ -76,6 +116,22 @@ export default function ClipsPage() {
 			setIsLoading(false);
 		}
 	};
+
+	// Sort clips based on selected option
+	const sortedClips = [...clips].sort((a, b) => {
+		switch (sortBy) {
+			case 'date':
+				return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+			case 'duration':
+				return b.duration - a.duration;
+			case 'size':
+				return (b.size || 0) - (a.size || 0);
+			case 'loudest':
+				return (b.loudness || 0) - (a.loudness || 0);
+			default:
+				return 0;
+		}
+	});
 
 	const handleLogout = () => {
 		localStorage.removeItem('auth_token');
@@ -209,10 +265,30 @@ export default function ClipsPage() {
 				)}
 
 				<div className="mb-8">
-					<h1 className="text-4xl md:text-5xl font-bold mb-2 uppercase tracking-wide">Your Audio Clips</h1>
-					<p className="text-gray-400 text-lg">
-						{clips.length} clip{clips.length !== 1 ? 's' : ''} saved from your watch
-					</p>
+					<div className="flex items-center justify-between mb-4">
+						<div>
+							<h1 className="text-4xl md:text-5xl font-bold mb-2 uppercase tracking-wide">Your Audio Clips</h1>
+							<p className="text-gray-400 text-lg">
+								{clips.length} clip{clips.length !== 1 ? 's' : ''} saved from your watch
+							</p>
+						</div>
+						{clips.length > 0 && (
+							<div className="flex items-center gap-2">
+								<label htmlFor="sort" className="text-sm text-gray-400">Sort by:</label>
+								<select
+									id="sort"
+									value={sortBy}
+									onChange={(e) => setSortBy(e.target.value as SortOption)}
+									className="glass-button text-sm px-4 py-2 rounded-full cursor-pointer"
+								>
+									<option value="date">Date (Newest)</option>
+									<option value="duration">Duration (Longest)</option>
+									<option value="size">Size (Largest)</option>
+									<option value="loudest">Loudest</option>
+								</select>
+							</div>
+						)}
+					</div>
 				</div>
 
 				{clips.length === 0 ? (
@@ -237,7 +313,7 @@ export default function ClipsPage() {
 					</div>
 				) : (
 					<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-						{clips.map((clip) => (
+						{sortedClips.map((clip) => (
 							<ClipCard
 								key={clip.id}
 								clip={clip}
