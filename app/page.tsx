@@ -50,7 +50,7 @@ export default function Home() {
 							className="drop-shadow-glow"
 							priority
 						/>
-						<span className="font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent" style={{ fontFamily: 'Gamay, sans-serif', fontStretch: '200%', fontSize: '20px', lineHeight: '32px' }}>
+						<span className="hidden md:inline-block font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent" style={{ fontFamily: 'Gamay, sans-serif', fontStretch: '200%', fontSize: '20px', lineHeight: '32px' }}>
 							Save That Again
 						</span>
 					</div>
