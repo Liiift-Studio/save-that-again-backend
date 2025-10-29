@@ -11,8 +11,8 @@ export default function Footer() {
 			<div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
 				<div className="grid grid-cols-1 md:grid-cols-4 gap-8">
 					{/* Brand Column */}
-					<div className="col-span-1 md:col-span-2">
-						<Link href="/" className="flex items-center gap-3 mb-4">
+					<div className="col-span-1 md:col-span-2 text-center md:text-left">
+						<Link href="/" className="flex items-center gap-3 mb-4 justify-center md:justify-start">
 							<Image
 								src="/logo-white.svg"
 								alt="Save That Again"
@@ -33,7 +33,7 @@ export default function Footer() {
 					</div>
 
 					{/* Product Column */}
-					<div>
+					<div className="text-center md:text-left">
 						<h3 className="font-semibold mb-4">Product</h3>
 						<ul className="space-y-2 text-sm">
 							<li>
@@ -50,7 +50,7 @@ export default function Footer() {
 					</div>
 
 					{/* Legal Column */}
-					<div>
+					<div className="text-center md:text-left">
 						<h3 className="font-semibold mb-4">Legal</h3>
 						<ul className="space-y-2 text-sm">
 							<li>
