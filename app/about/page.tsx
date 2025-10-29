@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Footer from '../components/Footer';
 import InteractiveBackground from '../components/InteractiveBackground';
+import BufferDemo from '../components/BufferDemo';
 
 export default function AboutPage() {
 	return (
@@ -56,16 +57,23 @@ export default function AboutPage() {
 
 					<section>
 						<h2 className="text-2xl font-bold mb-4">How It Works</h2>
-						<p className="leading-relaxed mb-4">
+						<p className="leading-relaxed mb-6">
 							Save That Again continuously buffers the last 30 seconds of audio in the background on your Pixel Watch. When you press the save button, it instantly captures those previous 30 seconds and stores them securely in the cloud.
 						</p>
-						<ul className="list-disc list-inside space-y-2 ml-4">
-							<li>Runs quietly in the background on your Pixel Watch</li>
-							<li>Press the button to save the last 30 seconds</li>
-							<li>Automatically syncs to the cloud</li>
-							<li>Access your clips from any device via the web portal</li>
-							<li>Download, share, or delete clips as needed</li>
-						</ul>
+						
+						{/* Interactive Buffer Demo */}
+						<BufferDemo />
+
+						<div className="mt-6">
+							<h3 className="text-lg font-semibold mb-3 text-blue-400">Key Features</h3>
+							<ul className="list-disc list-inside space-y-2 ml-4">
+								<li>Runs quietly in the background on your Pixel Watch</li>
+								<li>Press the button to save the last 30 seconds</li>
+								<li>Automatically syncs to the cloud</li>
+								<li>Access your clips from any device via the web portal</li>
+								<li>Download, share, or delete clips as needed</li>
+							</ul>
+						</div>
 					</section>
 
 					<section>
