@@ -110,7 +110,7 @@ export default function Home() {
 			{/* Use Cases Section */}
 			<section className="relative py-24 px-6 z-10">
 				<div className="max-w-6xl mx-auto">
-					<h2 className="text-5xl font-bold text-center mb-4">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
 						Real <span className="text-gradient">Moments</span>
 					</h2>
 					<p className="text-xl text-gray-400 text-center mb-16 max-w-2xl mx-auto">
@@ -150,7 +150,7 @@ export default function Home() {
 			<section id="how-it-works" className="relative py-24 px-6 z-10">
 				<div className="max-w-6xl mx-auto">
 					<div className="text-center mb-12">
-						<h2 className="text-5xl font-bold mb-4">
+						<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
 							How <span className="text-gradient">It Works</span>
 						</h2>
 						<p className="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -195,7 +195,7 @@ export default function Home() {
 			{/* Features Grid */}
 			<section className="relative py-24 px-6 z-10">
 				<div className="max-w-6xl mx-auto">
-					<h2 className="text-5xl font-bold text-center mb-4">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
 						Powerful <span className="text-gradient">Features</span>
 					</h2>
 					<p className="text-xl text-gray-400 text-center mb-16 max-w-2xl mx-auto">
@@ -234,7 +234,7 @@ export default function Home() {
 			{/* Pricing Section */}
 			<section className="relative py-24 px-6 z-10">
 				<div className="max-w-6xl mx-auto">
-					<h2 className="text-5xl font-bold text-center mb-4">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
 						Simple <span className="text-gradient">Pricing</span>
 					</h2>
 					<p className="text-xl text-gray-400 text-center mb-16 max-w-2xl mx-auto">
@@ -302,7 +302,7 @@ export default function Home() {
 				<section className="relative py-24 px-6 z-10">
 					<div className="max-w-4xl mx-auto">
 						<div className="glass-card-feature p-12 rounded-3xl text-center">
-							<h2 className="text-5xl font-bold mb-6">
+							<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
 								Download for {userDevice === 'ios' ? 'iOS' : 'Android'}
 							</h2>
 							<p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
@@ -324,7 +324,7 @@ export default function Home() {
 			{/* How It Works Timeline */}
 			<section className="relative py-24 px-6 z-10">
 				<div className="max-w-4xl mx-auto">
-					<h2 className="text-5xl font-bold text-center mb-16">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16">
 						Simple <span className="text-gradient">Workflow</span>
 					</h2>
 					
@@ -357,7 +357,7 @@ export default function Home() {
 			<section className="relative py-24 px-6 z-10">
 				<div className="max-w-4xl mx-auto">
 					<div className="glass-card-feature p-12 rounded-3xl text-center">
-						<h2 className="text-5xl font-bold mb-6">
+						<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
 							Ready to capture every moment?
 						</h2>
 						<p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
