@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useEffect, useState } from 'react';
 import InteractiveBackground from './components/InteractiveBackground';
 import Footer from './components/Footer';
+import BufferDemo from './components/BufferDemo';
+import RecordingComparison from './components/RecordingComparison';
 
 export default function Home() {
 	const [mounted, setMounted] = useState(false);
@@ -144,41 +146,49 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* The Buffer Section */}
+			{/* The Buffer Section - Interactive Demo */}
 			<section id="how-it-works" className="relative py-24 px-6 z-10">
 				<div className="max-w-6xl mx-auto">
-					<div className="glass-card p-12 rounded-3xl">
-						<div className="grid md:grid-cols-2 gap-12 items-center">
-							<div>
-								<h2 className="text-5xl font-bold mb-6">
-									The <span className="text-gradient">Buffer</span>
-								</h2>
-								<p className="text-xl text-gray-400 mb-8 leading-relaxed">
-									Your Pixel Watch continuously records a rolling 5-minute buffer. 
-									When something amazing happens, just tap to save it permanently.
-								</p>
-								<div className="space-y-4">
-									<FeatureItem text="Always recording in the background" />
-									<FeatureItem text="Instant save with one tap" />
-									<FeatureItem text="Privacy-first: only saved clips are uploaded" />
-									<FeatureItem text="Automatic cloud sync" />
-								</div>
-							</div>
-							<div className="relative h-96">
-								<div className="glass-card-feature absolute inset-0 rounded-2xl flex items-center justify-center">
-									<div className="text-center">
-										<div className="text-6xl mb-4">⏺️</div>
-										<div className="text-blue-400 text-lg font-mono">
-											Recording: 00:04:32
-										</div>
-										<div className="mt-8 w-64 h-2 bg-gray-800 rounded-full overflow-hidden mx-auto">
-											<div className="h-full w-3/4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
-										</div>
-									</div>
-								</div>
+					<div className="text-center mb-12">
+						<h2 className="text-5xl font-bold mb-4">
+							How <span className="text-gradient">It Works</span>
+						</h2>
+						<p className="text-xl text-gray-400 max-w-3xl mx-auto">
+							Experience the power of rolling buffer technology. 
+							Never miss a moment again with continuous background recording.
+						</p>
+					</div>
+
+					<div className="grid lg:grid-cols-2 gap-8 mb-8">
+						{/* Text Description */}
+						<div className="glass-card p-8 rounded-2xl">
+							<h3 className="text-3xl font-bold mb-6">
+								The <span className="text-gradient">Buffer</span>
+							</h3>
+							<p className="text-xl text-gray-400 mb-8 leading-relaxed">
+								Your Pixel Watch continuously records a rolling 5-minute buffer. 
+								When something amazing happens, just tap to save it permanently.
+							</p>
+							<div className="space-y-4">
+								<FeatureItem text="Always recording in the background" />
+								<FeatureItem text="Instant save with one tap" />
+								<FeatureItem text="Privacy-first: only saved clips are uploaded" />
+								<FeatureItem text="Automatic cloud sync" />
 							</div>
 						</div>
+
+						{/* Interactive Buffer Demo */}
+						<div>
+							<BufferDemo />
+						</div>
 					</div>
+				</div>
+			</section>
+
+			{/* Recording Comparison Section */}
+			<section className="relative py-24 px-6 z-10">
+				<div className="max-w-6xl mx-auto">
+					<RecordingComparison />
 				</div>
 			</section>
 
