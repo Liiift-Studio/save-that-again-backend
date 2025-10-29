@@ -236,7 +236,7 @@ export default function BufferDemo() {
 		return (
 			<div className="glass-card p-8 rounded-xl">
 				<div className="mb-6">
-					<h3 className="text-xl font-semibold mb-2 text-blue-400">Interactive Buffer Demo</h3>
+					<h3 className="text-xl font-semibold mb-2 text-blue-400">Buffer Demo</h3>
 					<p className="text-sm text-gray-400">
 						Experience real audio recording with a rolling 30-second buffer. Click below to grant microphone access.
 					</p>
@@ -266,7 +266,7 @@ export default function BufferDemo() {
 		<div className="glass-card p-8 rounded-xl">
 			<div className="mb-6">
 				<div className="flex items-center justify-between mb-2">
-					<h3 className="text-xl font-semibold text-blue-400">Interactive Buffer Demo</h3>
+					<h3 className="text-xl font-semibold text-blue-400">Buffer Demo</h3>
 					<div className="flex items-center gap-2">
 						<div className={`w-2 h-2 rounded-full ${isRecording ? 'bg-red-500 animate-pulse' : 'bg-gray-500'}`} />
 						<span className="text-xs text-gray-400">{isRecording ? 'LIVE' : 'STOPPED'}</span>

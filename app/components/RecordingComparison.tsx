@@ -146,8 +146,8 @@ export default function RecordingComparison() {
 							className="absolute inset-0 w-full h-full pointer-events-none"
 						/>
 						{/* Timeline */}
-						<div className="absolute inset-0 flex items-center justify-center text-xs text-gray-600">
-							Timeline
+						<div className="absolute bottom-1 left-0 right-0 flex items-center justify-center text-xs text-gray-600 px-2">
+							<span className="whitespace-nowrap">Traditional Recording</span>
 						</div>
 
 						{/* Recording segment */}
@@ -223,8 +223,8 @@ export default function RecordingComparison() {
 							className="absolute inset-0 w-full h-full pointer-events-none"
 						/>
 						{/* Timeline */}
-						<div className="absolute inset-0 flex items-center justify-center text-xs text-gray-600">
-							Always Recording (30s buffer)
+						<div className="absolute bottom-1 left-0 right-0 flex items-center justify-center text-xs text-gray-600 px-2">
+							<span className="whitespace-nowrap">Always Recording (30s buffer)</span>
 						</div>
 
 						{/* Active buffer - always last 30 seconds */}

@@ -446,7 +446,7 @@ function PricingCard({
 		<div className={`${popular ? 'glass-card-popular' : 'glass-card'} p-8 rounded-2xl relative ${popular ? 'ring-2 ring-blue-500' : ''}`}>
 			{popular && (
 				<div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-					<span className="glass-button-primary px-4 py-1 rounded-full text-sm font-bold">
+					<span style={{background: "var(--color-blue-500)", color: "black"}} className="uppercase glass-button-primary px-4 py-1 rounded-full text-sm font-bold">
 						Most Popular
 					</span>
 				</div>

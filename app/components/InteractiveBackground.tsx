@@ -136,12 +136,30 @@ export default function InteractiveBackground() {
 			mouseRef.current = { x: e.clientX, y: e.clientY };
 		};
 
+		const handleTouchMove = (e: TouchEvent) => {
+			// Use the first touch point
+			if (e.touches.length > 0) {
+				const touch = e.touches[0];
+				mouseRef.current = { x: touch.clientX, y: touch.clientY };
+			}
+		};
+
+		const handleTouchStart = (e: TouchEvent) => {
+			// Initialize position on touch start
+			if (e.touches.length > 0) {
+				const touch = e.touches[0];
+				mouseRef.current = { x: touch.clientX, y: touch.clientY };
+			}
+		};
+
 		const handleCTAHover = (e: CustomEvent) => {
 			setIsHoveringCTA(e.detail.isHovering);
 		};
 
 		window.addEventListener('resize', resizeCanvas);
 		window.addEventListener('mousemove', handleMouseMove);
+		window.addEventListener('touchstart', handleTouchStart);
+		window.addEventListener('touchmove', handleTouchMove);
 		window.addEventListener('ctaHover', handleCTAHover as EventListener);
 		
 		resizeCanvas();
@@ -150,6 +168,8 @@ export default function InteractiveBackground() {
 		return () => {
 			window.removeEventListener('resize', resizeCanvas);
 			window.removeEventListener('mousemove', handleMouseMove);
+			window.removeEventListener('touchstart', handleTouchStart);
+			window.removeEventListener('touchmove', handleTouchMove);
 			window.removeEventListener('ctaHover', handleCTAHover as EventListener);
 			cancelAnimationFrame(animationFrameId);
 		};
