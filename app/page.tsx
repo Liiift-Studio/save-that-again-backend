@@ -11,6 +11,7 @@ import RecordingComparison from './components/RecordingComparison';
 export default function Home() {
 	const [mounted, setMounted] = useState(false);
 	const [userDevice, setUserDevice] = useState<'ios' | 'android' | 'other'>('other');
+	const [scrollY, setScrollY] = useState(0);
 
 	useEffect(() => {
 		setMounted(true);
@@ -22,6 +23,14 @@ export default function Home() {
 		} else if (/android/.test(userAgent)) {
 			setUserDevice('android');
 		}
+
+		// Handle parallax scroll
+		const handleScroll = () => {
+			setScrollY(window.scrollY);
+		};
+
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
 	const emitCTAHover = (isHovering: boolean) => {
@@ -29,13 +38,33 @@ export default function Home() {
 	};
 
 	return (
-		<div className="min-h-screen bg-black text-white overflow-hidden">
-			{/* Interactive Particle Background */}
+		<div className="min-h-screen overflow-hidden" style={{ background: 'var(--background)', color: 'var(--foreground)' }}>
+			{/* Interactive Particle Background with Blobs */}
 			<InteractiveBackground />
 			
+			{/* Background Image Overlay */}
+			<div 
+				className="fixed inset-0 pointer-events-none"
+				style={{
+					zIndex: 11
+				}}
+			>
+				<Image
+					src="/026.png"
+					alt=""
+					fill
+					style={{
+						objectFit: 'cover',
+						opacity: 0.15
+					}}
+					priority
+					quality={90}
+				/>
+			</div>
+			
 			{/* Gradient Background */}
-			<div className="fixed inset-0 bg-gradient-radial from-blue-900/20 via-black to-black pointer-events-none z-0" />
-			<div className="fixed inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 pointer-events-none z-0" />
+			<div className="fixed inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(circle at 50% 0%, rgba(184, 169, 145, 0.15), transparent)' }} />
+			<div className="fixed inset-0 pointer-events-none z-0" style={{ background: 'linear-gradient(to bottom right, rgba(157, 141, 122, 0.05), transparent, rgba(138, 121, 104, 0.05))' }} />
 			
 			{/* Navigation */}
 			<nav className="relative z-50 glass-nav">
@@ -50,7 +79,7 @@ export default function Home() {
 							className="drop-shadow-glow"
 							priority
 						/>
-						<span className="hidden md:inline-block font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent" style={{ fontFamily: 'Gamay, sans-serif', fontStretch: '200%', fontSize: '20px', lineHeight: '32px' }}>
+						<span className="hidden md:inline-block font-black" style={{ fontFamily: 'Daith, sans-serif', fontSize: '20px', lineHeight: '32px', color: 'var(--foreground)' }}>
 							Save That Again
 						</span>
 					</div>
@@ -77,14 +106,14 @@ export default function Home() {
 			{/* Hero Section */}
 			<section className="relative pt-32 pb-24 px-6 z-10">
 				<div className="max-w-5xl mx-auto text-center">
-					<div className={`transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-						<h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-							Never miss a
-							<span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
-								moment again
-							</span>
-						</h1>
-						<p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+				<div className={`transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+					<h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight" style={{ color: 'var(--foreground)' }}>
+						Never miss a
+						<span className="block text-gradient">
+							moment again
+						</span>
+					</h1>
+					<p className="text-xl md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed" style={{ color: '#6b6457' }}>
 							Continuous audio buffering for your Pixel Watch. Capture the last 5 minutes with a single tap.
 						</p>
 						<div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -110,10 +139,10 @@ export default function Home() {
 			{/* Use Cases Section */}
 			<section className="relative py-24 px-6 z-10">
 				<div className="max-w-6xl mx-auto">
-					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4" style={{ color: 'var(--foreground)' }}>
 						Real <span className="text-gradient">Moments</span>
 					</h2>
-					<p className="text-xl text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+					<p className="text-xl text-center mb-16 max-w-2xl mx-auto" style={{ color: '#6b6457' }}>
 						Life's most precious moments happen when you least expect them.
 					</p>
 					
@@ -150,10 +179,10 @@ export default function Home() {
 			<section id="how-it-works" className="relative py-24 px-6 z-10">
 				<div className="max-w-6xl mx-auto">
 					<div className="text-center mb-12">
-						<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+						<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--foreground)' }}>
 							How <span className="text-gradient">It Works</span>
 						</h2>
-						<p className="text-xl text-gray-400 max-w-3xl mx-auto">
+						<p className="text-xl max-w-3xl mx-auto" style={{ color: '#6b6457' }}>
 							Experience the power of rolling buffer technology. 
 							Never miss a moment again with continuous background recording.
 						</p>
@@ -162,10 +191,10 @@ export default function Home() {
 					<div className="grid lg:grid-cols-2 gap-8 mb-8">
 						{/* Text Description */}
 						<div className="glass-card p-8 rounded-2xl">
-							<h3 className="text-3xl font-bold mb-6">
+							<h3 className="text-3xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
 								The <span className="text-gradient">Buffer</span>
 							</h3>
-							<p className="text-xl text-gray-400 mb-8 leading-relaxed">
+							<p className="text-xl mb-8 leading-relaxed" style={{ color: '#6b6457' }}>
 								Your Pixel Watch continuously records a rolling 5-minute buffer. 
 								When something amazing happens, just tap to save it permanently.
 							</p>
@@ -195,10 +224,10 @@ export default function Home() {
 			{/* Features Grid */}
 			<section className="relative py-24 px-6 z-10">
 				<div className="max-w-6xl mx-auto">
-					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4" style={{ color: 'var(--foreground)' }}>
 						Powerful <span className="text-gradient">Features</span>
 					</h2>
-					<p className="text-xl text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+					<p className="text-xl text-center mb-16 max-w-2xl mx-auto" style={{ color: '#6b6457' }}>
 						Everything you need to capture and manage your audio moments.
 					</p>
 					
@@ -234,10 +263,10 @@ export default function Home() {
 			{/* Pricing Section */}
 			<section className="relative py-24 px-6 z-10">
 				<div className="max-w-6xl mx-auto">
-					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4" style={{ color: 'var(--foreground)' }}>
 						Simple <span className="text-gradient">Pricing</span>
 					</h2>
-					<p className="text-xl text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+					<p className="text-xl text-center mb-16 max-w-2xl mx-auto" style={{ color: '#6b6457' }}>
 						Start free. Upgrade when you're ready for more.
 					</p>
 					
@@ -291,7 +320,7 @@ export default function Home() {
 							emitHover={emitCTAHover}
 						/>
 					</div>
-					<p className="text-center text-gray-500 mt-8">
+					<p className="text-center mt-8" style={{ color: '#9b9186' }}>
 						All accounts start free. No credit card required.
 					</p>
 				</div>
@@ -302,10 +331,10 @@ export default function Home() {
 				<section className="relative py-24 px-6 z-10">
 					<div className="max-w-4xl mx-auto">
 						<div className="glass-card-feature p-12 rounded-3xl text-center">
-							<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-								Download for {userDevice === 'ios' ? 'iOS' : 'Android'}
-							</h2>
-							<p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+						<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
+							Download for {userDevice === 'ios' ? 'iOS' : 'Android'}
+						</h2>
+						<p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: '#6b6457' }}>
 								Get Save That Again on your {userDevice === 'ios' ? 'iPhone and Apple Watch' : 'Android device and Wear OS watch'}.
 							</p>
 							<a
@@ -324,7 +353,7 @@ export default function Home() {
 			{/* How It Works Timeline */}
 			<section className="relative py-24 px-6 z-10">
 				<div className="max-w-4xl mx-auto">
-					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16" style={{ color: 'var(--foreground)' }}>
 						Simple <span className="text-gradient">Workflow</span>
 					</h2>
 					
@@ -357,10 +386,10 @@ export default function Home() {
 			<section className="relative py-24 px-6 z-10">
 				<div className="max-w-4xl mx-auto">
 					<div className="glass-card-feature p-12 rounded-3xl text-center">
-						<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+						<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
 							Ready to capture every moment?
 						</h2>
-						<p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+						<p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: '#6b6457' }}>
 							Start using Save That Again today and never miss an important moment again.
 						</p>
 						<Link 
@@ -383,8 +412,8 @@ export default function Home() {
 function FeatureItem({ text }: { text: string }) {
 	return (
 		<div className="flex items-center gap-3">
-			<div className="w-2 h-2 rounded-full bg-blue-400" />
-			<span className="text-gray-300">{text}</span>
+			<div className="w-2 h-2 rounded-full" style={{ background: 'var(--accent-blue)' }} />
+			<span style={{ color: 'var(--foreground)' }}>{text}</span>
 		</div>
 	);
 }
@@ -393,7 +422,7 @@ function FeatureCard({ title, description }: { title: string; description: strin
 	return (
 		<div className="glass-card p-6 rounded-2xl hover:scale-105 transition-all group">
 			<h3 className="text-2xl font-bold mb-3 text-gradient">{title}</h3>
-			<p className="text-gray-300 leading-relaxed">{description}</p>
+			<p className="leading-relaxed" style={{ color: '#6b6457' }}>{description}</p>
 		</div>
 	);
 }
@@ -402,7 +431,7 @@ function UseCaseCard({ title, description }: { title: string; description: strin
 	return (
 		<div className="glass-card p-6 rounded-2xl hover:scale-105 transition-all group">
 			<h3 className="text-2xl font-bold mb-3 text-gradient">{title}</h3>
-			<p className="text-gray-300 leading-relaxed">{description}</p>
+			<p className="leading-relaxed" style={{ color: '#6b6457' }}>{description}</p>
 		</div>
 	);
 }
@@ -416,8 +445,8 @@ function TimelineStep({ number, title, description }: { number: string; title: s
 				</div>
 			</div>
 			<div className="pt-1">
-				<h3 className="text-2xl font-bold mb-2">{title}</h3>
-				<p className="text-gray-400 text-lg leading-relaxed">{description}</p>
+				<h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--foreground)' }}>{title}</h3>
+				<p className="text-lg leading-relaxed" style={{ color: '#6b6457' }}>{description}</p>
 			</div>
 		</div>
 	);
@@ -443,24 +472,24 @@ function PricingCard({
 	emitHover: (isHovering: boolean) => void;
 }) {
 	return (
-		<div className={`${popular ? 'glass-card-popular' : 'glass-card'} p-8 rounded-2xl relative ${popular ? 'ring-2 ring-blue-500' : ''}`}>
+		<div className={`${popular ? 'glass-card-popular' : 'glass-card'} p-8 rounded-2xl relative ${popular ? 'ring-2' : ''}`} style={popular ? { borderColor: 'var(--accent-blue)' } : {}}>
 			{popular && (
 				<div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-					<span style={{background: "var(--color-blue-500)", color: "black"}} className="uppercase glass-button-primary px-4 py-1 rounded-full text-sm font-bold">
+					<span style={{background: "var(--accent-blue)", color: "white"}} className="uppercase glass-button-primary px-4 py-1 rounded-full text-sm font-bold">
 						Most Popular
 					</span>
 				</div>
 			)}
-			<h3 className="text-2xl font-bold mb-2">{name}</h3>
+			<h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--foreground)' }}>{name}</h3>
 			<div className="mb-6">
-				<span className="text-5xl font-bold">{price}</span>
-				<span className="text-gray-400 ml-2">/ {period}</span>
+				<span className="text-5xl font-bold" style={{ color: 'var(--foreground)' }}>{price}</span>
+				<span className="ml-2" style={{ color: '#9b9186' }}>/ {period}</span>
 			</div>
 			<ul className="space-y-3 mb-8">
 				{features.map((feature, index) => (
 					<li key={index} className="flex items-start gap-2">
-						<span className="text-blue-400 mt-1">✓</span>
-						<span className="text-gray-300">{feature}</span>
+						<span className="mt-1" style={{ color: 'var(--accent-blue)' }}>✓</span>
+						<span style={{ color: '#6b6457' }}>{feature}</span>
 					</li>
 				))}
 			</ul>

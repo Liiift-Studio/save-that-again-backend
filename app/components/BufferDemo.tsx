@@ -59,9 +59,9 @@ export default function BufferDemo() {
 			
 			// Create gradient
 			const gradient = ctx.createLinearGradient(0, centerY - barHeight, 0, centerY + barHeight);
-			gradient.addColorStop(0, 'rgba(59, 130, 246, 0.8)');
-			gradient.addColorStop(0.5, 'rgba(96, 165, 250, 1)');
-			gradient.addColorStop(1, 'rgba(59, 130, 246, 0.8)');
+			gradient.addColorStop(0, 'rgba(157, 141, 122, 0.8)');
+			gradient.addColorStop(0.5, 'rgba(157, 141, 122, 1)');
+			gradient.addColorStop(1, 'rgba(157, 141, 122, 0.8)');
 			
 			ctx.fillStyle = gradient;
 			ctx.fillRect(x, centerY - barHeight, barWidth - 1, barHeight * 2);
@@ -236,13 +236,13 @@ export default function BufferDemo() {
 		return (
 			<div className="glass-card p-8 rounded-xl">
 				<div className="mb-6">
-					<h3 className="text-xl font-semibold mb-2 text-blue-400">Buffer Demo</h3>
+					<h3 className="text-xl font-semibold mb-2 text-stone-400">Buffer Demo</h3>
 					<p className="text-sm text-gray-400">
 						Experience real audio recording with a rolling 30-second buffer. Click below to grant microphone access.
 					</p>
 				</div>
 
-				<div className="mb-4 p-4 bg-blue-950/20 rounded-lg border border-blue-900/30">
+				<div className="mb-4 p-4 bg-stone-950/20 rounded-lg border border-stone-900/30">
 					<p className="text-sm text-gray-300 mb-2">
 						<strong>Microphone Access Required</strong>
 					</p>
@@ -266,7 +266,7 @@ export default function BufferDemo() {
 		<div className="glass-card p-8 rounded-xl">
 			<div className="mb-6">
 				<div className="flex items-center justify-between mb-2">
-					<h3 className="text-xl font-semibold text-blue-400">Buffer Demo</h3>
+					<h3 className="text-xl font-semibold text-stone-400">Buffer Demo</h3>
 					<div className="flex items-center gap-2">
 						<div className={`w-2 h-2 rounded-full ${isRecording ? 'bg-red-500 animate-pulse' : 'bg-gray-500'}`} />
 						<span className="text-xs text-gray-400">{isRecording ? 'LIVE' : 'STOPPED'}</span>
@@ -284,9 +284,9 @@ export default function BufferDemo() {
 				<div className="mb-4">
 					<div className="flex items-center gap-3">
 						<span className="text-xs text-gray-400">Audio Level:</span>
-						<div className="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden">
+						<div className="flex-1 h-2 bg-stone-800 rounded-full overflow-hidden">
 							<div 
-								className="h-full bg-gradient-to-r from-green-500 to-blue-500 transition-all duration-100"
+								className="h-full bg-gradient-to-r from-stone-500 to-stone-400 transition-all duration-100"
 								style={{ width: `${audioLevel * 100}%` }}
 							/>
 						</div>
@@ -311,7 +311,7 @@ export default function BufferDemo() {
 								className="flex-1 border-r border-gray-800/50 transition-all duration-300"
 								style={{
 									backgroundColor: segment.isInBuffer 
-										? `rgba(33, 150, 243, ${segment.opacity})` 
+										? `rgba(157, 141, 122, ${segment.opacity})` 
 										: 'transparent',
 								}}
 							/>
@@ -325,7 +325,7 @@ export default function BufferDemo() {
 						return (
 							<div
 								key={idx}
-								className="absolute top-0 bottom-0 bg-green-500/40 border-l-2 border-r-2 border-green-400"
+								className="absolute top-0 bottom-0 bg-stone-500/40 border-l-2 border-r-2 border-stone-400"
 								style={{
 									left: `${left}%`,
 									width: `${width}%`,
@@ -357,11 +357,11 @@ export default function BufferDemo() {
 
 				<div className="flex gap-6 mt-3 text-xs text-gray-400">
 					<div className="flex items-center gap-2">
-						<div className="w-4 h-4 bg-blue-500/60 rounded" />
+						<div className="w-4 h-4 bg-stone-500/60 rounded" />
 						<span>Active Buffer (30s)</span>
 					</div>
 					<div className="flex items-center gap-2">
-						<div className="w-4 h-4 bg-green-500/40 border border-green-400 rounded" />
+						<div className="w-4 h-4 bg-stone-500/40 border border-stone-400 rounded" />
 						<span>Saved Clips</span>
 					</div>
 					<div className="flex items-center gap-2">
@@ -375,11 +375,11 @@ export default function BufferDemo() {
 			<div className="grid grid-cols-2 gap-4 mb-6">
 				<div className="glass-card-small p-4 rounded-lg">
 					<div className="text-xs text-gray-400 mb-1">Buffer Window</div>
-					<div className="text-lg font-bold text-blue-400">{bufferSize}s</div>
+					<div className="text-lg font-bold text-stone-400">{bufferSize}s</div>
 				</div>
 				<div className="glass-card-small p-4 rounded-lg">
 					<div className="text-xs text-gray-400 mb-1">Clips Saved</div>
-					<div className="text-lg font-bold text-green-400">{savedSegments.length}</div>
+					<div className="text-lg font-bold text-stone-400">{savedSegments.length}</div>
 				</div>
 			</div>
 
@@ -431,7 +431,7 @@ export default function BufferDemo() {
 			</button>
 
 			{/* Explanation */}
-			<div className="mt-4 p-4 bg-blue-950/20 rounded-lg border border-blue-900/30">
+			<div className="mt-4 p-4 bg-stone-950/20 rounded-lg border border-stone-900/30">
 				<p className="text-xs text-gray-400">
 					<strong>How it works:</strong> Your microphone is recording into a rolling 30-second buffer. 
 					The waveform shows your real-time audio, and the blue timeline segments pulse with your audio levels. 

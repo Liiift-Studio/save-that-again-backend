@@ -7,7 +7,7 @@ export default function Footer() {
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<footer className="relative z-10 border-t border-gray-800 bg-black/50 backdrop-blur-sm mt-16">
+		<footer className="relative z-10 border-t border-stone-800 bg-black/50 backdrop-blur-sm mt-16">
 			<div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
 				<div className="grid grid-cols-1 md:grid-cols-4 gap-8">
 					{/* Brand Column */}
@@ -20,14 +20,14 @@ export default function Footer() {
 								height={32}
 								className="drop-shadow-glow"
 							/>
-							<span className="font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent" style={{ fontFamily: 'Gamay, sans-serif', fontStretch: '200%', fontSize: '20px', lineHeight: '32px' }}>
+							<span className="font-bold bg-gradient-to-r from-white to-stone-300 bg-clip-text text-transparent" style={{ fontFamily: 'Gamay, sans-serif', fontStretch: '200%', fontSize: '20px', lineHeight: '32px' }}>
 								Save That Again
 							</span>
 						</Link>
-						<p className="text-gray-400 text-sm mb-4">
+						<p className="text-stone-400 text-sm mb-4">
 							Never miss a moment. Capture the last 30 seconds of audio with a simple button press on your Pixel Watch.
 						</p>
-						<p className="text-gray-500 text-xs">
+						<p className="text-stone-500 text-xs">
 							© {currentYear} Save That Again. All rights reserved.
 						</p>
 					</div>
@@ -37,12 +37,12 @@ export default function Footer() {
 						<h3 className="font-semibold mb-4">Product</h3>
 						<ul className="space-y-2 text-sm">
 							<li>
-								<Link href="/about" className="text-gray-400 hover:text-white transition-colors">
+								<Link href="/about" className="text-stone-400 hover:text-white transition-colors">
 									About
 								</Link>
 							</li>
 							<li>
-								<Link href="/clips" className="text-gray-400 hover:text-white transition-colors">
+								<Link href="/clips" className="text-stone-400 hover:text-white transition-colors">
 									Your Clips
 								</Link>
 							</li>
@@ -54,22 +54,22 @@ export default function Footer() {
 						<h3 className="font-semibold mb-4">Legal</h3>
 						<ul className="space-y-2 text-sm">
 							<li>
-								<Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
+								<Link href="/privacy" className="text-stone-400 hover:text-white transition-colors">
 									Privacy Policy
 								</Link>
 							</li>
 							<li>
-								<Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
+								<Link href="/terms" className="text-stone-400 hover:text-white transition-colors">
 									Terms of Service
 								</Link>
 							</li>
 							<li>
-								<Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
+								<Link href="/contact" className="text-stone-400 hover:text-white transition-colors">
 									Contact
 								</Link>
 							</li>
 							<li>
-								<Link href="/press" className="text-gray-400 hover:text-white transition-colors">
+								<Link href="/press" className="text-stone-400 hover:text-white transition-colors">
 									Press
 								</Link>
 							</li>

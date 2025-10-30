@@ -33,7 +33,7 @@ export default function BrandPage() {
 						
 						<div className="space-y-8">
 							<div>
-								<h3 className="text-2xl font-semibold mb-4 text-blue-400">Gamay (Display Font)</h3>
+								<h3 className="text-2xl font-semibold mb-4 text-stone-400">Gamay (Display Font)</h3>
 								<div className="space-y-4">
 									<div className="p-6 bg-black/40 rounded-lg border border-gray-700">
 										<p className="text-sm text-gray-400 mb-2">Headings - 200% Stretch, Bold</p>
@@ -48,7 +48,7 @@ export default function BrandPage() {
 										<h2 className="text-3xl font-bold">SAVE THAT AGAIN</h2>
 									</div>
 								</div>
-								<div className="mt-4 p-4 bg-blue-950/30 rounded-lg">
+								<div className="mt-4 p-4 bg-stone-950/30 rounded-lg">
 									<p className="text-sm text-gray-300">
 										<strong>Usage:</strong> All headings (H1-H6), logo text, display elements<br/>
 										<strong>Font Stretch:</strong> 60%-200% (variable)<br/>
@@ -59,7 +59,7 @@ export default function BrandPage() {
 							</div>
 
 							<div>
-								<h3 className="text-2xl font-semibold mb-4 text-blue-400">Halyard Text (Body Font)</h3>
+								<h3 className="text-2xl font-semibold mb-4 text-stone-400">Halyard Text (Body Font)</h3>
 								<div className="space-y-4">
 									<div className="p-6 bg-black/40 rounded-lg border border-gray-700">
 										<p className="text-sm text-gray-400 mb-2" style={{ fontFamily: 'Halyard Text' }}>Body Text - Regular</p>
@@ -74,7 +74,7 @@ export default function BrandPage() {
 										</p>
 									</div>
 								</div>
-								<div className="mt-4 p-4 bg-blue-950/30 rounded-lg">
+								<div className="mt-4 p-4 bg-stone-950/30 rounded-lg">
 									<p className="text-sm text-gray-300">
 										<strong>Usage:</strong> All body text, paragraphs, UI elements, buttons<br/>
 										<strong>Line Height:</strong> 1.4 (enforced globally)<br/>
@@ -92,7 +92,7 @@ export default function BrandPage() {
 						
 						<div className="grid md:grid-cols-2 gap-6">
 							<div>
-								<h3 className="text-xl font-semibold mb-4 text-blue-400">Primary Colors</h3>
+								<h3 className="text-xl font-semibold mb-4 text-stone-400">Primary Colors</h3>
 								<div className="space-y-3">
 									<div className="flex items-center gap-4">
 										<div className="w-16 h-16 rounded-lg" style={{ background: '#000000' }}></div>
@@ -126,7 +126,7 @@ export default function BrandPage() {
 							</div>
 
 							<div>
-								<h3 className="text-xl font-semibold mb-4 text-blue-400">UI Colors</h3>
+								<h3 className="text-xl font-semibold mb-4 text-stone-400">UI Colors</h3>
 								<div className="space-y-3">
 									<div className="flex items-center gap-4">
 										<div className="w-16 h-16 rounded-lg" style={{ background: '#1a1a1a' }}></div>
@@ -153,7 +153,7 @@ export default function BrandPage() {
 							</div>
 						</div>
 
-						<div className="mt-8 p-4 bg-blue-950/30 rounded-lg">
+						<div className="mt-8 p-4 bg-stone-950/30 rounded-lg">
 							<p className="text-sm text-gray-300">
 								<strong>Usage Guidelines:</strong><br/>
 								• Use true black (#000000) for backgrounds to optimize OLED displays<br/>
@@ -170,7 +170,7 @@ export default function BrandPage() {
 						
 						<div className="grid md:grid-cols-2 gap-6">
 							<div>
-								<h3 className="text-xl font-semibold mb-4 text-blue-400">Glass Components</h3>
+								<h3 className="text-xl font-semibold mb-4 text-stone-400">Glass Components</h3>
 								<div className="space-y-4">
 									<div className="glass-nav p-4 rounded-lg">
 										<p className="text-sm font-mono mb-1">.glass-nav</p>
@@ -192,11 +192,11 @@ export default function BrandPage() {
 							</div>
 
 							<div>
-								<h3 className="text-xl font-semibold mb-4 text-blue-400">Technical Specs</h3>
+								<h3 className="text-xl font-semibold mb-4 text-stone-400">Technical Specs</h3>
 								<div className="p-4 bg-black/40 rounded-lg border border-gray-700 font-mono text-sm space-y-2">
 									<p><span className="text-gray-400">backdrop-filter:</span> blur(4px-12px)</p>
 									<p><span className="text-gray-400">background:</span> rgba(30, 58, 138, 0.15-0.4)</p>
-									<p><span className="text-gray-400">border:</span> 1px solid rgba(96, 165, 250, 0.2-0.5)</p>
+									<p><span className="text-gray-400">border:</span> 1px solid rgba(168, 162, 158, 0.2-0.5)</p>
 									<p><span className="text-gray-400">box-shadow:</span> 0 8px 32px rgba(0, 0, 0, 0.3)</p>
 								</div>
 							</div>
@@ -209,7 +209,7 @@ export default function BrandPage() {
 						
 						<div className="space-y-6">
 							<div>
-								<h3 className="text-xl font-semibold mb-4 text-blue-400">Container Widths</h3>
+								<h3 className="text-xl font-semibold mb-4 text-stone-400">Container Widths</h3>
 								<div className="space-y-2 font-mono text-sm">
 									<p><span className="text-gray-400">max-w-4xl:</span> 56rem (896px) - Standard content</p>
 									<p><span className="text-gray-400">max-w-6xl:</span> 72rem (1152px) - Wide content</p>
@@ -217,7 +217,7 @@ export default function BrandPage() {
 							</div>
 
 							<div>
-								<h3 className="text-xl font-semibold mb-4 text-blue-400">Padding Standards</h3>
+								<h3 className="text-xl font-semibold mb-4 text-stone-400">Padding Standards</h3>
 								<div className="space-y-2 font-mono text-sm">
 									<p><span className="text-gray-400">Section padding:</span> py-16 px-6</p>
 									<p><span className="text-gray-400">Card padding:</span> p-8</p>
@@ -226,7 +226,7 @@ export default function BrandPage() {
 							</div>
 
 							<div>
-								<h3 className="text-xl font-semibold mb-4 text-blue-400">Border Radius</h3>
+								<h3 className="text-xl font-semibold mb-4 text-stone-400">Border Radius</h3>
 								<div className="space-y-2 font-mono text-sm">
 									<p><span className="text-gray-400">Cards:</span> rounded-xl (12px)</p>
 									<p><span className="text-gray-400">Buttons:</span> rounded-lg (8px)</p>
@@ -255,7 +255,7 @@ export default function BrandPage() {
 							</div>
 						</div>
 
-						<div className="mt-6 p-4 bg-blue-950/30 rounded-lg">
+						<div className="mt-6 p-4 bg-stone-950/30 rounded-lg">
 							<p className="text-sm text-gray-300">
 								<strong>Timing:</strong> Use 0.3s for UI transitions, 2-8s for ambient animations<br/>
 								<strong>Easing:</strong> ease-in-out for smooth, natural motion
@@ -269,7 +269,7 @@ export default function BrandPage() {
 						
 						<div className="space-y-6">
 							<div>
-								<h3 className="text-xl font-semibold mb-4 text-blue-400">Navigation</h3>
+								<h3 className="text-xl font-semibold mb-4 text-stone-400">Navigation</h3>
 								<p className="text-gray-300 mb-2">Fixed top navigation with glass effect</p>
 								<div className="p-4 bg-black/40 rounded-lg border border-gray-700 font-mono text-xs overflow-x-auto">
 									<pre>{`<nav className="glass-nav fixed top-0 left-0 right-0 z-50">
@@ -281,7 +281,7 @@ export default function BrandPage() {
 							</div>
 
 							<div>
-								<h3 className="text-xl font-semibold mb-4 text-blue-400">Interactive Background</h3>
+								<h3 className="text-xl font-semibold mb-4 text-stone-400">Interactive Background</h3>
 								<p className="text-gray-300 mb-2">Animated gradient background component</p>
 								<div className="p-4 bg-black/40 rounded-lg border border-gray-700 font-mono text-xs overflow-x-auto">
 									<pre>{`<InteractiveBackground />`}</pre>
@@ -289,7 +289,7 @@ export default function BrandPage() {
 							</div>
 
 							<div>
-								<h3 className="text-xl font-semibold mb-4 text-blue-400">Footer</h3>
+								<h3 className="text-xl font-semibold mb-4 text-stone-400">Footer</h3>
 								<p className="text-gray-300 mb-2">Standard footer with links and branding</p>
 								<div className="p-4 bg-black/40 rounded-lg border border-gray-700 font-mono text-xs overflow-x-auto">
 									<pre>{`<Footer />`}</pre>
@@ -304,7 +304,7 @@ export default function BrandPage() {
 						
 						<div className="space-y-6">
 							<div>
-								<h3 className="text-xl font-semibold mb-3 text-blue-400">Do's</h3>
+								<h3 className="text-xl font-semibold mb-3 text-stone-400">Do's</h3>
 								<ul className="space-y-2 text-gray-300">
 									<li className="flex items-start">
 										<span className="text-green-400 mr-3">✓</span>
@@ -330,7 +330,7 @@ export default function BrandPage() {
 							</div>
 
 							<div>
-								<h3 className="text-xl font-semibold mb-3 text-blue-400">Don'ts</h3>
+								<h3 className="text-xl font-semibold mb-3 text-stone-400">Don'ts</h3>
 								<ul className="space-y-2 text-gray-300">
 									<li className="flex items-start">
 										<span className="text-red-400 mr-3">✗</span>
@@ -363,44 +363,44 @@ export default function BrandPage() {
 						
 						<div className="grid md:grid-cols-2 gap-6">
 							<div>
-								<h3 className="text-xl font-semibold mb-4 text-blue-400">Personality</h3>
+								<h3 className="text-xl font-semibold mb-4 text-stone-400">Personality</h3>
 								<ul className="space-y-2 text-gray-300">
 									<li className="flex items-start">
-										<span className="text-blue-400 mr-3">•</span>
+										<span className="text-stone-400 mr-3">•</span>
 										<span><strong>Innovative:</strong> Forward-thinking and tech-savvy</span>
 									</li>
 									<li className="flex items-start">
-										<span className="text-blue-400 mr-3">•</span>
+										<span className="text-stone-400 mr-3">•</span>
 										<span><strong>Approachable:</strong> Friendly without being casual</span>
 									</li>
 									<li className="flex items-start">
-										<span className="text-blue-400 mr-3">•</span>
+										<span className="text-stone-400 mr-3">•</span>
 										<span><strong>Confident:</strong> Assured in our capabilities</span>
 									</li>
 									<li className="flex items-start">
-										<span className="text-blue-400 mr-3">•</span>
+										<span className="text-stone-400 mr-3">•</span>
 										<span><strong>Clear:</strong> Direct and easy to understand</span>
 									</li>
 								</ul>
 							</div>
 
 							<div>
-								<h3 className="text-xl font-semibold mb-4 text-blue-400">Tone</h3>
+								<h3 className="text-xl font-semibold mb-4 text-stone-400">Tone</h3>
 								<ul className="space-y-2 text-gray-300">
 									<li className="flex items-start">
-										<span className="text-blue-400 mr-3">•</span>
+										<span className="text-stone-400 mr-3">•</span>
 										<span><strong>Professional:</strong> Not corporate or stuffy</span>
 									</li>
 									<li className="flex items-start">
-										<span className="text-blue-400 mr-3">•</span>
+										<span className="text-stone-400 mr-3">•</span>
 										<span><strong>Helpful:</strong> Always solution-oriented</span>
 									</li>
 									<li className="flex items-start">
-										<span className="text-blue-400 mr-3">•</span>
+										<span className="text-stone-400 mr-3">•</span>
 										<span><strong>Enthusiastic:</strong> Passionate about the product</span>
 									</li>
 									<li className="flex items-start">
-										<span className="text-blue-400 mr-3">•</span>
+										<span className="text-stone-400 mr-3">•</span>
 										<span><strong>Respectful:</strong> Value user's time and needs</span>
 									</li>
 								</ul>
@@ -414,7 +414,7 @@ export default function BrandPage() {
 						
 						<div className="grid md:grid-cols-3 gap-6 text-sm">
 							<div>
-								<h3 className="font-semibold mb-2 text-blue-400">Typography</h3>
+								<h3 className="font-semibold mb-2 text-stone-400">Typography</h3>
 								<p className="font-mono text-xs text-gray-400">
 									H1-H6: Gamay, 200% stretch<br/>
 									Body: Halyard Text<br/>
@@ -422,7 +422,7 @@ export default function BrandPage() {
 								</p>
 							</div>
 							<div>
-								<h3 className="font-semibold mb-2 text-blue-400">Colors</h3>
+								<h3 className="font-semibold mb-2 text-stone-400">Colors</h3>
 								<p className="font-mono text-xs text-gray-400">
 									BG: #000000<br/>
 									Text: #e0e0e0<br/>
@@ -430,7 +430,7 @@ export default function BrandPage() {
 								</p>
 							</div>
 							<div>
-								<h3 className="font-semibold mb-2 text-blue-400">Spacing</h3>
+								<h3 className="font-semibold mb-2 text-stone-400">Spacing</h3>
 								<p className="font-mono text-xs text-gray-400">
 									Container: max-w-4xl<br/>
 									Section: py-16 px-6<br/>

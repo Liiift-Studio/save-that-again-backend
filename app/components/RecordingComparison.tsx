@@ -87,13 +87,13 @@ export default function RecordingComparison() {
 			// Create gradient
 			const gradient = ctx.createLinearGradient(0, centerY - barHeight, 0, centerY + barHeight);
 			if (shouldShow) {
-				gradient.addColorStop(0, 'rgba(59, 130, 246, 0.8)');
-				gradient.addColorStop(0.5, 'rgba(96, 165, 250, 1)');
-				gradient.addColorStop(1, 'rgba(59, 130, 246, 0.8)');
+				gradient.addColorStop(0, 'rgba(157, 141, 122, 0.8)');
+				gradient.addColorStop(0.5, 'rgba(157, 141, 122, 1)');
+				gradient.addColorStop(1, 'rgba(157, 141, 122, 0.8)');
 			} else {
-				gradient.addColorStop(0, 'rgba(107, 114, 128, 0.2)');
-				gradient.addColorStop(0.5, 'rgba(156, 163, 175, 0.3)');
-				gradient.addColorStop(1, 'rgba(107, 114, 128, 0.2)');
+				gradient.addColorStop(0, 'rgba(120, 113, 108, 0.2)');
+				gradient.addColorStop(0.5, 'rgba(168, 162, 158, 0.3)');
+				gradient.addColorStop(1, 'rgba(120, 113, 108, 0.2)');
 			}
 			
 			ctx.fillStyle = gradient;
@@ -150,16 +150,16 @@ export default function RecordingComparison() {
 							<span className="whitespace-nowrap">Traditional Recording</span>
 						</div>
 
-						{/* Recording segment */}
-						{traditionalStartTime !== null && traditionalRecording && (
-							<div
-								className="absolute top-0 bottom-0 bg-red-500/40 border-l-2 border-r-2 border-red-500"
-								style={{
-									left: `${(traditionalStartTime / totalDuration) * 100}%`,
-									width: `${((currentTime - traditionalStartTime) / totalDuration) * 100}%`
-								}}
-							/>
-						)}
+					{/* Recording segment */}
+					{traditionalStartTime !== null && traditionalRecording && (
+						<div
+							className="absolute top-0 bottom-0 bg-stone-500/40 border-l-2 border-r-2 border-stone-500"
+							style={{
+								left: `${(traditionalStartTime / totalDuration) * 100}%`,
+								width: `${((currentTime - traditionalStartTime) / totalDuration) * 100}%`
+							}}
+						/>
+					)}
 
 						{/* Current time */}
 						<div
@@ -168,55 +168,43 @@ export default function RecordingComparison() {
 						/>
 					</div>
 
-					<div className="space-y-2 mb-4">
-						<button
-							onClick={startTraditionalRecording}
-							disabled={traditionalRecording}
-							className={`w-full px-4 py-2 rounded-lg font-medium transition-all ${
-								traditionalRecording
-									? 'bg-gray-700 cursor-not-allowed opacity-50'
-									: 'glass-button hover:scale-105'
-							}`}
-						>
-							{traditionalRecording ? 'Recording...' : 'Start Recording'}
-						</button>
-						<button
-							onClick={stopTraditionalRecording}
-							disabled={!traditionalRecording}
-							className={`w-full px-4 py-2 rounded-lg font-medium transition-all ${
-								!traditionalRecording
-									? 'bg-gray-700 cursor-not-allowed opacity-50'
-									: 'bg-red-600/80 hover:bg-red-600'
-							}`}
-						>
-							Stop Recording
-						</button>
+					<div className="mb-4">
+					<button
+						onClick={traditionalRecording ? stopTraditionalRecording : startTraditionalRecording}
+						className={`w-full px-4 py-2 rounded-lg font-medium transition-all ${
+							traditionalRecording
+								? 'bg-stone-600/80 hover:bg-stone-600'
+								: 'glass-button hover:scale-105'
+						}`}
+					>
+						{traditionalRecording ? 'Stop Recording' : 'Start Recording'}
+					</button>
 					</div>
 
-					<div className="p-3 bg-red-950/20 rounded-lg border border-red-900/30">
-						<p className="text-xs text-gray-400">
-							{!traditionalRecording && !traditionalStartTime && (
-								<><strong>Limitation:</strong> Only captures audio from the moment you press "Start"</>
-							)}
-							{traditionalRecording && (
-								<><strong>Recording:</strong> Capturing audio from {traditionalStartTime?.toFixed(1)}s onwards</>
-							)}
-							{!traditionalRecording && traditionalStartTime !== null && (
-								<><strong>Stopped:</strong> Captured {(currentTime - traditionalStartTime).toFixed(1)}s of audio</>
-							)}
-						</p>
-					</div>
+				<div className="p-3 bg-stone-950/20 rounded-lg border border-stone-900/30">
+					<p className="text-xs text-gray-400">
+						{!traditionalRecording && !traditionalStartTime && (
+							<><strong>Limitation:</strong> Only captures audio from the moment you press "Start"</>
+						)}
+						{traditionalRecording && (
+							<><strong>Recording:</strong> Capturing audio from {traditionalStartTime?.toFixed(1)}s onwards</>
+						)}
+						{!traditionalRecording && traditionalStartTime !== null && (
+							<><strong>Stopped:</strong> Captured {(currentTime - traditionalStartTime).toFixed(1)}s of audio</>
+						)}
+					</p>
+				</div>
 				</div>
 
 				{/* Buffer Recording */}
-				<div className="glass-card-small p-6 rounded-xl border-2 border-blue-500/30">
+				<div className="glass-card-small p-6 rounded-xl border-2 border-stone-500/30">
 					<div className="flex items-center gap-3 mb-4">
-						<div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse" />
+						<div className="w-3 h-3 rounded-full bg-stone-500 animate-pulse" />
 						<h4 className="text-xl font-bold">Buffer Recording</h4>
-						<span className="text-xs bg-blue-500/20 px-2 py-1 rounded-full">Always On</span>
+						<span className="text-xs bg-stone-500/20 px-2 py-1 rounded-full">Always On</span>
 					</div>
 
-					<div className="relative h-20 bg-black/40 rounded-lg border border-blue-700 mb-4 overflow-hidden">
+					<div className="relative h-20 bg-black/40 rounded-lg border border-stone-700 mb-4 overflow-hidden">
 						{/* Waveform overlaid on timeline */}
 						<canvas
 							ref={bufferWaveformRef}
@@ -229,24 +217,24 @@ export default function RecordingComparison() {
 
 						{/* Active buffer - always last 30 seconds */}
 						<div
-							className="absolute top-0 bottom-0 bg-blue-500/40 border-l-2 border-r-2 border-blue-500"
+							className="absolute top-0 bottom-0 bg-stone-500/40 border-l-2 border-r-2 border-stone-500"
 							style={{
 								left: `${(bufferStart / totalDuration) * 100}%`,
 								width: `${((bufferEnd - bufferStart) / totalDuration) * 100}%`
 							}}
 						/>
 
-						{/* Saved buffer segments */}
-						{savedBufferSegments.map((segment, idx) => (
-							<div
-								key={idx}
-								className="absolute top-0 bottom-0 bg-green-500/40 border-l-2 border-r-2 border-green-400"
-								style={{
-									left: `${(segment.start / totalDuration) * 100}%`,
-									width: `${((segment.end - segment.start) / totalDuration) * 100}%`
-								}}
-							/>
-						))}
+					{/* Saved buffer segments */}
+					{savedBufferSegments.map((segment, idx) => (
+						<div
+							key={idx}
+							className="absolute top-0 bottom-0 bg-stone-600/40 border-l-2 border-r-2 border-stone-500"
+							style={{
+								left: `${(segment.start / totalDuration) * 100}%`,
+								width: `${((segment.end - segment.start) / totalDuration) * 100}%`
+							}}
+						/>
+					))}
 
 						{/* Current time */}
 						<div
@@ -262,7 +250,7 @@ export default function RecordingComparison() {
 						Save Last 30 Seconds
 					</button>
 
-					<div className="p-3 bg-blue-950/20 rounded-lg border border-blue-900/30">
+					<div className="p-3 bg-stone-950/20 rounded-lg border border-stone-900/30">
 						<p className="text-xs text-gray-400">
 							<strong>Always ready:</strong> Continuously captures the last 30 seconds. 
 							Tap "Save" anytime to keep what just happened!
@@ -271,9 +259,9 @@ export default function RecordingComparison() {
 				</div>
 			</div>
 
-			<div className="mt-6 p-4 bg-gradient-to-r from-blue-950/40 to-purple-950/40 rounded-lg border border-blue-900/30">
+			<div className="mt-6 p-4 bg-gradient-to-r from-stone-950/40 to-stone-950/40 rounded-lg border border-stone-900/30">
 				<p className="text-sm text-gray-300 text-center">
-					<strong className="text-blue-400">The Advantage:</strong> With Save That Again's rolling buffer, 
+					<strong className="text-stone-400">The Advantage:</strong> With Save That Again's rolling buffer, 
 					you never need to anticipate special moments. They're automatically captured in your 5-minute buffer, 
 					ready to save with just one tap!
 				</p>

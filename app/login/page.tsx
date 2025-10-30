@@ -52,8 +52,8 @@ export default function LoginPage() {
 			<InteractiveBackground />
 			
 			{/* Gradient Background */}
-			<div className="fixed inset-0 bg-gradient-radial from-blue-900/20 via-black to-black pointer-events-none z-0" />
-			<div className="fixed inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 pointer-events-none z-0" />
+			<div className="fixed inset-0 bg-gradient-radial from-stone-900/20 via-black to-black pointer-events-none z-0" />
+			<div className="fixed inset-0 bg-gradient-to-br from-neutral-800/5 via-transparent to-stone-800/5 pointer-events-none z-0" />
 			
 			{/* Navigation */}
 			<nav className="relative z-50 glass-nav">
@@ -68,7 +68,7 @@ export default function LoginPage() {
 							className="drop-shadow-glow"
 							priority
 						/>
-						<span className="font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent" style={{ fontFamily: 'Gamay, sans-serif', fontStretch: '200%', fontSize: '20px', lineHeight: '32px' }}>
+						<span className="font-bold bg-gradient-to-r from-white to-stone-300 bg-clip-text text-transparent" style={{ fontFamily: 'Gamay, sans-serif', fontStretch: '200%', fontSize: '20px', lineHeight: '32px' }}>
 							Save That Again
 						</span>
 					</Link>
@@ -168,7 +168,7 @@ export default function LoginPage() {
 					<div className="mt-6 text-center">
 						<p className="text-gray-400">
 							Don't have an account?{' '}
-							<Link href="/signup" className="text-blue-400 hover:text-blue-300 font-semibold transition-colors">
+							<Link href="/signup" className="text-stone-400 hover:text-stone-300 font-semibold transition-colors">
 								Sign up
 							</Link>
 						</p>

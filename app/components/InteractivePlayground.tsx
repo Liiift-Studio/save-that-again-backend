@@ -138,7 +138,7 @@ export default function InteractivePlayground() {
 				</div>
 				<div className="glass-card-small p-4 rounded-lg text-center">
 					<div className="text-xs text-gray-400 mb-1">Time Elapsed</div>
-					<div className="text-3xl font-bold text-blue-400">{currentTime.toFixed(1)}s</div>
+					<div className="text-3xl font-bold text-stone-400">{currentTime.toFixed(1)}s</div>
 				</div>
 				<div className="glass-card-small p-4 rounded-lg text-center">
 					<div className="text-xs text-gray-400 mb-1">Moments Saved</div>
@@ -151,7 +151,7 @@ export default function InteractivePlayground() {
 				<div className="relative h-32 bg-black/40 rounded-lg border border-gray-700 overflow-hidden">
 					{/* Buffer zone */}
 					<div 
-						className="absolute top-0 bottom-0 bg-blue-500/20 border-l-2 border-r-2 border-blue-500"
+						className="absolute top-0 bottom-0 bg-stone-500/20 border-l-2 border-r-2 border-stone-500"
 						style={{
 							left: `${Math.max(0, ((bufferStart - (bufferStart - 5)) / 40) * 100)}%`,
 							width: `${(bufferSize / 40) * 100}%`
@@ -193,7 +193,7 @@ export default function InteractivePlayground() {
 
 				<div className="flex gap-4 mt-2 text-xs text-gray-400">
 					<div className="flex items-center gap-2">
-						<div className="w-4 h-4 bg-blue-500/40 border border-blue-500 rounded" />
+						<div className="w-4 h-4 bg-stone-500/40 border border-stone-500 rounded" />
 						<span>Active Buffer ({bufferSize}s)</span>
 					</div>
 					<div className="flex items-center gap-2">
@@ -205,8 +205,8 @@ export default function InteractivePlayground() {
 
 			{/* Feedback Message */}
 			{feedback && (
-				<div className="mb-4 p-4 bg-blue-950/40 rounded-lg border border-blue-900/30 text-center animate-pulse">
-					<p className="text-sm text-blue-300 font-medium">{feedback}</p>
+				<div className="mb-4 p-4 bg-stone-950/40 rounded-lg border border-stone-900/30 text-center animate-pulse">
+					<p className="text-sm text-stone-300 font-medium">{feedback}</p>
 				</div>
 			)}
 
@@ -238,11 +238,11 @@ export default function InteractivePlayground() {
 			</div>
 
 			{/* Instructions */}
-			<div className="mt-6 p-4 bg-gradient-to-r from-purple-950/40 to-blue-950/40 rounded-lg border border-purple-900/30">
-				<h4 className="font-bold text-blue-400 mb-2">How to Play:</h4>
+			<div className="mt-6 p-4 bg-gradient-to-r from-stone-950/40 to-stone-950/40 rounded-lg border border-stone-900/30">
+				<h4 className="font-bold text-stone-400 mb-2">How to Play:</h4>
 				<ul className="text-sm text-gray-300 space-y-1">
 					<li>• Special moments (emojis) appear randomly on the timeline</li>
-					<li>• The blue zone shows your active 30-second buffer</li>
+					<li>• The beige zone shows your active 30-second buffer</li>
 					<li>• Click "Save Buffer Now!" to capture all moments in the buffer</li>
 					<li>• Different moments award different points (Amazing=30, Great=20, Good=10)</li>
 					<li>• Try to save as many moments as possible!</li>

@@ -43,23 +43,23 @@ export default function PressPage() {
 						<h2 className="text-2xl font-bold mb-4">Key Facts</h2>
 						<ul className="space-y-3 text-gray-300">
 							<li className="flex items-start">
-								<span className="text-blue-400 mr-3">•</span>
+								<span className="text-stone-400 mr-3">•</span>
 								<span><strong>Platform:</strong> Wear OS, iOS, Android</span>
 							</li>
 							<li className="flex items-start">
-								<span className="text-blue-400 mr-3">•</span>
+								<span className="text-stone-400 mr-3">•</span>
 								<span><strong>Technology:</strong> 5-minute rolling buffer with instant retroactive save</span>
 							</li>
 							<li className="flex items-start">
-								<span className="text-blue-400 mr-3">•</span>
+								<span className="text-stone-400 mr-3">•</span>
 								<span><strong>Audio Quality:</strong> High-quality AAC format (128kbps, 44.1kHz)</span>
 							</li>
 							<li className="flex items-start">
-								<span className="text-blue-400 mr-3">•</span>
+								<span className="text-stone-400 mr-3">•</span>
 								<span><strong>Privacy:</strong> Local-first with optional cloud backup</span>
 							</li>
 							<li className="flex items-start">
-								<span className="text-blue-400 mr-3">•</span>
+								<span className="text-stone-400 mr-3">•</span>
 								<span><strong>Use Cases:</strong> Music composition, interviews, lectures, meetings, voice notes</span>
 							</li>
 						</ul>
@@ -71,35 +71,35 @@ export default function PressPage() {
 						
 						<div className="space-y-6">
 							<div>
-								<h3 className="text-xl font-semibold mb-3 text-blue-400">Brand Assets</h3>
+								<h3 className="text-xl font-semibold mb-3 text-stone-400">Brand Assets</h3>
 								<ul className="space-y-2 text-gray-300">
 									<li className="flex items-start">
-										<span className="text-blue-400 mr-3">•</span>
+										<span className="text-stone-400 mr-3">•</span>
 										<span>Logo files (SVG, PNG) available in black and white variants</span>
 									</li>
 									<li className="flex items-start">
-										<span className="text-blue-400 mr-3">•</span>
+										<span className="text-stone-400 mr-3">•</span>
 										<span>Brand colors: #2196f3 (Primary Blue), #000000 (Background), #e0e0e0 (Text)</span>
 									</li>
 									<li className="flex items-start">
-										<span className="text-blue-400 mr-3">•</span>
+										<span className="text-stone-400 mr-3">•</span>
 										<span>Typography: Gamay (headings), Halyard Text (body)</span>
 									</li>
 								</ul>
 							</div>
 
 							<div>
-								<h3 className="text-xl font-semibold mb-3 text-blue-400">Screenshots & Media</h3>
+								<h3 className="text-xl font-semibold mb-3 text-stone-400">Screenshots & Media</h3>
 								<p className="text-gray-300 mb-3">
 									High-resolution screenshots and promotional materials available upon request.
 								</p>
 								<p className="text-gray-300">
-									Contact: <a href="mailto:press@savethatagain.com" className="text-blue-400 hover:text-blue-300 transition-colors">press@savethatagain.com</a>
+									Contact: <a href="mailto:press@savethatagain.com" className="text-stone-400 hover:text-blue-300 transition-colors">press@savethatagain.com</a>
 								</p>
 							</div>
 
 							<div>
-								<h3 className="text-xl font-semibold mb-3 text-blue-400">Company Information</h3>
+								<h3 className="text-xl font-semibold mb-3 text-stone-400">Company Information</h3>
 								<p className="text-gray-300">
 									For detailed company information, product specifications, or to schedule an interview, please reach out to our press team.
 								</p>
@@ -112,13 +112,13 @@ export default function PressPage() {
 						<h2 className="text-2xl font-bold mb-4">Media Contact</h2>
 						<div className="space-y-3 text-gray-300">
 							<p>
-								<strong>Press Inquiries:</strong> <a href="mailto:press@savethatagain.com" className="text-blue-400 hover:text-blue-300 transition-colors">press@savethatagain.com</a>
+								<strong>Press Inquiries:</strong> <a href="mailto:press@savethatagain.com" className="text-stone-400 hover:text-blue-300 transition-colors">press@savethatagain.com</a>
 							</p>
 							<p>
-								<strong>General Inquiries:</strong> <a href="mailto:contact@savethatagain.com" className="text-blue-400 hover:text-blue-300 transition-colors">contact@savethatagain.com</a>
+								<strong>General Inquiries:</strong> <a href="mailto:contact@savethatagain.com" className="text-stone-400 hover:text-blue-300 transition-colors">contact@savethatagain.com</a>
 							</p>
 							<p>
-								<strong>Business Development:</strong> <a href="mailto:business@savethatagain.com" className="text-blue-400 hover:text-blue-300 transition-colors">business@savethatagain.com</a>
+								<strong>Business Development:</strong> <a href="mailto:business@savethatagain.com" className="text-stone-400 hover:text-blue-300 transition-colors">business@savethatagain.com</a>
 							</p>
 						</div>
 					</section>
