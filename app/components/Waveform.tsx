@@ -20,7 +20,7 @@ export default function Waveform({
 	duration = 1,
 	height = 32,
 	barCount = 40,
-	color = '#2196f3',
+	color = '#c9b896',
 	onSeek,
 }: WaveformProps) {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
