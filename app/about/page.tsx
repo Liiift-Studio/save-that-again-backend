@@ -47,7 +47,7 @@ export default function AboutPage() {
 			<main className="relative z-10 max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 flex-1">
 				<h1 className="text-4xl md:text-5xl font-bold mb-8 uppercase tracking-wide">About Save That Again</h1>
 				
-				<div className="space-y-8 text-gray-300">
+				<div className="space-y-8 text-stone-300">
 					<section>
 						<h2 className="text-2xl font-bold mb-4">Never Miss a Moment</h2>
 						<p className="leading-relaxed">
@@ -65,7 +65,7 @@ export default function AboutPage() {
 						<BufferDemo />
 
 						<div className="mt-6">
-							<h3 className="text-lg font-semibold mb-3 text-stone-400">Key Features</h3>
+							<h3 className="text-lg font-semibold mb-3">Key Features</h3>
 							<ul className="list-disc list-inside space-y-2 ml-4">
 								<li>Runs quietly in the background on your Pixel Watch</li>
 								<li>Press the button to save the last 30 seconds</li>

@@ -30,10 +30,10 @@ export default function PressPage() {
 					{/* About Section */}
 					<section className="mb-12 glass-card p-8 rounded-xl">
 						<h2 className="text-2xl font-bold mb-4">About Save That Again</h2>
-						<p className="text-lg mb-4 text-gray-300">
+						<p className="text-lg mb-4 text-stone-300">
 							Save That Again is a revolutionary audio recording application that captures what you wish you had been recording. With a continuous 5-minute rolling buffer, users can retroactively save important moments with a simple tap—perfect for musicians, journalists, educators, and anyone who needs to capture spontaneous brilliance.
 						</p>
-						<p className="text-lg text-gray-300">
+						<p className="text-lg text-stone-300">
 							Available on Wear OS smartwatches and mobile devices, Save That Again brings professional-grade audio capture to your wrist, ensuring you never miss another important moment.
 						</p>
 					</section>
@@ -41,7 +41,7 @@ export default function PressPage() {
 					{/* Key Facts */}
 					<section className="mb-12 glass-card p-8 rounded-xl">
 						<h2 className="text-2xl font-bold mb-4">Key Facts</h2>
-						<ul className="space-y-3 text-gray-300">
+						<ul className="space-y-3 text-stone-300">
 							<li className="flex items-start">
 								<span className="text-stone-400 mr-3">•</span>
 								<span><strong>Platform:</strong> Wear OS, iOS, Android</span>
@@ -72,7 +72,7 @@ export default function PressPage() {
 						<div className="space-y-6">
 							<div>
 								<h3 className="text-xl font-semibold mb-3 text-stone-400">Brand Assets</h3>
-								<ul className="space-y-2 text-gray-300">
+								<ul className="space-y-2 text-stone-300">
 									<li className="flex items-start">
 										<span className="text-stone-400 mr-3">•</span>
 										<span>Logo files (SVG, PNG) available in black and white variants</span>
@@ -90,17 +90,17 @@ export default function PressPage() {
 
 							<div>
 								<h3 className="text-xl font-semibold mb-3 text-stone-400">Screenshots & Media</h3>
-								<p className="text-gray-300 mb-3">
+								<p className="text-stone-300 mb-3">
 									High-resolution screenshots and promotional materials available upon request.
 								</p>
-								<p className="text-gray-300">
+								<p className="text-stone-300">
 									Contact: <a href="mailto:press@savethatagain.com" className="text-stone-400 hover:text-blue-300 transition-colors">press@savethatagain.com</a>
 								</p>
 							</div>
 
 							<div>
 								<h3 className="text-xl font-semibold mb-3 text-stone-400">Company Information</h3>
-								<p className="text-gray-300">
+								<p className="text-stone-300">
 									For detailed company information, product specifications, or to schedule an interview, please reach out to our press team.
 								</p>
 							</div>
@@ -110,7 +110,7 @@ export default function PressPage() {
 					{/* Contact Information */}
 					<section className="mb-12 glass-card p-8 rounded-xl">
 						<h2 className="text-2xl font-bold mb-4">Media Contact</h2>
-						<div className="space-y-3 text-gray-300">
+						<div className="space-y-3 text-stone-300">
 							<p>
 								<strong>Press Inquiries:</strong> <a href="mailto:press@savethatagain.com" className="text-stone-400 hover:text-blue-300 transition-colors">press@savethatagain.com</a>
 							</p>
@@ -126,7 +126,7 @@ export default function PressPage() {
 					{/* Recent News */}
 					<section className="mb-12 glass-card p-8 rounded-xl">
 						<h2 className="text-2xl font-bold mb-4">Recent News</h2>
-						<p className="text-gray-300">
+						<p className="text-stone-300">
 							Latest updates and announcements coming soon.
 						</p>
 					</section>

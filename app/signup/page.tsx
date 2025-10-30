@@ -92,7 +92,7 @@ export default function SignupPage() {
 				<div className="max-w-md w-full glass-card p-8 rounded-2xl">
 					<div className="text-center mb-8">
 						<h1 className="text-3xl font-bold mb-2">Get Started</h1>
-						<p className="text-gray-400">Create your account</p>
+						<p className="text-stone-400">Create your account</p>
 					</div>
 
 				<form onSubmit={handleSubmit} className="space-y-6">
@@ -137,7 +137,7 @@ export default function SignupPage() {
 							<button
 								type="button"
 								onClick={() => setShowPassword(!showPassword)}
-								className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200"
+								className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-200"
 								disabled={isLoading}
 							>
 								{showPassword ? (
@@ -152,7 +152,7 @@ export default function SignupPage() {
 								)}
 							</button>
 						</div>
-						<p className="mt-1 text-xs text-gray-500">
+							<p className="mt-1 text-xs text-stone-500">
 							Minimum 6 characters
 						</p>
 					</div>
@@ -173,9 +173,9 @@ export default function SignupPage() {
 				</form>
 
 					<div className="mt-6 text-center">
-						<p className="text-gray-400">
+						<p className="text-stone-400">
 							Already have an account?{' '}
-							<Link href="/login" className="text-stone-400 hover:text-stone-300 font-semibold transition-colors">
+							<Link href="/login" className="text-stone-300 hover:text-white font-semibold transition-colors">
 								Login
 							</Link>
 						</p>

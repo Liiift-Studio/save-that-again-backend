@@ -46,7 +46,7 @@ export default function ContactPage() {
 			<main className="relative z-10 max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 flex-1">
 				<h1 className="text-4xl md:text-5xl font-bold mb-8 uppercase tracking-wide">Contact Us</h1>
 				
-				<div className="space-y-8 text-gray-300">
+				<div className="space-y-8 text-stone-300">
 					<section>
 						<p className="text-lg leading-relaxed mb-8">
 							Have questions, feedback, or need support? We'd love to hear from you.
@@ -64,12 +64,12 @@ export default function ContactPage() {
 									</svg>
 									Email Support
 								</h3>
-								<p className="text-gray-400 ml-7">
+								<p className="text-stone-400 ml-7">
 									<a href="mailto:support@savethatagain.com" className="text-[#2196f3] hover:text-[#1976d2]">
 										support@savethatagain.com
 									</a>
 								</p>
-								<p className="text-sm text-gray-500 ml-7 mt-1">
+								<p className="text-sm text-stone-500 ml-7 mt-1">
 									We typically respond within 24-48 hours
 								</p>
 							</div>
@@ -81,7 +81,7 @@ export default function ContactPage() {
 									</svg>
 									Documentation
 								</h3>
-								<p className="text-gray-400 ml-7">
+								<p className="text-stone-400 ml-7">
 									Check out our{' '}
 									<Link href="/about" className="text-[#2196f3] hover:text-[#1976d2]">
 										About page
@@ -97,7 +97,7 @@ export default function ContactPage() {
 									</svg>
 									Legal
 								</h3>
-								<p className="text-gray-400 ml-7">
+								<p className="text-stone-400 ml-7">
 									<Link href="/privacy" className="text-[#2196f3] hover:text-[#1976d2]">
 										Privacy Policy
 									</Link>
@@ -112,16 +112,16 @@ export default function ContactPage() {
 
 					<section className="glass-card p-8 rounded-2xl">
 						<h2 className="text-2xl font-bold mb-4">Report a Bug</h2>
-						<p className="text-gray-400 mb-4">
+						<p className="text-stone-400 mb-4">
 							Found a bug? Please email us with:
 						</p>
-						<ul className="list-disc list-inside space-y-2 ml-4 text-gray-400">
+						<ul className="list-disc list-inside space-y-2 ml-4 text-stone-400">
 							<li>Description of the issue</li>
 							<li>Steps to reproduce</li>
 							<li>Device and app version</li>
 							<li>Screenshots if applicable</li>
 						</ul>
-						<p className="text-gray-400 mt-4">
+						<p className="text-stone-400 mt-4">
 							Send bug reports to:{' '}
 							<a href="mailto:bugs@savethatagain.com" className="text-[#2196f3] hover:text-[#1976d2]">
 								bugs@savethatagain.com
@@ -131,7 +131,7 @@ export default function ContactPage() {
 
 					<section className="glass-card p-8 rounded-2xl">
 						<h2 className="text-2xl font-bold mb-4">Business Inquiries</h2>
-						<p className="text-gray-400">
+						<p className="text-stone-400">
 							For partnership opportunities, press inquiries, or other business matters, please contact:{' '}
 							<a href="mailto:business@savethatagain.com" className="text-[#2196f3] hover:text-[#1976d2]">
 								business@savethatagain.com

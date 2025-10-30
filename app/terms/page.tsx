@@ -45,9 +45,9 @@ export default function TermsPage() {
 			{/* Main Content */}
 			<main className="relative z-10 max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 flex-1">
 				<h1 className="text-4xl md:text-5xl font-bold mb-4 uppercase tracking-wide">Terms of Service</h1>
-				<p className="text-gray-400 mb-8">Last updated: {new Date().toLocaleDateString()}</p>
+				<p className="text-stone-400 mb-8">Last updated: {new Date().toLocaleDateString()}</p>
 				
-				<div className="space-y-8 text-gray-300">
+				<div className="space-y-8 text-stone-300">
 					<section>
 						<h2 className="text-2xl font-bold mb-4">Acceptance of Terms</h2>
 						<p className="leading-relaxed">

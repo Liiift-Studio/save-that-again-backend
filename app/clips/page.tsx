@@ -209,7 +209,7 @@ export default function ClipsPage() {
 			<div className="min-h-screen flex items-center justify-center">
 				<div className="text-center">
 					<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#2196f3] mx-auto mb-4"></div>
-					<p className="text-gray-400">Loading clips...</p>
+					<p className="text-stone-400">Loading clips...</p>
 				</div>
 			</div>
 		);
@@ -243,7 +243,7 @@ export default function ClipsPage() {
 				</Link>
 						<div className="flex items-center gap-4">
 							{user && (
-								<span className="text-sm text-gray-400">Welcome, {user.name}</span>
+								<span className="text-sm text-stone-400">Welcome, {user.name}</span>
 							)}
 							<button
 								onClick={handleLogout}
@@ -268,13 +268,13 @@ export default function ClipsPage() {
 					<div className="flex items-center justify-between mb-4">
 						<div>
 							<h1 className="text-4xl md:text-5xl font-bold mb-2 uppercase tracking-wide">Your Audio Clips</h1>
-							<p className="text-gray-400 text-lg">
+							<p className="text-stone-400 text-lg">
 								{clips.length} clip{clips.length !== 1 ? 's' : ''} saved from your watch
 							</p>
 						</div>
 						{clips.length > 0 && (
 							<div className="flex items-center gap-2">
-								<label htmlFor="sort" className="text-sm text-gray-400">Sort by:</label>
+								<label htmlFor="sort" className="text-sm text-stone-400">Sort by:</label>
 								<select
 									id="sort"
 									value={sortBy}
@@ -294,7 +294,7 @@ export default function ClipsPage() {
 				{clips.length === 0 ? (
 					<div className="glass-card p-12 rounded-2xl text-center">
 						<svg
-							className="mx-auto h-12 w-12 text-gray-600 mb-4"
+							className="mx-auto h-12 w-12 text-stone-600 mb-4"
 							fill="none"
 							viewBox="0 0 24 24"
 							stroke="currentColor"
@@ -307,7 +307,7 @@ export default function ClipsPage() {
 							/>
 						</svg>
 						<h3 className="text-lg font-medium mb-2">No clips yet</h3>
-						<p className="text-gray-400">
+						<p className="text-stone-400">
 							Save moments from your Pixel Watch to see them here
 						</p>
 					</div>
@@ -377,7 +377,7 @@ function ClipCard({
 					<p className="text-sm font-medium mb-1">
 						{formatTimestamp(clip.timestamp)}
 					</p>
-					<p className="text-xs text-gray-500">
+					<p className="text-xs text-stone-500">
 						Duration: {formatDuration(clip.duration)}
 					</p>
 				</div>
