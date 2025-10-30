@@ -51,14 +51,14 @@ export default function AboutPage() {
 					<section>
 						<h2 className="text-2xl font-bold mb-4">Never Miss a Moment</h2>
 						<p className="leading-relaxed">
-							Save That Again is a revolutionary audio capture app for Pixel Watch that solves a common problem: capturing something important that was just said. Whether it's a brilliant idea, a funny quote, or an important instruction, Save That Again ensures you never lose those precious moments.
+							Save That Again is a revolutionary audio capture app for your smart watch, phone, tablet, and online that solves a common problem: capturing something important that was just said. Whether it's a brilliant idea, a funny quote, or an important instruction, Save That Again ensures you never lose those precious moments.
 						</p>
 					</section>
 
 					<section>
 						<h2 className="text-2xl font-bold mb-4">How It Works</h2>
 						<p className="leading-relaxed mb-6">
-							Save That Again continuously buffers the last 30 seconds of audio in the background on your Pixel Watch. When you press the save button, it instantly captures those previous 30 seconds and stores them securely in the cloud.
+							Save That Again continuously buffers the last 30 seconds of audio in the background on your smart watch, phone, or tablet. When you press the save button, it instantly captures those previous 30 seconds and stores them securely in the cloud.
 						</p>
 						
 						{/* Interactive Buffer Demo */}
@@ -67,7 +67,7 @@ export default function AboutPage() {
 						<div className="mt-6">
 							<h3 className="text-lg font-semibold pb-3">Key Features</h3>
 							<ul className="list-disc list-inside space-y-2 ml-4">
-								<li>Runs quietly in the background on your Pixel Watch</li>
+								<li>Runs quietly in the background on your smart watch, phone, or tablet</li>
 								<li>Press the button to save the last 30 seconds</li>
 								<li>Automatically syncs to the cloud</li>
 								<li>Access your clips from any device via the web portal</li>

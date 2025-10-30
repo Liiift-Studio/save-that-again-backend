@@ -96,8 +96,8 @@ export default function Home() {
 						</span>
 					</h1>
 					<p className="text-xl md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed text-stone-300">
-							Continuous audio buffering for your Pixel Watch. Capture the last 5 minutes with a single tap.
-						</p>
+						Continuous audio buffering for your smart watch, phone, tablet, and online. Capture the last 5 minutes with a single tap.
+					</p>
 						<div className="flex flex-col sm:flex-row gap-4 justify-center">
 							<Link 
 								href="/signup"
@@ -177,7 +177,7 @@ export default function Home() {
 								The <span className="text-gradient">Buffer</span>
 							</h3>
 							<p className="text-xl mb-8 leading-relaxed text-stone-300">
-								Your Pixel Watch continuously records a rolling 5-minute buffer. 
+								Your smart watch continuously records a rolling 5-minute buffer. 
 								When something amazing happens, just tap to save it permanently.
 							</p>
 							<div className="space-y-4">
@@ -220,7 +220,7 @@ export default function Home() {
 						/>
 						<FeatureCard
 							title="Battery Optimized"
-							description="Engineered for all-day recording on your Pixel Watch without draining the battery."
+							description="Engineered for all-day recording on your smart watch without draining the battery."
 						/>
 						<FeatureCard
 							title="Cloud Sync"
@@ -231,8 +231,8 @@ export default function Home() {
 							description="JWT authentication and encrypted transmission. Your data stays yours."
 						/>
 						<FeatureCard
-							title="Wear OS Native"
-							description="Built specifically for Pixel Watch with a beautiful, intuitive interface."
+							title="Multi-Platform"
+							description="Works seamlessly on smart watches, phones, tablets, and online with a beautiful, intuitive interface."
 						/>
 						<FeatureCard
 							title="One-Tap Save"
@@ -317,8 +317,8 @@ export default function Home() {
 							Download for {userDevice === 'ios' ? 'iOS' : 'Android'}
 						</h2>
 						<p className="text-xl mb-8 max-w-2xl mx-auto text-stone-300">
-								Get Save That Again on your {userDevice === 'ios' ? 'iPhone and Apple Watch' : 'Android device and Wear OS watch'}.
-							</p>
+							Get Save That Again on your {userDevice === 'ios' ? 'iPhone, iPad, and Apple Watch' : 'Android phone, tablet, and smart watch'}.
+						</p>
 							<a
 								href={userDevice === 'ios' ? 'https://apps.apple.com' : 'https://play.google.com'}
 								className="glass-button-primary inline-block text-lg px-8 py-4 rounded-full hover:scale-105 transition-all font-medium"
@@ -343,7 +343,7 @@ export default function Home() {
 						<TimelineStep
 							number="1"
 							title="Continuous Recording"
-							description="Your watch starts recording automatically, maintaining a rolling 5-minute buffer."
+							description="Your device starts recording automatically, maintaining a rolling 5-minute buffer."
 						/>
 						<TimelineStep
 							number="2"
