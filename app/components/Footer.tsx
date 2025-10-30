@@ -20,7 +20,7 @@ export default function Footer() {
 								height={32}
 								className="drop-shadow-glow"
 							/>
-							<span className="font-bold bg-gradient-to-r from-white to-stone-300 bg-clip-text text-transparent" style={{ fontFamily: 'Gamay, sans-serif', fontStretch: '200%', fontSize: '20px', lineHeight: '32px' }}>
+							<span className="font-bold bg-gradient-to-r from-white to-stone-300 bg-clip-text text-transparent" style={{ fontFamily: 'Halyard Text, sans-serif', fontSize: '20px', lineHeight: '32px' }}>
 								Save That Again
 							</span>
 						</Link>

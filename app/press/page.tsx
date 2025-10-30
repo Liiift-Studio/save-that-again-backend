@@ -14,7 +14,7 @@ export default function PressPage() {
 					<Link 
 						href="/" 
 						className="text-xl font-bold hover:opacity-80 transition-opacity"
-						style={{ fontFamily: 'Gamay', fontStretch: '200%' }}
+						style={{ fontFamily: 'Halyard Text' }}
 					>
 						SAVE THAT AGAIN
 					</Link>

@@ -28,7 +28,7 @@ export default function PrivacyPage() {
 								className="drop-shadow-glow"
 								priority
 							/>
-							<span className="font-bold bg-gradient-to-r from-white to-stone-300 bg-clip-text text-transparent" style={{ fontFamily: 'Gamay, sans-serif', fontStretch: '200%', fontSize: '20px', lineHeight: '32px' }}>
+							<span className="font-bold bg-gradient-to-r from-white to-stone-300 bg-clip-text text-transparent" style={{ fontFamily: 'Halyard Text, sans-serif', fontSize: '20px', lineHeight: '32px' }}>
 								Save That Again
 							</span>
 						</Link>
@@ -44,7 +44,7 @@ export default function PrivacyPage() {
 
 			{/* Main Content */}
 			<main className="relative z-10 max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 flex-1">
-				<h1 className="text-4xl md:text-5xl font-bold mb-4 uppercase tracking-wide">Privacy Policy</h1>
+				<h1 className="text-4xl md:text-5xl font-bold mb-4">Privacy Policy</h1>
 				<p className="text-stone-400 mb-8">Last updated: {new Date().toLocaleDateString()}</p>
 				
 				<div className="space-y-8 text-stone-300">
