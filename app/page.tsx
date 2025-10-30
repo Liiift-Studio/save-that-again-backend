@@ -59,7 +59,7 @@ export default function Home() {
 							className="drop-shadow-glow"
 							priority
 						/>
-						<span className="hidden md:inline-block font-black" style={{ fontFamily: 'Daith, sans-serif', fontSize: '20px', lineHeight: '32px', color: 'var(--foreground)' }}>
+						<span className="hidden md:inline-block font-black" style={{ fontFamily: 'Halyard Text, sans-serif', fontSize: '20px', lineHeight: '32px', color: 'var(--foreground)' }}>
 							Save That Again
 						</span>
 					</div>
