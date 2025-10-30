@@ -93,7 +93,7 @@ export default function Home() {
 							moment again
 						</span>
 					</h1>
-					<p className="text-xl md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed" style={{ color: '#6b6457' }}>
+					<p className="text-xl md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed text-stone-300">
 							Continuous audio buffering for your Pixel Watch. Capture the last 5 minutes with a single tap.
 						</p>
 						<div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -122,7 +122,7 @@ export default function Home() {
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4" style={{ color: 'var(--foreground)' }}>
 						Real <span className="text-gradient">Moments</span>
 					</h2>
-					<p className="text-xl text-center mb-16 max-w-2xl mx-auto" style={{ color: '#6b6457' }}>
+					<p className="text-xl text-center mb-16 max-w-2xl mx-auto text-stone-300">
 						Life's most precious moments happen when you least expect them.
 					</p>
 					
@@ -162,7 +162,7 @@ export default function Home() {
 						<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--foreground)' }}>
 							How <span className="text-gradient">It Works</span>
 						</h2>
-						<p className="text-xl max-w-3xl mx-auto" style={{ color: '#6b6457' }}>
+						<p className="text-xl max-w-3xl mx-auto text-stone-300">
 							Experience the power of rolling buffer technology. 
 							Never miss a moment again with continuous background recording.
 						</p>
@@ -174,7 +174,7 @@ export default function Home() {
 							<h3 className="text-3xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
 								The <span className="text-gradient">Buffer</span>
 							</h3>
-							<p className="text-xl mb-8 leading-relaxed" style={{ color: '#6b6457' }}>
+							<p className="text-xl mb-8 leading-relaxed text-stone-300">
 								Your Pixel Watch continuously records a rolling 5-minute buffer. 
 								When something amazing happens, just tap to save it permanently.
 							</p>
@@ -207,7 +207,7 @@ export default function Home() {
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4" style={{ color: 'var(--foreground)' }}>
 						Powerful <span className="text-gradient">Features</span>
 					</h2>
-					<p className="text-xl text-center mb-16 max-w-2xl mx-auto" style={{ color: '#6b6457' }}>
+					<p className="text-xl text-center mb-16 max-w-2xl mx-auto text-stone-300">
 						Everything you need to capture and manage your audio moments.
 					</p>
 					
@@ -246,7 +246,7 @@ export default function Home() {
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4" style={{ color: 'var(--foreground)' }}>
 						Simple <span className="text-gradient">Pricing</span>
 					</h2>
-					<p className="text-xl text-center mb-16 max-w-2xl mx-auto" style={{ color: '#6b6457' }}>
+					<p className="text-xl text-center mb-16 max-w-2xl mx-auto text-stone-300">
 						Start free. Upgrade when you're ready for more.
 					</p>
 					
@@ -300,7 +300,7 @@ export default function Home() {
 							emitHover={emitCTAHover}
 						/>
 					</div>
-					<p className="text-center mt-8" style={{ color: '#9b9186' }}>
+					<p className="text-center mt-8 text-stone-400">
 						All accounts start free. No credit card required.
 					</p>
 				</div>
@@ -314,7 +314,7 @@ export default function Home() {
 						<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
 							Download for {userDevice === 'ios' ? 'iOS' : 'Android'}
 						</h2>
-						<p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: '#6b6457' }}>
+						<p className="text-xl mb-8 max-w-2xl mx-auto text-stone-300">
 								Get Save That Again on your {userDevice === 'ios' ? 'iPhone and Apple Watch' : 'Android device and Wear OS watch'}.
 							</p>
 							<a
@@ -369,7 +369,7 @@ export default function Home() {
 						<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
 							Ready to capture every moment?
 						</h2>
-						<p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: '#6b6457' }}>
+						<p className="text-xl mb-8 max-w-2xl mx-auto text-stone-300">
 							Start using Save That Again today and never miss an important moment again.
 						</p>
 						<Link 
@@ -402,7 +402,7 @@ function FeatureCard({ title, description }: { title: string; description: strin
 	return (
 		<div className="glass-card p-6 rounded-2xl hover:scale-105 transition-all group">
 			<h3 className="text-2xl font-bold mb-3 text-gradient">{title}</h3>
-			<p className="leading-relaxed" style={{ color: '#6b6457' }}>{description}</p>
+			<p className="leading-relaxed text-stone-300">{description}</p>
 		</div>
 	);
 }
@@ -411,7 +411,7 @@ function UseCaseCard({ title, description }: { title: string; description: strin
 	return (
 		<div className="glass-card p-6 rounded-2xl hover:scale-105 transition-all group">
 			<h3 className="text-2xl font-bold mb-3 text-gradient">{title}</h3>
-			<p className="leading-relaxed" style={{ color: '#6b6457' }}>{description}</p>
+			<p className="leading-relaxed text-stone-300">{description}</p>
 		</div>
 	);
 }
@@ -426,7 +426,7 @@ function TimelineStep({ number, title, description }: { number: string; title: s
 			</div>
 			<div className="pt-1">
 				<h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--foreground)' }}>{title}</h3>
-				<p className="text-lg leading-relaxed" style={{ color: '#6b6457' }}>{description}</p>
+				<p className="text-lg leading-relaxed text-stone-300">{description}</p>
 			</div>
 		</div>
 	);
@@ -463,13 +463,13 @@ function PricingCard({
 			<h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--foreground)' }}>{name}</h3>
 			<div className="mb-6">
 				<span className="text-5xl font-bold" style={{ color: 'var(--foreground)' }}>{price}</span>
-				<span className="ml-2" style={{ color: '#9b9186' }}>/ {period}</span>
+				<span className="ml-2 text-stone-400">/ {period}</span>
 			</div>
 			<ul className="space-y-3 mb-8">
 				{features.map((feature, index) => (
 					<li key={index} className="flex items-start gap-2">
 						<span className="mt-1" style={{ color: 'var(--accent-blue)' }}>✓</span>
-						<span style={{ color: '#6b6457' }}>{feature}</span>
+						<span className="text-stone-300">{feature}</span>
 					</li>
 				))}
 			</ul>
