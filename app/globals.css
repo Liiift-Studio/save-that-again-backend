@@ -20,13 +20,13 @@
 @import "tailwindcss";
 
 :root {
-	--background: #e8e4df;
-	--foreground: #4a4542;
-	--card-bg: #f5f2ed;
-	--border-grey: #d4cfc4;
-	--border-blue: #b8a991;
-	--accent-blue: #9d8d7a;
-	--accent-blue-hover: #8a7968;
+	--background: #000000;
+	--foreground: #e8e4df;
+	--card-bg: #1a1814;
+	--border-grey: #3a3530;
+	--border-blue: #c9b896;
+	--accent-blue: #c9b896;
+	--accent-blue-hover: #dcc7a4;
 }
 
 @theme inline {

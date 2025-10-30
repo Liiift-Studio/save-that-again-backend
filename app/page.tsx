@@ -38,33 +38,13 @@ export default function Home() {
 	};
 
 	return (
-		<div className="min-h-screen overflow-hidden" style={{ background: 'var(--background)', color: 'var(--foreground)' }}>
+		<div className="min-h-screen bg-black text-white overflow-hidden">
 			{/* Interactive Particle Background with Blobs */}
 			<InteractiveBackground />
 			
-			{/* Background Image Overlay */}
-			<div 
-				className="fixed inset-0 pointer-events-none"
-				style={{
-					zIndex: 11
-				}}
-			>
-				<Image
-					src="/026.png"
-					alt=""
-					fill
-					style={{
-						objectFit: 'cover',
-						opacity: 0.15
-					}}
-					priority
-					quality={90}
-				/>
-			</div>
-			
 			{/* Gradient Background */}
-			<div className="fixed inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(circle at 50% 0%, rgba(184, 169, 145, 0.15), transparent)' }} />
-			<div className="fixed inset-0 pointer-events-none z-0" style={{ background: 'linear-gradient(to bottom right, rgba(157, 141, 122, 0.05), transparent, rgba(138, 121, 104, 0.05))' }} />
+			<div className="fixed inset-0 bg-gradient-radial from-stone-900/20 via-black to-black pointer-events-none z-0" />
+			<div className="fixed inset-0 bg-gradient-to-br from-neutral-800/5 via-transparent to-stone-800/5 pointer-events-none z-0" />
 			
 			{/* Navigation */}
 			<nav className="relative z-50 glass-nav">
