@@ -71,7 +71,7 @@ export default function PressPage() {
 						
 						<div className="space-y-6">
 							<div>
-								<h3 className="text-xl font-semibold mb-3 text-stone-400">Brand Assets</h3>
+								<h3 className="text-xl font-semibold pb-3 text-stone-400">Brand Assets</h3>
 								<ul className="space-y-2 text-stone-300">
 									<li className="flex items-start">
 										<span className="text-stone-400 mr-3">•</span>
@@ -89,8 +89,8 @@ export default function PressPage() {
 							</div>
 
 							<div>
-								<h3 className="text-xl font-semibold mb-3 text-stone-400">Screenshots & Media</h3>
-								<p className="text-stone-300 mb-3">
+								<h3 className="text-xl font-semibold pb-3 text-stone-400">Screenshots & Media</h3>
+								<p className="text-stone-300 pb-3">
 									High-resolution screenshots and promotional materials available upon request.
 								</p>
 								<p className="text-stone-300">
@@ -99,7 +99,7 @@ export default function PressPage() {
 							</div>
 
 							<div>
-								<h3 className="text-xl font-semibold mb-3 text-stone-400">Company Information</h3>
+								<h3 className="text-xl font-semibold pb-3 text-stone-400">Company Information</h3>
 								<p className="text-stone-300">
 									For detailed company information, product specifications, or to schedule an interview, please reach out to our press team.
 								</p>

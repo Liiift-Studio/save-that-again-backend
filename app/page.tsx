@@ -88,7 +88,9 @@ export default function Home() {
 				<div className="max-w-5xl mx-auto text-center">
 				<div className={`transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
 					<h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight" style={{ color: 'var(--foreground)' }}>
-						Never miss a
+						<span className="">
+							Never miss a&nbsp;
+						</span>
 						<span className="block text-gradient">
 							moment again
 						</span>
@@ -401,7 +403,7 @@ function FeatureItem({ text }: { text: string }) {
 function FeatureCard({ title, description }: { title: string; description: string }) {
 	return (
 		<div className="glass-card p-6 rounded-2xl hover:scale-105 transition-all group">
-			<h3 className="text-2xl font-bold mb-3 text-gradient">{title}</h3>
+			<h3 className="text-2xl font-bold pb-3 text-gradient">{title}</h3>
 			<p className="leading-relaxed text-stone-300">{description}</p>
 		</div>
 	);
@@ -410,7 +412,7 @@ function FeatureCard({ title, description }: { title: string; description: strin
 function UseCaseCard({ title, description }: { title: string; description: string }) {
 	return (
 		<div className="glass-card p-6 rounded-2xl hover:scale-105 transition-all group">
-			<h3 className="text-2xl font-bold mb-3 text-gradient">{title}</h3>
+			<h3 className="text-2xl font-bold pb-3 text-gradient">{title}</h3>
 			<p className="leading-relaxed text-stone-300">{description}</p>
 		</div>
 	);
@@ -455,7 +457,7 @@ function PricingCard({
 		<div className={`${popular ? 'glass-card-popular' : 'glass-card'} p-8 rounded-2xl relative ${popular ? 'ring-2' : ''}`} style={popular ? { borderColor: 'var(--accent-blue)' } : {}}>
 			{popular && (
 				<div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-					<span style={{background: "var(--accent-blue)", color: "white"}} className="uppercase glass-button-primary px-4 py-1 rounded-full text-sm font-bold">
+					<span style={{background: "var(--accent-blue)", color: "var(--background)"}} className="uppercase glass-button-primary px-4 py-1 rounded-full text-sm font-bold">
 						Most Popular
 					</span>
 				</div>

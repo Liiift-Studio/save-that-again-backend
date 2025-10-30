@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import InteractiveBackground from '../components/InteractiveBackground';
+import Footer from '../components/Footer';
 
 export default function LoginPage() {
 	const [email, setEmail] = useState('');
@@ -88,7 +89,7 @@ export default function LoginPage() {
 			<div className="relative z-10 flex items-center justify-center min-h-[calc(100vh-80px)] p-4">
 				<div className="max-w-md w-full glass-card p-8 rounded-2xl">
 					<div className="text-center mb-8">
-						<h1 className="text-3xl font-bold mb-2">Welcome Back</h1>
+						<h1 className="text-2xl font-bold mb-2">Welcome Back</h1>
 						<p className="text-gray-400">Login to access your audio clips</p>
 					</div>
 
@@ -175,6 +176,9 @@ export default function LoginPage() {
 					</div>
 				</div>
 			</div>
+
+			{/* Footer */}
+			<Footer />
 		</div>
 	);
 }

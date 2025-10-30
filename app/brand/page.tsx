@@ -1,6 +1,7 @@
 // Internal brand package and style guide - not linked publicly but accessible via URL
 import Link from 'next/link';
 import InteractiveBackground from '../components/InteractiveBackground';
+import Footer from '../components/Footer';
 
 export default function BrandPage() {
 	return (
@@ -304,7 +305,7 @@ export default function BrandPage() {
 						
 						<div className="space-y-6">
 							<div>
-								<h3 className="text-xl font-semibold mb-3 text-stone-400">Do's</h3>
+								<h3 className="text-xl font-semibold pb-3 text-stone-400">Do's</h3>
 								<ul className="space-y-2 text-stone-300">
 									<li className="flex items-start">
 										<span className="text-green-400 mr-3">✓</span>
@@ -330,7 +331,7 @@ export default function BrandPage() {
 							</div>
 
 							<div>
-								<h3 className="text-xl font-semibold mb-3 text-stone-400">Don'ts</h3>
+								<h3 className="text-xl font-semibold pb-3 text-stone-400">Don'ts</h3>
 								<ul className="space-y-2 text-stone-300">
 									<li className="flex items-start">
 										<span className="text-red-400 mr-3">✗</span>
@@ -448,6 +449,9 @@ export default function BrandPage() {
 					</section>
 				</div>
 			</main>
+
+			{/* Footer */}
+			<Footer />
 		</div>
 	);
 }

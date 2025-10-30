@@ -50,19 +50,20 @@ p, span, div, a, li, label {
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Daith', -apple-system, BlinkMacSystemFont, sans-serif;
+	text-wrap: balance;
 }
 
 h1 {
 	font-weight: 800;
 	font-optical-sizing: auto;
-	font-size: 96px;
+	font-size: 64px;
 	line-height: 1.15;
 }
 
 h2 {
 	font-weight: 600;
 	font-optical-sizing: auto;
-	font-size: 72px;
+	font-size: 48px;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 	word-spacing: 0.05em;

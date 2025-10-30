@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import InteractiveBackground from '../components/InteractiveBackground';
+import Footer from '../components/Footer';
 
 export default function SignupPage() {
 	const [email, setEmail] = useState('');
@@ -182,6 +183,9 @@ export default function SignupPage() {
 					</div>
 				</div>
 			</div>
+
+			{/* Footer */}
+			<Footer />
 		</div>
 	);
 }

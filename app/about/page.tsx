@@ -65,7 +65,7 @@ export default function AboutPage() {
 						<BufferDemo />
 
 						<div className="mt-6">
-							<h3 className="text-lg font-semibold mb-3">Key Features</h3>
+							<h3 className="text-lg font-semibold pb-3">Key Features</h3>
 							<ul className="list-disc list-inside space-y-2 ml-4">
 								<li>Runs quietly in the background on your Pixel Watch</li>
 								<li>Press the button to save the last 30 seconds</li>

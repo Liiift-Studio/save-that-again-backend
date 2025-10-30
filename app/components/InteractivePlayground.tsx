@@ -122,7 +122,7 @@ export default function InteractivePlayground() {
 	return (
 		<div className="glass-card p-8 rounded-2xl">
 			<div className="mb-6 text-center">
-				<h3 className="text-3xl font-bold mb-3 text-gradient">
+				<h3 className="text-3xl font-bold pb-3 text-gradient">
 					Interactive Practice Mode
 				</h3>
 				<p className="text-gray-400">
