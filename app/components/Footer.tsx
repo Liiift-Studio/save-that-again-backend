@@ -34,7 +34,7 @@ export default function Footer() {
 
 					{/* Product Column */}
 					<div className="text-center md:text-left">
-						<h3 className="font-semibold mb-4">Product</h3>
+						<h5 className="font-semibold mb-4">Product</h5>
 						<ul className="space-y-2 text-sm">
 							<li>
 								<Link href="/about" className="text-stone-400 hover:text-white transition-colors">
@@ -51,7 +51,7 @@ export default function Footer() {
 
 					{/* Legal Column */}
 					<div className="text-center md:text-left">
-						<h3 className="font-semibold mb-4">Legal</h3>
+						<h5 className="font-semibold mb-4">Legal</h5>
 						<ul className="space-y-2 text-sm">
 							<li>
 								<Link href="/privacy" className="text-stone-400 hover:text-white transition-colors">

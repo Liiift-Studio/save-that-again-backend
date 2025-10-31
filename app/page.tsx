@@ -87,15 +87,22 @@ export default function Home() {
 			<section className="relative pt-32 pb-24 px-6 z-10">
 				<div className="max-w-5xl mx-auto text-center">
 				<div className={`transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-					<h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight" style={{ color: 'var(--foreground)' }}>
-						<span className="">
+					<h1 
+						className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight" 
+						style={{ 
+							color: 'var(--foreground)',
+							fontSize: 'clamp(3rem, 9vw, 12rem)',
+							lineHeight: '1'
+						}}
+					>
+						<span>
 							Never miss a&nbsp;
 						</span>
 						<span className="block text-gradient">
 							moment again
 						</span>
 					</h1>
-					<p className="text-xl md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed text-stone-300">
+					<p className="text-xl md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed text-stone-300 opacity-70">
 						Continuous audio buffering for your smart watch, phone, tablet, and online. Capture the last 5 minutes with a single tap.
 					</p>
 						<div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -124,7 +131,7 @@ export default function Home() {
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4" style={{ color: 'var(--foreground)' }}>
 						Real <span className="text-gradient">Moments</span>
 					</h2>
-					<p className="text-xl text-center mb-16 max-w-2xl mx-auto text-stone-300">
+					<p className="text-xl text-center mb-16 max-w-2xl mx-auto text-stone-300 opacity-70">
 						Life's most precious moments happen when you least expect them.
 					</p>
 					
@@ -164,7 +171,7 @@ export default function Home() {
 						<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--foreground)' }}>
 							How <span className="text-gradient">It Works</span>
 						</h2>
-						<p className="text-xl max-w-3xl mx-auto text-stone-300">
+						<p className="text-xl max-w-3xl mx-auto text-stone-300 opacity-70">
 							Experience the power of rolling buffer technology. 
 							Never miss a moment again with continuous background recording.
 						</p>
@@ -209,7 +216,7 @@ export default function Home() {
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4" style={{ color: 'var(--foreground)' }}>
 						Powerful <span className="text-gradient">Features</span>
 					</h2>
-					<p className="text-xl text-center mb-16 max-w-2xl mx-auto text-stone-300">
+					<p className="text-xl text-center mb-16 max-w-2xl mx-auto text-stone-300 opacity-70">
 						Everything you need to capture and manage your audio moments.
 					</p>
 					
@@ -248,7 +255,7 @@ export default function Home() {
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4" style={{ color: 'var(--foreground)' }}>
 						Simple <span className="text-gradient">Pricing</span>
 					</h2>
-					<p className="text-xl text-center mb-16 max-w-2xl mx-auto text-stone-300">
+					<p className="text-xl text-center mb-16 max-w-2xl mx-auto text-stone-300 opacity-70">
 						Start free. Upgrade when you're ready for more.
 					</p>
 					
@@ -371,7 +378,7 @@ export default function Home() {
 						<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--foreground)' }}>
 							Ready to capture every moment?
 						</h2>
-						<p className="text-xl mb-8 max-w-2xl mx-auto text-stone-300">
+						<p className="text-xl mb-8 max-w-2xl mx-auto text-stone-300 opacity-70">
 							Start using Save That Again today and never miss an important moment again.
 						</p>
 						<Link 
@@ -428,7 +435,7 @@ function TimelineStep({ number, title, description }: { number: string; title: s
 			</div>
 			<div className="pt-1">
 				<h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--foreground)' }}>{title}</h3>
-				<p className="text-lg leading-relaxed text-stone-300">{description}</p>
+				<p className="text-lg leading-relaxed text-stone-300 opacity-70">{description}</p>
 			</div>
 		</div>
 	);

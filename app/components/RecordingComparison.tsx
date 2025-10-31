@@ -124,7 +124,7 @@ export default function RecordingComparison() {
 		<div className="glass-card p-8 rounded-2xl">
 			<div className="mb-8 text-center">
 				<h3 className="text-3xl font-bold pb-3 text-gradient">
-					Traditional Recording vs. Buffer Recording
+					Traditional vs. Buffer Recording
 				</h3>
 				<p className="text-gray-400">
 					See the difference between starting a recording manually and using a rolling buffer
@@ -135,8 +135,8 @@ export default function RecordingComparison() {
 				{/* Traditional Recording */}
 				<div className="glass-card-small p-6 rounded-xl">
 					<div className="flex items-center gap-3 mb-4">
-						<div className="w-3 h-3 rounded-full bg-red-500" />
-						<h4 className="text-xl font-bold">Traditional Recording</h4>
+						{/* <div className="w-3 h-3 rounded-full bg-red-500" /> */}
+						<h4 className="text-xl font-bold">Traditional</h4>
 					</div>
 
 					<div className="relative h-20 bg-black/40 rounded-lg border border-gray-700 mb-4 overflow-hidden">
@@ -171,7 +171,7 @@ export default function RecordingComparison() {
 					<div className="mb-4">
 					<button
 						onClick={traditionalRecording ? stopTraditionalRecording : startTraditionalRecording}
-						className={`w-full px-4 py-2 rounded-lg font-medium transition-all ${
+						className={`w-full px-4 py-3 rounded-lg font-medium transition-all ${
 							traditionalRecording
 								? 'bg-stone-600/80 hover:bg-stone-600'
 								: 'glass-button hover:scale-105'
@@ -199,8 +199,8 @@ export default function RecordingComparison() {
 				{/* Buffer Recording */}
 				<div className="glass-card-small p-6 rounded-xl border-2 border-stone-500/30">
 					<div className="flex items-center gap-3 mb-4">
-						<div className="w-3 h-3 rounded-full bg-stone-500 animate-pulse" />
-						<h4 className="text-xl font-bold">Buffer Recording</h4>
+						{/* <div className="w-3 h-3 rounded-full bg-stone-500 animate-pulse" /> */}
+						<h4 className="text-xl font-bold">Buffer </h4>
 						<span className="text-xs bg-stone-500/20 px-2 py-1 rounded-full">Always On</span>
 					</div>
 

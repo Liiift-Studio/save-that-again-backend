@@ -236,7 +236,7 @@ export default function BufferDemo() {
 		return (
 			<div className="glass-card p-8 rounded-xl">
 				<div className="mb-6">
-					<h3 className="text-xl font-semibold mb-2 text-stone-400">Buffer Demo</h3>
+					{/* <h3 className="text-xl font-semibold mb-2 text-stone-400">Buffer Demo</h3> */}
 					<p className="text-sm text-gray-400">
 						Experience real audio recording with a rolling 30-second buffer. Click below to grant microphone access.
 					</p>
@@ -423,15 +423,15 @@ export default function BufferDemo() {
 				</button>
 			</div>
 
-			<button
+			{/* <button
 				onClick={stopRecording}
 				className="w-full glass-button px-4 py-2 rounded-lg text-sm hover:scale-105 transition-all"
 			>
 				Stop Demo
-			</button>
+			</button> */}
 
 			{/* Explanation */}
-			<div className="mt-4 p-4 bg-stone-950/20 rounded-lg border border-stone-900/30">
+			<div className="mt-4 bg-stone-950/20 rounded-lg border border-stone-900/30">
 				<p className="text-xs text-gray-400">
 					<strong>How it works:</strong> Your microphone is recording into a rolling 30-second buffer. 
 					The waveform shows your real-time audio, and the blue timeline segments pulse with your audio levels. 

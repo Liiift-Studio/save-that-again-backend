@@ -45,12 +45,12 @@ export default function AboutPage() {
 
 			{/* Main Content */}
 			<main className="relative z-10 max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 flex-1">
-				<h1 className="text-4xl md:text-5xl font-bold mb-8 uppercase tracking-wide">About Save That Again</h1>
+				<h1 className="text-4xl md:text-5xl font-bold mb-8 tracking-wide">About Save That Again</h1>
 				
 				<div className="space-y-8 text-stone-300">
 					<section>
-						<h2 className="text-2xl font-bold mb-4">Never Miss a Moment</h2>
-						<p className="leading-relaxed">
+						{/* <h2 className="text-2xl font-bold mb-4">Never Miss a Moment</h2> */}
+						<p className="leading-relaxed text-lg">
 							Save That Again is a revolutionary audio capture app for your smart watch, phone, tablet, and online that solves a common problem: capturing something important that was just said. Whether it's a brilliant idea, a funny quote, or an important instruction, Save That Again ensures you never lose those precious moments.
 						</p>
 					</section>
