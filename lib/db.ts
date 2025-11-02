@@ -13,6 +13,12 @@ export interface User {
 	auth_provider: string;
 	profile_picture: string | null;
 	created_at: Date;
+	data_sharing_consent?: boolean;
+	analytics_consent?: boolean;
+	marketing_consent?: boolean;
+	last_settings_update?: Date | null;
+	account_deletion_requested?: Date | null;
+	account_deletion_scheduled?: Date | null;
 }
 
 export interface AudioClip {
@@ -182,5 +188,112 @@ export async function countUserClips(userId: string): Promise<number> {
 	} catch (error) {
 		console.error('Error counting user clips:', error);
 		return 0;
+	}
+}
+
+/**
+ * Delete a user account and all associated data
+ */
+export async function deleteUserAccount(userId: string): Promise<boolean> {
+	try {
+		// The CASCADE constraint will automatically delete all audio_clips
+		const result = await sql`
+			DELETE FROM users
+			WHERE id = ${userId}
+		`;
+		return (result.rowCount ?? 0) > 0;
+	} catch (error) {
+		console.error('Error deleting user account:', error);
+		return false;
+	}
+}
+
+/**
+ * Request account deletion (30-day grace period)
+ */
+export async function requestAccountDeletion(userId: string): Promise<boolean> {
+	try {
+		const now = new Date();
+		const scheduledDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000); // 30 days from now
+		
+		const result = await sql`
+			UPDATE users
+			SET account_deletion_requested = ${now.toISOString()},
+				account_deletion_scheduled = ${scheduledDate.toISOString()}
+			WHERE id = ${userId}
+		`;
+		return (result.rowCount ?? 0) > 0;
+	} catch (error) {
+		console.error('Error requesting account deletion:', error);
+		return false;
+	}
+}
+
+/**
+ * Cancel account deletion request
+ */
+export async function cancelAccountDeletion(userId: string): Promise<boolean> {
+	try {
+		const result = await sql`
+			UPDATE users
+			SET account_deletion_requested = NULL,
+				account_deletion_scheduled = NULL
+			WHERE id = ${userId}
+		`;
+		return (result.rowCount ?? 0) > 0;
+	} catch (error) {
+		console.error('Error canceling account deletion:', error);
+		return false;
+	}
+}
+
+/**
+ * Update user privacy settings
+ */
+export async function updatePrivacySettings(
+	userId: string,
+	dataSharing: boolean,
+	analytics: boolean,
+	marketing: boolean
+): Promise<boolean> {
+	try {
+		const now = new Date();
+		const result = await sql`
+			UPDATE users
+			SET data_sharing_consent = ${dataSharing},
+				analytics_consent = ${analytics},
+				marketing_consent = ${marketing},
+				last_settings_update = ${now.toISOString()}
+			WHERE id = ${userId}
+		`;
+		return (result.rowCount ?? 0) > 0;
+	} catch (error) {
+		console.error('Error updating privacy settings:', error);
+		return false;
+	}
+}
+
+/**
+ * Get all user data for export (GDPR compliance)
+ */
+export async function getUserDataForExport(userId: string): Promise<{
+	user: User | null;
+	clips: AudioClip[];
+} | null> {
+	try {
+		const user = await getUserById(userId);
+		if (!user) {
+			return null;
+		}
+		
+		const clips = await getAudioClipsByUserId(userId, 1000); // Get all clips
+		
+		return {
+			user,
+			clips
+		};
+	} catch (error) {
+		console.error('Error getting user data for export:', error);
+		return null;
 	}
 }

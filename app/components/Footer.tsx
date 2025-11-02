@@ -46,6 +46,11 @@ export default function Footer() {
 									Your Clips
 								</Link>
 							</li>
+							<li>
+								<Link href="/settings" className="text-stone-400 hover:text-white transition-colors">
+									Settings
+								</Link>
+							</li>
 						</ul>
 					</div>
 
@@ -61,6 +66,11 @@ export default function Footer() {
 							<li>
 								<Link href="/terms" className="text-stone-400 hover:text-white transition-colors">
 									Terms of Service
+								</Link>
+							</li>
+							<li>
+								<Link href="/cookies" className="text-stone-400 hover:text-white transition-colors">
+									Cookie Policy
 								</Link>
 							</li>
 							<li>
