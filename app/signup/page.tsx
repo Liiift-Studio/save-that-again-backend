@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -16,45 +16,64 @@ export default function SignupPage() {
 	const [error, setError] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const router = useRouter();
+	const googleButtonRef = useRef<HTMLDivElement>(null);
 
-	const handleGoogleLogin = async () => {
+	useEffect(() => {
+		// Initialize Google Sign-In when component mounts
+		const initializeGoogleSignIn = () => {
+			const { google } = window as any;
+			if (google && googleButtonRef.current) {
+				google.accounts.id.initialize({
+					client_id: '10264037893-arkrv2vpalginmd7aquc0m28he9h0dun.apps.googleusercontent.com',
+					callback: handleGoogleResponse,
+				});
+
+				google.accounts.id.renderButton(
+					googleButtonRef.current,
+					{
+						theme: 'filled_black',
+						size: 'large',
+						width: googleButtonRef.current.offsetWidth,
+						text: 'continue_with',
+					}
+				);
+			}
+		};
+
+		// Wait for Google Sign-In library to load
+		if (typeof window !== 'undefined') {
+			if ((window as any).google) {
+				initializeGoogleSignIn();
+			} else {
+				window.addEventListener('load', initializeGoogleSignIn);
+				return () => window.removeEventListener('load', initializeGoogleSignIn);
+			}
+		}
+	}, []);
+
+	const handleGoogleResponse = async (response: any) => {
 		setError('');
 		setIsLoading(true);
 
 		try {
-			const { google } = window as any;
-			await google.accounts.id.initialize({
-				client_id: '10264037893-arkrv2vpalginmd7aquc0m28he9h0dun.apps.googleusercontent.com',
-				callback: async (response: any) => {
-					try {
-						const res = await fetch('/api/auth/google', {
-							method: 'POST',
-							headers: { 'Content-Type': 'application/json' },
-							body: JSON.stringify({ idToken: response.credential }),
-						});
-
-						const data = await res.json();
-
-						if (res.ok) {
-							// Store token
-							localStorage.setItem('auth_token', data.token);
-							localStorage.setItem('user', JSON.stringify(data.user));
-							// Redirect to clips page
-							router.push('/clips');
-						} else {
-							setError(data.error || 'Google signup failed');
-							setIsLoading(false);
-						}
-					} catch (err) {
-						setError('Network error during Google signup. Please try again.');
-						setIsLoading(false);
-					}
-				},
+			const res = await fetch('/api/auth/google', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ idToken: response.credential }),
 			});
 
-			google.accounts.id.prompt();
+			const data = await res.json();
+
+			if (res.ok) {
+				localStorage.setItem('auth_token', data.token);
+				localStorage.setItem('user', JSON.stringify(data.user));
+				router.push('/clips');
+			} else {
+				setError(data.error || 'Google Sign-In failed');
+				setIsLoading(false);
+			}
 		} catch (err) {
-			setError('Failed to initialize Google Sign-In. Please try again.');
+			setError('Network error. Please try again.');
 			setIsLoading(false);
 		}
 	};
@@ -77,10 +96,8 @@ export default function SignupPage() {
 			const data = await response.json();
 
 			if (response.ok) {
-				// Store token
 				localStorage.setItem('auth_token', data.token);
 				localStorage.setItem('user', JSON.stringify(data.user));
-				// Redirect to clips page
 				router.push('/clips');
 			} else {
 				setError(data.error || 'Signup failed');
@@ -94,14 +111,11 @@ export default function SignupPage() {
 
 	return (
 		<div className="min-h-screen bg-black text-white overflow-hidden">
-			{/* Interactive Background */}
 			<InteractiveBackground />
 			
-			{/* Gradient Background */}
 			<div className="fixed inset-0 bg-gradient-radial from-stone-900/20 via-black to-black pointer-events-none z-0" />
 			<div className="fixed inset-0 bg-gradient-to-br from-neutral-800/5 via-transparent to-stone-800/5 pointer-events-none z-0" />
 			
-			{/* Navigation */}
 			<nav className="relative z-50 glass-nav">
 				<div className="max-w-7xl mx-auto px-6 py-4">
 					<div className="flex items-center justify-between">
@@ -130,7 +144,6 @@ export default function SignupPage() {
 				</div>
 			</nav>
 
-			{/* Main Content */}
 			<div className="relative z-10 flex items-center justify-center min-h-[calc(100vh-80px)] p-4">
 				<div className="max-w-md w-full glass-card p-8 rounded-2xl">
 					<div className="text-center mb-8">
@@ -138,24 +151,8 @@ export default function SignupPage() {
 						<p className="text-stone-400">Create your account</p>
 					</div>
 
-					{/* Google Sign-In Button */}
-					<button
-						onClick={handleGoogleLogin}
-						disabled={isLoading}
-						className="w-full glass-button font-semibold py-3 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 hover:scale-105 transition-transform"
-					>
-						<svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-							<g fill="none" fillRule="evenodd">
-								<path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/>
-								<path d="M9.003 18c2.43 0 4.467-.806 5.956-2.18L12.05 13.56c-.806.54-1.836.86-3.047.86-2.344 0-4.328-1.584-5.036-3.711H.96v2.332C2.44 15.983 5.485 18 9.003 18z" fill="#34A853"/>
-								<path d="M3.964 10.712c-.18-.54-.282-1.117-.282-1.71 0-.593.102-1.17.282-1.71V4.96H.957C.347 6.175 0 7.55 0 9.002c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC04"/>
-								<path d="M9.003 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.464.891 11.427 0 9.002 0 5.485 0 2.44 2.017.96 4.958L3.967 7.29c.708-2.127 2.692-3.71 5.036-3.71z" fill="#EA4335"/>
-							</g>
-						</svg>
-						Continue with Google
-					</button>
+					<div ref={googleButtonRef} className="w-full mb-6"></div>
 
-					{/* OR Divider */}
 					<div className="relative my-6">
 						<div className="absolute inset-0 flex items-center">
 							<div className="w-full border-t border-stone-700"></div>
@@ -253,7 +250,6 @@ export default function SignupPage() {
 				</div>
 			</div>
 
-			{/* Footer */}
 			<Footer />
 		</div>
 	);
