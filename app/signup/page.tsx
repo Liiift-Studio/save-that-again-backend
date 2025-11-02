@@ -17,8 +17,46 @@ export default function SignupPage() {
 	const [isLoading, setIsLoading] = useState(false);
 	const router = useRouter();
 
-	const handleGoogleLogin = () => {
-		window.location.href = '/api/auth/google';
+	const handleGoogleLogin = async () => {
+		setError('');
+		setIsLoading(true);
+
+		try {
+			const { google } = window as any;
+			await google.accounts.id.initialize({
+				client_id: '10264037893-arkrv2vpalginmd7aquc0m28he9h0dun.apps.googleusercontent.com',
+				callback: async (response: any) => {
+					try {
+						const res = await fetch('/api/auth/google', {
+							method: 'POST',
+							headers: { 'Content-Type': 'application/json' },
+							body: JSON.stringify({ idToken: response.credential }),
+						});
+
+						const data = await res.json();
+
+						if (res.ok) {
+							// Store token
+							localStorage.setItem('auth_token', data.token);
+							localStorage.setItem('user', JSON.stringify(data.user));
+							// Redirect to clips page
+							router.push('/clips');
+						} else {
+							setError(data.error || 'Google signup failed');
+							setIsLoading(false);
+						}
+					} catch (err) {
+						setError('Network error during Google signup. Please try again.');
+						setIsLoading(false);
+					}
+				},
+			});
+
+			google.accounts.id.prompt();
+		} catch (err) {
+			setError('Failed to initialize Google Sign-In. Please try again.');
+			setIsLoading(false);
+		}
 	};
 
 	const handleSubmit = async (e: FormEvent) => {

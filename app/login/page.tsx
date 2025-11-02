@@ -47,9 +47,53 @@ export default function LoginPage() {
 		}
 	};
 
-	const handleGoogleLogin = () => {
-		// Redirect to Google OAuth endpoint
-		window.location.href = '/api/auth/google';
+	const handleGoogleLogin = async () => {
+		setError('');
+		setIsLoading(true);
+
+		try {
+			// Load Google Sign-In library
+			const { google } = window as any;
+			if (!google) {
+				throw new Error('Google Sign-In library not loaded');
+			}
+
+			// Initialize Google Sign-In
+			await google.accounts.id.initialize({
+				client_id: '10264037893-arkrv2vpalginmd7aquc0m28he9h0dun.apps.googleusercontent.com',
+				callback: async (response: any) => {
+					try {
+						// Send ID token to backend
+						const res = await fetch('/api/auth/google', {
+							method: 'POST',
+							headers: { 'Content-Type': 'application/json' },
+							body: JSON.stringify({ idToken: response.credential }),
+						});
+
+						const data = await res.json();
+
+						if (res.ok) {
+							// Store token and redirect
+							localStorage.setItem('auth_token', data.token);
+							localStorage.setItem('user', JSON.stringify(data.user));
+							router.push('/clips');
+						} else {
+							setError(data.error || 'Google Sign-In failed');
+							setIsLoading(false);
+						}
+					} catch (err) {
+						setError('Network error. Please try again.');
+						setIsLoading(false);
+					}
+				},
+			});
+
+			// Show Google One Tap or Sign-In button
+			google.accounts.id.prompt();
+		} catch (err) {
+			setError('Google Sign-In failed. Please try again.');
+			setIsLoading(false);
+		}
 	};
 
 	return (
