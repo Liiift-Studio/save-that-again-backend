@@ -98,6 +98,28 @@ export default function LoginPage() {
 						<p className="text-gray-400">Login to access your audio clips</p>
 					</div>
 
+					{/* Google Sign In Button */}
+					<button
+						onClick={handleGoogleLogin}
+						disabled={isLoading}
+						className="w-full glass-button flex items-center justify-center gap-3 py-3 px-4 rounded-lg hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
+					>
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M19.8055 10.2292C19.8055 9.55423 19.7501 8.86673 19.6271 8.20423H10.2V12.0459H15.5746C15.3284 13.3209 14.5254 14.3959 13.3663 15.0875V17.5875H16.7255C18.7716 15.7042 19.8055 13.1625 19.8055 10.2292Z" fill="#4285F4"/>
+							<path d="M10.2002 19.9998C12.8048 19.9998 14.9664 19.1081 16.7294 17.5873L13.3702 15.0873C12.3948 15.6956 11.1418 16.0414 10.2002 16.0414C7.69404 16.0414 5.59404 14.1414 4.72321 11.6498H1.25488V14.2331C3.04571 17.7998 6.45488 19.9998 10.2002 19.9998Z" fill="#34A853"/>
+							<path d="M4.71963 11.6496C4.25963 10.3746 4.25963 8.97127 4.71963 7.69627V5.11294H1.25546C-0.418204 8.43877 -0.418204 12.5071 1.25546 15.8329L4.71963 11.6496Z" fill="#FBBC04"/>
+							<path d="M10.2002 3.95805C11.2218 3.94555 12.2048 4.33388 12.9418 5.04555L15.9155 2.07138C14.0287 0.306384 11.5533 -0.467283 10.2002 -0.466617C6.45488 -0.466617 3.04571 1.73338 1.25488 5.11255L4.71904 7.69588C5.59404 5.20838 7.69404 3.95805 10.2002 3.95805Z" fill="#EA4335"/>
+						</svg>
+						Continue with Google
+					</button>
+
+					{/* Divider */}
+					<div className="flex items-center my-6">
+						<div className="flex-1 border-t border-stone-700"></div>
+						<span className="px-4 text-sm text-gray-400">OR</span>
+						<div className="flex-1 border-t border-stone-700"></div>
+					</div>
+
 				<form onSubmit={handleSubmit} className="space-y-6">
 					<div>
 						<label
@@ -170,28 +192,6 @@ export default function LoginPage() {
 						{isLoading ? 'Logging in...' : 'Login'}
 					</button>
 				</form>
-
-					{/* Divider */}
-					<div className="flex items-center my-6">
-						<div className="flex-1 border-t border-stone-700"></div>
-						<span className="px-4 text-sm text-gray-400">OR</span>
-						<div className="flex-1 border-t border-stone-700"></div>
-					</div>
-
-					{/* Google Sign In Button */}
-					<button
-						onClick={handleGoogleLogin}
-						disabled={isLoading}
-						className="w-full glass-button flex items-center justify-center gap-3 py-3 px-4 rounded-lg hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
-					>
-						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M19.8055 10.2292C19.8055 9.55423 19.7501 8.86673 19.6271 8.20423H10.2V12.0459H15.5746C15.3284 13.3209 14.5254 14.3959 13.3663 15.0875V17.5875H16.7255C18.7716 15.7042 19.8055 13.1625 19.8055 10.2292Z" fill="#4285F4"/>
-							<path d="M10.2002 19.9998C12.8048 19.9998 14.9664 19.1081 16.7294 17.5873L13.3702 15.0873C12.3948 15.6956 11.1418 16.0414 10.2002 16.0414C7.69404 16.0414 5.59404 14.1414 4.72321 11.6498H1.25488V14.2331C3.04571 17.7998 6.45488 19.9998 10.2002 19.9998Z" fill="#34A853"/>
-							<path d="M4.71963 11.6496C4.25963 10.3746 4.25963 8.97127 4.71963 7.69627V5.11294H1.25546C-0.418204 8.43877 -0.418204 12.5071 1.25546 15.8329L4.71963 11.6496Z" fill="#FBBC04"/>
-							<path d="M10.2002 3.95805C11.2218 3.94555 12.2048 4.33388 12.9418 5.04555L15.9155 2.07138C14.0287 0.306384 11.5533 -0.467283 10.2002 -0.466617C6.45488 -0.466617 3.04571 1.73338 1.25488 5.11255L4.71904 7.69588C5.59404 5.20838 7.69404 3.95805 10.2002 3.95805Z" fill="#EA4335"/>
-						</svg>
-						Continue with Google
-					</button>
 
 					<div className="mt-6 text-center">
 						<p className="text-gray-400">
