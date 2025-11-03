@@ -7,6 +7,7 @@ import InteractiveBackground from './components/InteractiveBackground';
 import Footer from './components/Footer';
 import BufferDemo from './components/BufferDemo';
 import RecordingComparison from './components/RecordingComparison';
+import StructuredData from './components/StructuredData';
 
 export default function Home() {
 	const [mounted, setMounted] = useState(false);
@@ -38,9 +39,11 @@ export default function Home() {
 	};
 
 	return (
-		<div className="min-h-screen bg-black text-white overflow-hidden">
-			{/* Interactive Particle Background with Blobs */}
-			<InteractiveBackground />
+		<>
+			<StructuredData />
+			<div className="min-h-screen bg-black text-white overflow-hidden">
+				{/* Interactive Particle Background with Blobs */}
+				<InteractiveBackground />
 			
 			{/* Gradient Background */}
 			<div className="fixed inset-0 bg-gradient-radial from-stone-900/20 via-black to-black pointer-events-none z-0" />
@@ -394,7 +397,8 @@ export default function Home() {
 			</section>
 
 			<Footer />
-		</div>
+			</div>
+		</>
 	);
 }
 
