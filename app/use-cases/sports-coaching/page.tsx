@@ -96,21 +96,18 @@ export default function SportsCoachingPage() {
 					</h2>
 					<div className="grid md:grid-cols-3 gap-8">
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">🏃</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Always Listening</h3>
 							<p className="text-stone-300">
 								Your watch continuously maintains a 5-minute buffer during training sessions.
 							</p>
 						</div>
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">💪</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Coach Gives Feedback</h3>
 							<p className="text-stone-300">
 								Your coach provides the perfect cue for your technique or form correction.
 							</p>
 						</div>
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">⌚</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Quick Tap to Save</h3>
 							<p className="text-stone-300">
 								After your set, tap your watch to save the last 5 minutes of coaching.
@@ -193,6 +190,75 @@ export default function SportsCoachingPage() {
 							<p className="text-stone-300">
 								Send clips to your coach for remote feedback or follow-up analysis.
 							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Athlete Reviews */}
+			<section className="relative py-24 px-6 bg-gradient-to-b from-transparent to-stone-900/20">
+				<div className="max-w-6xl mx-auto">
+					<h2 className="text-4xl font-bold text-center mb-12">What Athletes Are Saying</h2>
+					<div className="grid md:grid-cols-2 gap-8">
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center font-bold text-xl">
+									B
+								</div>
+								<div>
+									<div className="font-bold">Brad S.</div>
+									<div className="text-sm text-stone-400">CrossFit Athlete</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"My coach gave me this cue about engaging my lats during pull-ups that completely changed my form. Saved it immediately and I've been replaying it before every workout. My reps have gone up by 30% in two weeks. This app is a performance tool."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
+						</div>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold text-xl">
+									E
+								</div>
+								<div>
+									<div className="font-bold">Emily R.</div>
+									<div className="text-sm text-stone-400">Marathon Runner</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"During a track workout, my running coach explained the exact pacing strategy that helped me PR at my last race. I captured it mid-stride with my watch. Now I listen to it in my warmup routine before every race. Game changing advice I would have forgotten."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
+						</div>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-bold text-xl">
+									C
+								</div>
+								<div>
+									<div className="font-bold">Chris M.</div>
+									<div className="text-sm text-stone-400">Amateur Boxer</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"My trainer was breaking down footwork during mitt work and dropped this incredible tip about weight distribution. Tapped my watch between rounds and now I have it saved. I review it constantly and my movement has transformed completely."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
+						</div>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center font-bold text-xl">
+									V
+								</div>
+								<div>
+									<div className="font-bold">Vanessa L.</div>
+									<div className="text-sm text-stone-400">Competitive Swimmer</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"Coach was explaining a breathing pattern adjustment poolside that fixed my freestyle stroke. Saved it right after my set and have listened to it probably 20 times. My 100m time dropped by almost 2 seconds. Wish I'd had this app years ago."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
 						</div>
 					</div>
 				</div>

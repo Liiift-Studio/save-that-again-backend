@@ -119,14 +119,12 @@ export default function UseCasesPage() {
 								href={useCase.href}
 								className="glass-card p-8 rounded-2xl hover:scale-105 transition-all group"
 							>
-								<div className="text-6xl mb-6">{useCase.icon}</div>
 								<h3 className="text-2xl font-bold mb-4 text-gradient">{useCase.title}</h3>
 								<p className="text-lg text-stone-300 leading-relaxed mb-6">
 									{useCase.description}
 								</p>
 								<div className="flex items-center gap-2 text-sm font-medium group-hover:gap-3 transition-all">
 									<span>Learn More</span>
-									<span>→</span>
 								</div>
 							</Link>
 						))}
@@ -142,21 +140,18 @@ export default function UseCasesPage() {
 					</h2>
 					<div className="grid md:grid-cols-3 gap-8">
 						<div className="glass-card p-8 rounded-2xl text-center">
-							<div className="text-5xl mb-4">🎙️</div>
 							<h3 className="text-2xl font-bold mb-4">Always Recording</h3>
 							<p className="text-stone-300 leading-relaxed">
 								Continuous 5-minute rolling buffer captures everything that's happening around you.
 							</p>
 						</div>
 						<div className="glass-card p-8 rounded-2xl text-center">
-							<div className="text-5xl mb-4">⌚</div>
 							<h3 className="text-2xl font-bold mb-4">One-Tap Save</h3>
 							<p className="text-stone-300 leading-relaxed">
 								When something special happens, just tap your watch to save the last 5 minutes.
 							</p>
 						</div>
 						<div className="glass-card p-8 rounded-2xl text-center">
-							<div className="text-5xl mb-4">☁️</div>
 							<h3 className="text-2xl font-bold mb-4">Cloud Sync</h3>
 							<p className="text-stone-300 leading-relaxed">
 								Access your captured moments from any device, anytime, anywhere.

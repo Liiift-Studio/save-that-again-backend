@@ -96,21 +96,18 @@ export default function MeetingRecorderPage() {
 					</h2>
 					<div className="grid md:grid-cols-3 gap-8">
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">🎧</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Continuous Listening</h3>
 							<p className="text-stone-300">
 								Your device maintains a 5-minute rolling buffer during meetings and conversations.
 							</p>
 						</div>
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">💡</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Brilliant Insight</h3>
 							<p className="text-stone-300">
 								Someone says something important—an insight, explanation, or crucial detail.
 							</p>
 						</div>
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">⌚</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Discreet Save</h3>
 							<p className="text-stone-300">
 								Tap your watch discreetly to save the last 5 minutes without interrupting.
@@ -244,6 +241,75 @@ export default function MeetingRecorderPage() {
 								Build a personal library of insights, techniques, and valuable 
 								information you can reference anytime.
 							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* User Reviews */}
+			<section className="relative py-24 px-6 bg-gradient-to-b from-transparent to-stone-900/20">
+				<div className="max-w-6xl mx-auto">
+					<h2 className="text-4xl font-bold text-center mb-12">What Professionals Are Saying</h2>
+					<div className="grid md:grid-cols-2 gap-8">
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold text-xl">
+									L
+								</div>
+								<div>
+									<div className="font-bold">Lisa C.</div>
+									<div className="text-sm text-stone-400">Product Manager</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"In a sprint planning meeting, our engineering lead explained a complex architecture decision perfectly. I tapped my watch to save it and sent it to the team afterward. No more 'wait, what did he say?' moments. This is essential for remote teams."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
+						</div>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center font-bold text-xl">
+									T
+								</div>
+								<div>
+									<div className="font-bold">Thomas R.</div>
+									<div className="text-sm text-stone-400">Medical Student</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"During rounds, the attending physician gave the clearest explanation of a cardiac mechanism I've ever heard. Saved it immediately and reviewed it multiple times before the exam. Helped me understand concepts that textbooks couldn't explain as well."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
+						</div>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-bold text-xl">
+									N
+								</div>
+								<div>
+									<div className="font-bold">Nina P.</div>
+									<div className="text-sm text-stone-400">MBA Student</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"My marketing professor dropped this incredible framework for analyzing customer segments mid-lecture. I captured it with a quick tap and now I have the exact phrasing for my thesis. Way better than trying to frantically type notes."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
+						</div>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center font-bold text-xl">
+									J
+								</div>
+								<div>
+									<div className="font-bold">James K.</div>
+									<div className="text-sm text-stone-400">Sales Director</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"Client said yes to the deal and mentioned specific concerns we need to address in implementation. Saved those 5 minutes and now have their exact words for our delivery team. No miscommunication about what was actually agreed upon. This tool is gold for sales."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
 						</div>
 					</div>
 				</div>

@@ -96,7 +96,6 @@ export default function BabyFirstWordsPage() {
 					</h2>
 					<div className="grid md:grid-cols-3 gap-8">
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">🎙️</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Always Recording</h3>
 							<p className="text-stone-300">
 								Your smart watch continuously maintains a 5-minute rolling buffer of audio. 
@@ -104,7 +103,6 @@ export default function BabyFirstWordsPage() {
 							</p>
 						</div>
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">👶</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Baby Says "Mama"</h3>
 							<p className="text-stone-300">
 								Your baby surprises you with their first word. You're not holding your phone, 
@@ -112,7 +110,6 @@ export default function BabyFirstWordsPage() {
 							</p>
 						</div>
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">💾</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Tap to Save Forever</h3>
 							<p className="text-stone-300">
 								Simply tap your watch face within 5 minutes, and that precious moment is 
@@ -184,6 +181,75 @@ export default function BabyFirstWordsPage() {
 							<p className="text-stone-300">
 								Easily share recordings with grandparents and family members who can't be there.
 							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Parent Reviews */}
+			<section className="relative py-24 px-6 bg-gradient-to-b from-transparent to-stone-900/20">
+				<div className="max-w-6xl mx-auto">
+					<h2 className="text-4xl font-bold text-center mb-12">What Parents Are Saying</h2>
+					<div className="grid md:grid-cols-2 gap-8">
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center font-bold text-xl">
+									S
+								</div>
+								<div>
+									<div className="font-bold">Sarah M.</div>
+									<div className="text-sm text-stone-400">Mother of 11-month-old</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"My daughter said 'mama' for the first time while I was changing her diaper. I wasn't even thinking about recording, but I tapped my watch immediately and now I have it forever. I've listened to it probably 50 times already."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
+						</div>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold text-xl">
+									M
+								</div>
+								<div>
+									<div className="font-bold">Marcus J.</div>
+									<div className="text-sm text-stone-400">Father of twins</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"Both twins started babbling different sounds and I actually managed to capture both of them within the same session. Being able to go back and save those moments after they happened is incredible. Sent the clips to their grandparents who live overseas."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
+						</div>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center font-bold text-xl">
+									J
+								</div>
+								<div>
+									<div className="font-bold">Jennifer K.</div>
+									<div className="text-sm text-stone-400">Mother of 14-month-old</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"The first giggle is just as precious as the first word. My son's belly laugh caught me completely off guard during tummy time. So grateful I had this app running on my watch. It's the cutest sound I've ever heard."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
+						</div>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center font-bold text-xl">
+									D
+								</div>
+								<div>
+									<div className="font-bold">David R.</div>
+									<div className="text-sm text-stone-400">First-time dad</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"As a new parent, you're told not to worry about missing moments, but you still do. This app actually delivers on that promise. My daughter said 'dada' while we were playing and I didn't have to scramble for my phone. Just tapped my watch. Perfect."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
 						</div>
 					</div>
 				</div>

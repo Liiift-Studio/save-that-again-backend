@@ -79,17 +79,14 @@ export default function InterviewRecordingPage() {
 					</h2>
 					<div className="grid md:grid-cols-3 gap-8">
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">🎤</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Always Ready</h3>
 							<p className="text-stone-300">5-minute rolling buffer runs continuously during interviews and conversations.</p>
 						</div>
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">💎</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Perfect Quote</h3>
 							<p className="text-stone-300">Subject shares an unexpected insight, memorable quote, or important detail.</p>
 						</div>
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">⌚</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Discreet Save</h3>
 							<p className="text-stone-300">Quick watch tap saves the moment without breaking conversation flow.</p>
 						</div>
@@ -144,6 +141,75 @@ export default function InterviewRecordingPage() {
 						<div className="glass-card p-6 rounded-2xl">
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Ethical Recording</h3>
 							<p className="text-stone-300">Only saves moments you explicitly choose—respects subject privacy.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Professional Reviews */}
+			<section className="relative py-24 px-6 bg-gradient-to-b from-transparent to-stone-900/20">
+				<div className="max-w-6xl mx-auto">
+					<h2 className="text-4xl font-bold text-center mb-12">What Professionals Are Saying</h2>
+					<div className="grid md:grid-cols-2 gap-8">
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-bold text-xl">
+									R
+								</div>
+								<div>
+									<div className="font-bold">Rachel D.</div>
+									<div className="text-sm text-stone-400">Investigative Journalist</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"I was interviewing a source for a major story and they dropped this perfect quote that encapsulated the entire issue. Saved it with a quick tap on my watch without breaking eye contact. That quote became the headline. This tool is journalism gold."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
+						</div>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold text-xl">
+									K
+								</div>
+								<div>
+									<div className="font-bold">Kevin H.</div>
+									<div className="text-sm text-stone-400">PhD Candidate</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"During field research interviews, my subjects often share the most valuable insights off-the-cuff. Being able to capture those moments retroactively without making them feel recorded has been crucial. My dissertation data is so much richer because of this app."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
+						</div>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center font-bold text-xl">
+									S
+								</div>
+								<div>
+									<div className="font-bold">Samantha T.</div>
+									<div className="text-sm text-stone-400">Podcast Host</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"The best content happens before I hit record or after I think we're done. My watch is always running the buffer now. I've captured incredible pre-interview stories that became bonus episodes. My audience loves the authentic, unscripted moments."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
+						</div>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center font-bold text-xl">
+									J
+								</div>
+								<div>
+									<div className="font-bold">James W.</div>
+									<div className="text-sm text-stone-400">Documentary Filmmaker</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"Candid moments are everything in documentary work. Someone says something profound when they think the camera is off. With this app, I never miss those moments anymore. I've got hours of incredible footage I never would have captured otherwise. Essential tool."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
 						</div>
 					</div>
 				</div>

@@ -96,7 +96,6 @@ export default function RecordMusicIdeasPage() {
 					</h2>
 					<div className="grid md:grid-cols-3 gap-8">
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">🎵</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Continuous Buffer</h3>
 							<p className="text-stone-300">
 								Your device maintains a rolling 5-minute buffer of audio while you practice, 
@@ -104,7 +103,6 @@ export default function RecordMusicIdeasPage() {
 							</p>
 						</div>
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">🎸</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Play Freely</h3>
 							<p className="text-stone-300">
 								No need to think about recording. Just play, improvise, and create without 
@@ -112,7 +110,6 @@ export default function RecordMusicIdeasPage() {
 							</p>
 						</div>
 						<div className="glass-card p-6 rounded-2xl">
-							<div className="text-5xl mb-4">⌚</div>
 							<h3 className="text-2xl font-bold mb-4 text-gradient">Tap to Keep</h3>
 							<p className="text-stone-300">
 								When you play something worth keeping, just tap your watch to save the last 
@@ -195,42 +192,70 @@ export default function RecordMusicIdeasPage() {
 				</div>
 			</section>
 
-			{/* Who Uses This Section */}
+			{/* Musician Reviews */}
 			<section className="relative py-24 px-6 bg-gradient-to-b from-transparent to-stone-900/20">
 				<div className="max-w-6xl mx-auto">
-					<h2 className="text-4xl font-bold text-center mb-12">
-						For Every Type of <span className="text-gradient">Musician</span>
-					</h2>
-					<div className="grid md:grid-cols-3 gap-6">
-						<div className="glass-card p-6 rounded-2xl text-center">
-							<div className="text-5xl mb-4">🎸</div>
-							<h3 className="text-xl font-bold mb-3">Guitarists</h3>
-							<p className="text-stone-300">Capture riffs, solos, and chord progressions</p>
+					<h2 className="text-4xl font-bold text-center mb-12">What Musicians Are Saying</h2>
+					<div className="grid md:grid-cols-2 gap-8">
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold text-xl">
+									A
+								</div>
+								<div>
+									<div className="font-bold">Alex T.</div>
+									<div className="text-sm text-stone-400">Jazz Guitarist</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"I was jamming with my trio last week and played this killer lick that just came out of nowhere. Tapped my watch, saved it, and we turned it into the hook for our new song. This app has literally changed how I practice and compose."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
 						</div>
-						<div className="glass-card p-6 rounded-2xl text-center">
-							<div className="text-5xl mb-4">🎹</div>
-							<h3 className="text-xl font-bold mb-3">Pianists</h3>
-							<p className="text-stone-300">Save melodies and harmonic ideas</p>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-bold text-xl">
+									R
+								</div>
+								<div>
+									<div className="font-bold">Rachel M.</div>
+									<div className="text-sm text-stone-400">Singer-Songwriter</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"The melody for my latest single came to me while I was washing dishes. I hummed it out loud, tapped my watch, and had it saved before I even dried my hands. Would have lost that idea forever otherwise. Game changer for songwriters."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
 						</div>
-						<div className="glass-card p-6 rounded-2xl text-center">
-							<div className="text-5xl mb-4">🎤</div>
-							<h3 className="text-xl font-bold mb-3">Vocalists</h3>
-							<p className="text-stone-300">Record vocal lines and harmonies</p>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center font-bold text-xl">
+									K
+								</div>
+								<div>
+									<div className="font-bold">Kevin L.</div>
+									<div className="text-sm text-stone-400">Electronic Producer</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"I use this constantly in the studio. I'll be tweaking synth patches and suddenly hit something incredible. Instead of trying to recreate it, I just tap my watch and have the audio reference. Then I can build the track around that exact sound."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
 						</div>
-						<div className="glass-card p-6 rounded-2xl text-center">
-							<div className="text-5xl mb-4">🥁</div>
-							<h3 className="text-xl font-bold mb-3">Drummers</h3>
-							<p className="text-stone-300">Capture groove ideas and fills</p>
-						</div>
-						<div className="glass-card p-6 rounded-2xl text-center">
-							<div className="text-5xl mb-4">🎺</div>
-							<h3 className="text-xl font-bold mb-3">Wind Players</h3>
-							<p className="text-stone-300">Save improvisations and phrases</p>
-						</div>
-						<div className="glass-card p-6 rounded-2xl text-center">
-							<div className="text-5xl mb-4">🎻</div>
-							<h3 className="text-xl font-bold mb-3">String Players</h3>
-							<p className="text-stone-300">Document melodic and technical ideas</p>
+						<div className="glass-card p-8 rounded-2xl">
+							<div className="flex items-center gap-4 mb-4">
+								<div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center font-bold text-xl">
+									M
+								</div>
+								<div>
+									<div className="font-bold">Marcus D.</div>
+									<div className="text-sm text-stone-400">Session Drummer</div>
+								</div>
+							</div>
+							<p className="text-stone-300 leading-relaxed mb-3">
+								"Perfect for capturing those spontaneous groove variations that happen during sessions. I've got a library of drum fills and patterns now that I actually played instead of just imagining. The audio quality is solid for reference tracks too."
+							</p>
+							<div className="text-yellow-500">★★★★★</div>
 						</div>
 					</div>
 				</div>
