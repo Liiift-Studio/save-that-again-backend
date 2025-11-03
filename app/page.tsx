@@ -134,11 +134,11 @@ export default function Home() {
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4" style={{ color: 'var(--foreground)' }}>
 						Real <span className="text-gradient">Moments</span>
 					</h2>
-					<p className="text-xl text-center mb-16 max-w-2xl mx-auto text-stone-300 opacity-70">
+					<p className="text-xl text-center mb-16 max-w-2xl mx-auto text-stone-300 opacity-50">
 						Life's most precious moments happen when you least expect them.
 					</p>
 					
-					<div className="grid md:grid-cols-3 gap-6">
+					<div className="grid md:grid-cols-3 gap-6 mb-8">
 						<UseCaseCard
 							title="First Words"
 							description="Your child says 'mama' for the first time. You weren't ready to record, but now you'll have it forever."
@@ -163,6 +163,15 @@ export default function Home() {
 							title="Heartfelt Confessions"
 							description="Words of love, appreciation, or encouragement that you want to treasure forever."
 						/>
+					</div>
+					
+					<div className="text-center">
+						<Link 
+							href="/use-cases"
+							className="glass-button text-lg px-8 py-4 rounded-full hover:scale-105 transition-all inline-block font-medium"
+						>
+							Browse All Use Cases
+						</Link>
 					</div>
 				</div>
 			</section>

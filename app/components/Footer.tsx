@@ -42,6 +42,11 @@ export default function Footer() {
 								</Link>
 							</li>
 							<li>
+								<Link href="/use-cases" className="text-stone-400 hover:text-white transition-colors">
+									Use Cases
+								</Link>
+							</li>
+							<li>
 								<Link href="/clips" className="text-stone-400 hover:text-white transition-colors">
 									Your Clips
 								</Link>
