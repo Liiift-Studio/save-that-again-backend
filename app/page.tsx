@@ -142,26 +142,32 @@ export default function Home() {
 						<UseCaseCard
 							title="First Words"
 							description="Your child says 'mama' for the first time. You weren't ready to record, but now you'll have it forever."
+							href="/use-cases/baby-first-words"
 						/>
 						<UseCaseCard
 							title="Musical Moments"
 							description="A friend improvises an incredible melody. Capture the spontaneous creativity that can never be recreated."
+							href="/use-cases/record-music-ideas"
 						/>
 						<UseCaseCard
 							title="Brilliant Ideas"
 							description="During a conversation, someone shares a game-changing insight. Never lose those lightbulb moments again."
+							href="/use-cases/meeting-recorder"
 						/>
 						<UseCaseCard
 							title="Genuine Laughter"
 							description="That perfect joke or hilarious moment that had everyone in stitches. Relive the joy whenever you want."
+							href="/use-cases/interview-recording"
 						/>
 						<UseCaseCard
 							title="Learning Moments"
 							description="An expert explains something complex perfectly. Save their explanation for future reference."
+							href="/use-cases/language-learning"
 						/>
 						<UseCaseCard
 							title="Heartfelt Confessions"
 							description="Words of love, appreciation, or encouragement that you want to treasure forever."
+							href="/use-cases/sports-coaching"
 						/>
 					</div>
 					
@@ -429,11 +435,25 @@ function FeatureCard({ title, description }: { title: string; description: strin
 	);
 }
 
-function UseCaseCard({ title, description }: { title: string; description: string }) {
-	return (
-		<div className="glass-card p-6 rounded-2xl hover:scale-105 transition-all group">
+function UseCaseCard({ title, description, href }: { title: string; description: string; href?: string }) {
+	const content = (
+		<>
 			<h3 className="text-2xl font-bold pb-3 text-gradient">{title}</h3>
 			<p className="leading-relaxed text-stone-300">{description}</p>
+		</>
+	);
+
+	if (href) {
+		return (
+			<Link href={href} className="glass-card p-6 rounded-2xl hover:scale-105 transition-all group block cursor-pointer">
+				{content}
+			</Link>
+		);
+	}
+
+	return (
+		<div className="glass-card p-6 rounded-2xl hover:scale-105 transition-all group">
+			{content}
 		</div>
 	);
 }
