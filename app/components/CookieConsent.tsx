@@ -37,7 +37,7 @@ export default function CookieConsent() {
 				<div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
 					<div className="flex-1">
 						<h3 className="text-lg font-bold mb-2">We Value Your Privacy</h3>
-						<p className="text-sm text-stone-300">
+						<p className="text-sm text-stone-300" style={{marginLeft: '0'}}>
 							We use cookies to analyze site traffic and improve your experience. 
 							By accepting, you agree to our use of cookies for analytics.{' '}
 							<Link href="/cookies" className="text-gradient hover:underline">
