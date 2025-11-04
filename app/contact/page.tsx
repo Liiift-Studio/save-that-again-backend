@@ -44,7 +44,7 @@ export default function ContactPage() {
 
 			{/* Main Content */}
 			<main className="relative z-10 max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 flex-1">
-				<h1 className="text-4xl md:text-5xl font-bold mb-8 uppercase tracking-wide">Contact Us</h1>
+				<h1 className="font-bold mb-8 uppercase tracking-wide">Contact Us</h1>
 				
 				<div className="space-y-8 text-stone-300">
 					<section>
@@ -59,13 +59,13 @@ export default function ContactPage() {
 						<div className="space-y-6">
 							<div>
 								<h3 className="font-semibold mb-2 flex items-center gap-2">
-									<svg className="w-5 h-5 text-[#2196f3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<svg className="w-5 h-5 text-[#c9b896]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
 									</svg>
 									Email Support
 								</h3>
 								<p className="text-stone-400 ml-7">
-									<a href="mailto:support@savethatagain.com" className="text-[#2196f3] hover:text-[#1976d2]">
+									<a href="mailto:support@savethatagain.com" className="text-[#c9b896] hover:text-[#dcc7a4] transition-colors">
 										support@savethatagain.com
 									</a>
 								</p>
@@ -76,14 +76,14 @@ export default function ContactPage() {
 
 							<div>
 								<h3 className="font-semibold mb-2 flex items-center gap-2">
-									<svg className="w-5 h-5 text-[#2196f3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<svg className="w-5 h-5 text-[#c9b896]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
 									</svg>
 									Documentation
 								</h3>
 								<p className="text-stone-400 ml-7">
 									Check out our{' '}
-									<Link href="/about" className="text-[#2196f3] hover:text-[#1976d2]">
+									<Link href="/about" className="text-[#c9b896] hover:text-[#dcc7a4] transition-colors">
 										About page
 									</Link>{' '}
 									for more information about how Save That Again works.
@@ -92,17 +92,17 @@ export default function ContactPage() {
 
 							<div>
 								<h3 className="font-semibold mb-2 flex items-center gap-2">
-									<svg className="w-5 h-5 text-[#2196f3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<svg className="w-5 h-5 text-[#c9b896]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
 									</svg>
 									Legal
 								</h3>
 								<p className="text-stone-400 ml-7">
-									<Link href="/privacy" className="text-[#2196f3] hover:text-[#1976d2]">
+									<Link href="/privacy" className="text-[#c9b896] hover:text-[#dcc7a4] transition-colors">
 										Privacy Policy
 									</Link>
 									{' • '}
-									<Link href="/terms" className="text-[#2196f3] hover:text-[#1976d2]">
+									<Link href="/terms" className="text-[#c9b896] hover:text-[#dcc7a4] transition-colors">
 										Terms of Service
 									</Link>
 								</p>
@@ -123,7 +123,7 @@ export default function ContactPage() {
 						</ul>
 						<p className="text-stone-400 mt-4">
 							Send bug reports to:{' '}
-							<a href="mailto:bugs@savethatagain.com" className="text-[#2196f3] hover:text-[#1976d2]">
+							<a href="mailto:bugs@savethatagain.com" className="text-[#c9b896] hover:text-[#dcc7a4] transition-colors">
 								bugs@savethatagain.com
 							</a>
 						</p>
@@ -133,7 +133,7 @@ export default function ContactPage() {
 						<h2 className="text-2xl font-bold mb-4">Business Inquiries</h2>
 						<p className="text-stone-400">
 							For partnership opportunities, press inquiries, or other business matters, please contact:{' '}
-							<a href="mailto:business@savethatagain.com" className="text-[#2196f3] hover:text-[#1976d2]">
+							<a href="mailto:business@savethatagain.com" className="text-[#c9b896] hover:text-[#dcc7a4] transition-colors">
 								business@savethatagain.com
 							</a>
 						</p>
