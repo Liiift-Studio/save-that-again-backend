@@ -202,12 +202,12 @@ export default function Home() {
 								The <span className="text-gradient">Buffer</span>
 							</h3>
 							<p className="text-xl mb-8 leading-relaxed text-stone-300">
-								Your smart watch continuously records a rolling 5-minute buffer. 
-								When something amazing happens, just tap to save it permanently.
+								Your device is always recording in a rolling buffer. 
+								When something amazing happens, hold the button to select how much time you want to save.
 							</p>
 							<div className="space-y-4">
 								<FeatureItem text="Always recording in the background" />
-								<FeatureItem text="Instant save with one tap" />
+								<FeatureItem text="Hold to select time duration" />
 								<FeatureItem text="Privacy-first: only saved clips are uploaded" />
 								<FeatureItem text="Automatic cloud sync" />
 							</div>
@@ -260,8 +260,8 @@ export default function Home() {
 							description="Works seamlessly on smart watches, phones, tablets, and online with a beautiful, intuitive interface."
 						/>
 						<FeatureCard
-							title="One-Tap Save"
-							description="No fumbling with controls. Just tap the save button when the moment strikes."
+							title="Hold to Select"
+							description="No fumbling with controls. Hold the save button to choose exactly how much time you want to capture."
 						/>
 					</div>
 				</div>
@@ -368,17 +368,17 @@ export default function Home() {
 						<TimelineStep
 							number="1"
 							title="Continuous Recording"
-							description="Your device starts recording automatically, maintaining a rolling 5-minute buffer."
+							description="Your device starts recording automatically, maintaining a rolling buffer."
 						/>
 						<TimelineStep
 							number="2"
-							title="Tap to Save"
-							description="When something important happens, simply tap the save button on your watch."
+							title="Hold to Save"
+							description="When something important happens, hold the save button to select how much time you want to capture from the buffer."
 						/>
 						<TimelineStep
 							number="3"
 							title="Automatic Upload"
-							description="The last 5 minutes are instantly saved and uploaded to your secure cloud storage."
+							description="Your selected clip is instantly saved and uploaded to your secure cloud storage."
 						/>
 						<TimelineStep
 							number="4"
