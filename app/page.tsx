@@ -94,7 +94,7 @@ export default function Home() {
 						className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight" 
 						style={{ 
 							color: 'var(--foreground)',
-							fontSize: 'clamp(3rem, 9vw, 12rem)',
+							fontSize: 'clamp(3rem, 9vw, 8rem)',
 							lineHeight: '1'
 						}}
 					>
