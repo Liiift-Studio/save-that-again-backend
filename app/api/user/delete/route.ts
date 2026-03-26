@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { extractBearerToken, getUserFromToken } from '@/lib/auth';
 import { deleteUserAccount, requestAccountDeletion, cancelAccountDeletion, getUserById } from '@/lib/db';
-import { del } from '@vercel/blob';
+
 
 /**
  * DELETE /api/user/delete

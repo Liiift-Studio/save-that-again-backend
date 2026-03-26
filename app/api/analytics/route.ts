@@ -2,17 +2,17 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { sql } from '@vercel/postgres';
-import { getUserFromToken } from '../../../lib/auth';
+import { extractBearerToken, getUserFromToken } from '../../../lib/auth';
 
 export async function GET(request: NextRequest) {
 	try {
 		// Verify authentication
 		const authHeader = request.headers.get('authorization');
-		if (!authHeader?.startsWith('Bearer ')) {
+		const token = extractBearerToken(authHeader);
+		if (!token) {
 			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 		}
 
-		const token = authHeader.substring(7);
 		const user = await getUserFromToken(token);
 		if (!user) {
 			return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
@@ -20,12 +20,12 @@ export async function GET(request: NextRequest) {
 
 		// Get analytics for this user
 		const { rows } = await sql`
-			SELECT 
+			SELECT
 				COUNT(DISTINCT c.id) as total_clips,
 				SUM(c.duration) as total_duration_ms,
 				MIN(c.created_at) as first_clip,
 				MAX(c.created_at) as last_clip
-			FROM clips c
+			FROM audio_clips c
 			WHERE c.user_id = ${user.id}
 		`;
 
@@ -58,11 +58,11 @@ export async function POST(request: NextRequest) {
 	try {
 		// Verify authentication
 		const authHeader = request.headers.get('authorization');
-		if (!authHeader?.startsWith('Bearer ')) {
+		const token = extractBearerToken(authHeader);
+		if (!token) {
 			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 		}
 
-		const token = authHeader.substring(7);
 		const user = await getUserFromToken(token);
 		if (!user) {
 			return NextResponse.json({ error: 'Invalid token' }, { status: 401 });

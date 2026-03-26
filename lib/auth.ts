@@ -3,7 +3,15 @@ import { sign, verify } from 'jsonwebtoken';
 import { OAuth2Client } from 'google-auth-library';
 import { getUserByEmail, getUserById, createUser, createGoogleUser, getUserByGoogleId, type User } from './db';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
+function getJwtSecret(): string {
+	const secret = process.env.JWT_SECRET;
+	if (!secret) {
+		throw new Error('JWT_SECRET environment variable is required');
+	}
+	return secret;
+}
+
+const JWT_SECRET = getJwtSecret();
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
 const SALT_ROUNDS = 10;
 
@@ -51,8 +59,11 @@ export function verifyToken(token: string): JWTPayload | null {
  * Register a new user
  */
 export async function registerUser(email: string, password: string, name: string): Promise<{ user: User; token: string } | { error: string }> {
+	// Normalize email to lowercase for case-insensitive handling
+	const normalizedEmail = email.toLowerCase().trim();
+	
 	// Check if user already exists
-	const existingUser = await getUserByEmail(email);
+	const existingUser = await getUserByEmail(normalizedEmail);
 	if (existingUser) {
 		return { error: 'User already exists' };
 	}
@@ -61,7 +72,7 @@ export async function registerUser(email: string, password: string, name: string
 	const passwordHash = await hashPassword(password);
 
 	// Create user
-	const user = await createUser(email, passwordHash, name);
+	const user = await createUser(normalizedEmail, passwordHash, name);
 	if (!user) {
 		return { error: 'Failed to create user' };
 	}
@@ -76,8 +87,11 @@ export async function registerUser(email: string, password: string, name: string
  * Login a user
  */
 export async function loginUser(email: string, password: string): Promise<{ user: User; token: string } | { error: string }> {
+	// Normalize email to lowercase for case-insensitive handling
+	const normalizedEmail = email.toLowerCase().trim();
+	
 	// Get user
-	const user = await getUserByEmail(email);
+	const user = await getUserByEmail(normalizedEmail);
 	if (!user) {
 		return { error: 'Invalid credentials' };
 	}
@@ -153,19 +167,22 @@ export async function googleAuth(idToken: string): Promise<{ user: User; token: 
 		return { error: 'Invalid Google token' };
 	}
 
+	// Normalize email to lowercase for case-insensitive handling
+	const normalizedEmail = googleUser.email.toLowerCase().trim();
+
 	// Check if user exists by Google ID
 	let user = await getUserByGoogleId(googleUser.googleId);
 	
 	if (!user) {
 		// Check if user exists by email (from email/password auth)
-		const existingUser = await getUserByEmail(googleUser.email);
+		const existingUser = await getUserByEmail(normalizedEmail);
 		if (existingUser) {
 			return { error: 'Email already registered with email/password. Please login with your password.' };
 		}
 
 		// Create new Google user
 		user = await createGoogleUser(
-			googleUser.email,
+			normalizedEmail,
 			googleUser.googleId,
 			googleUser.name,
 			googleUser.picture
