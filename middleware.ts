@@ -1,8 +1,60 @@
-// Centralized auth middleware with in-memory sliding window rate limiting
+// Centralized auth middleware with CORS, auth checks, and in-memory sliding window rate limiting
 // Note: Actual JWT verification remains in route handlers (jsonwebtoken requires Node.js runtime)
 // Rate limiter state resets on cold starts (acceptable for Vercel serverless)
 
 import { NextRequest, NextResponse } from 'next/server';
+
+// ---------------------------------------------------------------------------
+// CORS configuration
+// ---------------------------------------------------------------------------
+
+/** Origins allowed to make cross-origin requests to the API */
+const ALLOWED_ORIGINS = [
+	'https://savethatagain.com',
+	'https://www.savethatagain.com',
+	'http://localhost:3000',
+];
+
+/** CORS methods permitted on API routes */
+const ALLOWED_METHODS = 'GET, POST, PUT, DELETE, OPTIONS';
+
+/** CORS headers permitted on API routes */
+const ALLOWED_HEADERS = 'Content-Type, Authorization';
+
+/** Preflight cache duration in seconds (24 hours) */
+const CORS_MAX_AGE = '86400';
+
+/**
+ * Check whether the given origin is in the allowed list.
+ * Returns the origin string if allowed, or null otherwise.
+ */
+function getAllowedOrigin(request: NextRequest): string | null {
+	const origin = request.headers.get('origin');
+	if (origin && ALLOWED_ORIGINS.includes(origin)) {
+		return origin;
+	}
+	return null;
+}
+
+/**
+ * Append CORS response headers to a NextResponse when the request
+ * includes a recognized origin. Mobile apps (Flutter) do not send an
+ * Origin header, so CORS headers are simply omitted for those requests.
+ */
+function applyCorsHeaders(response: NextResponse, origin: string | null): NextResponse {
+	if (!origin) {
+		return response;
+	}
+	response.headers.set('Access-Control-Allow-Origin', origin);
+	response.headers.set('Access-Control-Allow-Methods', ALLOWED_METHODS);
+	response.headers.set('Access-Control-Allow-Headers', ALLOWED_HEADERS);
+	response.headers.set('Access-Control-Max-Age', CORS_MAX_AGE);
+	return response;
+}
+
+// ---------------------------------------------------------------------------
+// Auth & rate limit configuration
+// ---------------------------------------------------------------------------
 
 /** Routes that require a Bearer token in the Authorization header */
 const PROTECTED_ROUTE_PREFIXES = [
@@ -162,19 +214,29 @@ function getClientIp(request: NextRequest): string {
  */
 export function middleware(request: NextRequest) {
 	const { pathname } = request.nextUrl;
+	const allowedOrigin = getAllowedOrigin(request);
+
+	// --- CORS preflight ---
+	// Handle OPTIONS requests on all API routes before auth or rate limiting
+	if (request.method === 'OPTIONS') {
+		const preflightResponse = new NextResponse(null, { status: 204 });
+		return applyCorsHeaders(preflightResponse, allowedOrigin);
+	}
 
 	// Allow public routes (non-API, auth endpoints, health check) to pass through
 	if (!isProtectedRoute(pathname)) {
-		return NextResponse.next();
+		const response = NextResponse.next();
+		return applyCorsHeaders(response, allowedOrigin);
 	}
 
 	// Protected route - verify Authorization header presence
 	const token = extractBearerToken(request);
 	if (!token) {
-		return NextResponse.json(
+		const response = NextResponse.json(
 			{ error: 'Unauthorized - Bearer token required' },
 			{ status: 401 }
 		);
+		return applyCorsHeaders(response, allowedOrigin);
 	}
 
 	// --- Rate limiting ---
@@ -192,7 +254,7 @@ export function middleware(request: NextRequest) {
 	// Exceeded rate limit — return 429
 	if (currentCount > limit) {
 		const retryAfter = Math.max(1, resetEpoch - Math.floor(Date.now() / 1000));
-		return NextResponse.json(
+		const response = NextResponse.json(
 			{
 				error: 'Too Many Requests',
 				message: `Rate limit of ${limit} requests per minute exceeded. Try again in ${retryAfter} seconds.`,
@@ -207,6 +269,7 @@ export function middleware(request: NextRequest) {
 				},
 			}
 		);
+		return applyCorsHeaders(response, allowedOrigin);
 	}
 
 	// Under limit — forward the request with rate limit headers
@@ -215,7 +278,7 @@ export function middleware(request: NextRequest) {
 	response.headers.set('X-RateLimit-Remaining', remaining.toString());
 	response.headers.set('X-RateLimit-Reset', resetEpoch.toString());
 
-	return response;
+	return applyCorsHeaders(response, allowedOrigin);
 }
 
 /**
