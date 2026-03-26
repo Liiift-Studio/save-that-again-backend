@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { extractBearerToken, getUserFromToken } from '@/lib/auth';
-import { deleteUserAccount, requestAccountDeletion, cancelAccountDeletion, getUserById } from '@/lib/db';
+import { deleteUserAccount, requestAccountDeletion, cancelAccountDeletion, getUserById, getAudioClipsByUserId } from '@/lib/db';
+import { deleteAudioBlob } from '@/lib/blob';
 
 
 /**
@@ -33,8 +34,14 @@ export async function DELETE(request: NextRequest) {
 		const immediate = searchParams.get('immediate') === 'true';
 
 		if (immediate) {
-			// Immediate deletion - delete all blob files first
-			// Note: In production, you'd want to queue blob deletion as a background job
+			// Fetch all user clips and delete their blobs before deleting the account
+			const clips = await getAudioClipsByUserId(user.id, 10000);
+			for (const clip of clips) {
+				if (clip.blob_url) {
+					await deleteAudioBlob(clip.blob_url);
+				}
+			}
+
 			const success = await deleteUserAccount(user.id);
 			
 			if (!success) {
