@@ -201,7 +201,7 @@ function getClientIp(request: NextRequest): string {
 		// x-forwarded-for may contain a comma-separated list; take the first (client) IP
 		return forwarded.split(',')[0].trim();
 	}
-	return request.ip ?? 'unknown';
+	return request.headers.get('x-real-ip') ?? 'unknown';
 }
 
 // ---------------------------------------------------------------------------
